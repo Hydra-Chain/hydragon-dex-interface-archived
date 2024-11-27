@@ -17,6 +17,7 @@ import {
   FEI,
   FRAX,
   FXS,
+  LYDRA,
   nativeOnChain,
   PORTAL_ETH_CELO,
   PORTAL_USDC_CELO,
@@ -55,6 +56,7 @@ const WRAPPED_NATIVE_CURRENCIES_ONLY: ChainTokenList = Object.fromEntries(
     .map(([key, value]) => [key, [value]])
     .filter(Boolean)
 )
+// sami change routing here:
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
@@ -66,6 +68,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     USDT,
     WBTC,
   ],
+  [SupportedChainId.HYDRA]: [...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.HYDRA], LYDRA],
   [SupportedChainId.OPTIMISM]: [
     ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.OPTIMISM],
     DAI_OPTIMISM,
@@ -121,6 +124,11 @@ export const COMMON_BASES: ChainCurrencyList = {
     USDT,
     WBTC,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
+  ],
+  [SupportedChainId.HYDRA]: [
+    nativeOnChain(SupportedChainId.HYDRA),
+    LYDRA,
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.HYDRA] as Token,
   ],
   [SupportedChainId.ROPSTEN]: [
     nativeOnChain(SupportedChainId.ROPSTEN),

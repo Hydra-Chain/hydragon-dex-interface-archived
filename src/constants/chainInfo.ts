@@ -64,6 +64,16 @@ const CHAIN_INFO: ChainInfoMap = {
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: darkTheme.chain_1,
   },
+  [SupportedChainId.HYDRA]: {
+    networkType: NetworkType.L1,
+    docs: 'https://medium.com/hydra-chain/revealing-hydragon-engine-first-dao-proposal-hip-1-19f05d85bde8/',
+    explorer: 'https://hydragon.hydrachain.org/',
+    infoLink: 'https://medium.com/hydra-chain/revealing-hydragon-engine-first-dao-proposal-hip-1-19f05d85bde8/',
+    label: 'Hydra',
+    logoUrl: optimismLogoUrl,
+    nativeCurrency: { name: 'Hydra', symbol: 'HYDRA', decimals: 18 },
+    color: darkTheme.chain_1,
+  },
   [SupportedChainId.RINKEBY]: {
     networkType: NetworkType.L1,
     docs: 'https://docs.uniswap.org/',

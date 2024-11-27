@@ -12,6 +12,7 @@ export const FEE_AMOUNT_DETAIL: Record<
     description: <Trans>Best for very stable pairs.</Trans>,
     supportedChains: [
       SupportedChainId.MAINNET,
+      SupportedChainId.HYDRA,
       SupportedChainId.POLYGON,
       SupportedChainId.POLYGON_MUMBAI,
       SupportedChainId.CELO,

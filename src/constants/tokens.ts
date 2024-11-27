@@ -103,6 +103,14 @@ export const DAI = new Token(
   'DAI',
   'Dai Stablecoin'
 )
+// Sami add tokens here:
+export const LYDRA = new Token(
+  SupportedChainId.HYDRA,
+  '0x0000000000000000000000000000000000001013',
+  18,
+  'LYDRA',
+  'Liquid Hydra'
+)
 export const DAI_ARBITRUM_ONE = new Token(
   SupportedChainId.ARBITRUM_ONE,
   '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
@@ -319,6 +327,13 @@ export const UNI: { [chainId: number]: Token } = {
 
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
   ...(WETH9 as Record<SupportedChainId, Token>),
+  [SupportedChainId.HYDRA]: new Token(
+    SupportedChainId.HYDRA,
+    '0xc69968922163cdc458258ED2dF9E6D5fd8efd0Af',
+    18,
+    'WHYDRA',
+    'Wrapped Hydra'
+  ),
   [SupportedChainId.OPTIMISM]: new Token(
     SupportedChainId.OPTIMISM,
     '0x4200000000000000000000000000000000000006',
@@ -442,7 +457,9 @@ export function nativeOnChain(chainId: number): NativeCurrency | Token {
   return (cachedNativeCurrency[chainId] = nativeCurrency)
 }
 
-export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedChainId]?: string } } = {
+export const TOKEN_SHORTHANDS: {
+  [shorthand: string]: { [chainId in SupportedChainId]?: string }
+} = {
   USDC: {
     [SupportedChainId.MAINNET]: USDC_MAINNET.address,
     [SupportedChainId.ARBITRUM_ONE]: USDC_ARBITRUM.address,

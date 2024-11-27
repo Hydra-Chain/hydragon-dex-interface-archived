@@ -174,6 +174,7 @@ export enum Currency {
   Brl = 'BRL',
   Cad = 'CAD',
   Cny = 'CNY',
+  hydra = 'HYDRA',
   Eth = 'ETH',
   Eur = 'EUR',
   Gbp = 'GBP',

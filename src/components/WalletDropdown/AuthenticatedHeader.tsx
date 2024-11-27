@@ -360,7 +360,7 @@ const AuthenticatedHeader = () => {
         )}
         {isUnclaimed && (
           <UNIButton onClick={openClaimModal} size={ButtonSize.medium} emphasis={ButtonEmphasis.medium}>
-            <Trans>Claim</Trans> {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} <Trans>reward</Trans>
+            <Trans>Claim</Trans> {unclaimedAmount?.toFixed(0, { groupSeparator: ',' })} <Trans>reward</Trans>
           </UNIButton>
         )}
         {isClaimAvailable && (
