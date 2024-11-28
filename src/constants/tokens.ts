@@ -111,6 +111,8 @@ export const LYDRA = new Token(
   'LYDRA',
   'Liquid Hydra'
 )
+export const TT = new Token(SupportedChainId.HYDRA, '0xEf8EF3D25100C58d28A8DCe575334f881a5a14Cb', 18, 'TT', 'TestToken')
+export const MKT = new Token(SupportedChainId.HYDRA, '0x88912AE0f97db0B278EE1F25734D147eA8E91fdC', 18, 'MKT', 'MyToken')
 export const DAI_ARBITRUM_ONE = new Token(
   SupportedChainId.ARBITRUM_ONE,
   '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
@@ -396,6 +398,10 @@ export function isCelo(chainId: number): chainId is SupportedChainId.CELO | Supp
   return chainId === SupportedChainId.CELO_ALFAJORES || chainId === SupportedChainId.CELO
 }
 
+export function isHydra(chainId: number): chainId is SupportedChainId.HYDRA {
+  return chainId === SupportedChainId.HYDRA
+}
+
 function getCeloNativeCurrency(chainId: number) {
   switch (chainId) {
     case SupportedChainId.CELO_ALFAJORES:
@@ -429,6 +435,24 @@ class MaticNativeCurrency extends NativeCurrency {
   }
 }
 
+class HydraNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId
+  }
+
+  get wrapped(): Token {
+    if (!isHydra(this.chainId)) throw new Error('Not hydra')
+    const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
+    invariant(wrapped instanceof Token)
+    return wrapped
+  }
+
+  public constructor(chainId: number) {
+    if (!isHydra(chainId)) throw new Error('Not hydra')
+    super(chainId, 18, 'HYDRA', 'Hydra')
+  }
+}
+
 class ExtendedEther extends Ether {
   public get wrapped(): Token {
     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
@@ -447,7 +471,9 @@ const cachedNativeCurrency: { [chainId: number]: NativeCurrency | Token } = {}
 export function nativeOnChain(chainId: number): NativeCurrency | Token {
   if (cachedNativeCurrency[chainId]) return cachedNativeCurrency[chainId]
   let nativeCurrency: NativeCurrency | Token
-  if (isMatic(chainId)) {
+  if (isHydra(chainId)) {
+    nativeCurrency = new HydraNativeCurrency(chainId)
+  } else if (isMatic(chainId)) {
     nativeCurrency = new MaticNativeCurrency(chainId)
   } else if (isCelo(chainId)) {
     nativeCurrency = getCeloNativeCurrency(chainId)

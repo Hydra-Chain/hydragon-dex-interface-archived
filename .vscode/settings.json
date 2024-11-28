@@ -14,6 +14,7 @@
   "eslint.enable": true,
   "eslint.debug": true,
   "cSpell.words": [
-    "hydrachain"
+    "hydrachain",
+    "Hydraswap"
   ]
 }

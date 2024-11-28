@@ -6,13 +6,13 @@ import { chainIdToBackendName } from 'graphql/data/util'
 import { useIsNftPage } from 'hooks/useIsNftPage'
 import { Box } from 'nft/components/Box'
 import { Row } from 'nft/components/Flex'
-import { UniIcon } from 'nft/components/icons'
 import { useProfilePageState } from 'nft/hooks'
 import { ProfilePageStateType } from 'nft/types'
 import { ReactNode } from 'react'
 import { NavLink, NavLinkProps, useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
+import hydraIcon from '../../assets/images/hydra-logo-white.png'
 import { Bag } from './Bag'
 import { ChainSelector } from './ChainSelector'
 import { MenuDropdown } from './MenuDropdown'
@@ -91,10 +91,23 @@ const Navbar = () => {
         <Box display="flex" height="full" flexWrap="nowrap">
           <Box className={styles.leftSideContainer}>
             <Box className={styles.logoContainer}>
-              <UniIcon
+              {/* <UniIcon Sami
                 width="48"
                 height="48"
                 data-testid="uniswap-logo"
+                className={styles.logo}
+                onClick={() => {
+                  navigate({
+                    pathname: "/",
+                    search: "?intro=true",
+                  });
+                }}
+              /> */}
+              <img
+                src={hydraIcon}
+                alt="HydraIcon"
+                width="48"
+                height="48"
                 className={styles.logo}
                 onClick={() => {
                   navigate({

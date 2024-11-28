@@ -1,5 +1,6 @@
 import celoCircleLogoUrl from 'assets/images/celoCircle.png'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
+import hydraLogo from 'assets/images/hydra-logo-white.png'
 import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
 import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'assets/svg/arbitrum_logo.svg'
 import celoLogo from 'assets/svg/celo_logo.svg'
@@ -9,7 +10,7 @@ import ms from 'ms.macro'
 import { darkTheme } from 'theme/colors'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, CELO_LIST, OPTIMISM_LIST } from './lists'
+import { ARBITRUM_LIST, CELO_LIST, HYDRA_LIST, OPTIMISM_LIST } from './lists'
 
 export const AVERAGE_L1_BLOCK_TIME = ms`12s`
 
@@ -66,13 +67,16 @@ const CHAIN_INFO: ChainInfoMap = {
   },
   [SupportedChainId.HYDRA]: {
     networkType: NetworkType.L1,
-    docs: 'https://medium.com/hydra-chain/revealing-hydragon-engine-first-dao-proposal-hip-1-19f05d85bde8/',
+    docs: 'https://docs.hydrachain.org/',
     explorer: 'https://hydragon.hydrachain.org/',
     infoLink: 'https://medium.com/hydra-chain/revealing-hydragon-engine-first-dao-proposal-hip-1-19f05d85bde8/',
     label: 'Hydra',
-    logoUrl: optimismLogoUrl,
+    logoUrl: hydraLogo,
+    circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra', symbol: 'HYDRA', decimals: 18 },
-    color: darkTheme.chain_1,
+    defaultListUrl: HYDRA_LIST,
+    color: darkTheme.chain_137,
+    backgroundColor: darkTheme.chain_137_background,
   },
   [SupportedChainId.RINKEBY]: {
     networkType: NetworkType.L1,

@@ -6,6 +6,7 @@ import { themeVars, vars } from '../css/sprinkles.css'
 // ESLint reports `fill` is missing, whereas it exists on an SVGProps type
 type SVGProps = React.SVGProps<SVGSVGElement> & { fill?: string }
 
+// eslint-disable-next-line import/no-unused-modules
 export const UniIcon = (props: SVGProps) => (
   <svg {...props} fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
