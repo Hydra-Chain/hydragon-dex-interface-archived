@@ -56,7 +56,6 @@ export function isPricePoint(p: PricePoint | null): p is PricePoint {
 
 export const CHAIN_ID_TO_BACKEND_NAME: { [key: number]: Chain } = {
   [SupportedChainId.MAINNET]: Chain.Ethereum,
-  // [SupportedChainId.HYDRA]: Chain.Hydra,
   [SupportedChainId.GOERLI]: Chain.EthereumGoerli,
   [SupportedChainId.POLYGON]: Chain.Polygon,
   [SupportedChainId.POLYGON_MUMBAI]: Chain.Polygon,

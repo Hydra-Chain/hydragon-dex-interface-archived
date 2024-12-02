@@ -103,7 +103,7 @@ export const DAI = new Token(
   'DAI',
   'Dai Stablecoin'
 )
-// Sami add tokens here:
+// SAMI: add tokens to your chain here that will stay at the top (all token can be used from tokenList)
 export const LYDRA = new Token(
   SupportedChainId.HYDRA,
   '0x0000000000000000000000000000000000001013',
@@ -111,8 +111,6 @@ export const LYDRA = new Token(
   'LYDRA',
   'Liquid Hydra'
 )
-export const TT = new Token(SupportedChainId.HYDRA, '0xEf8EF3D25100C58d28A8DCe575334f881a5a14Cb', 18, 'TT', 'TestToken')
-export const MKT = new Token(SupportedChainId.HYDRA, '0x88912AE0f97db0B278EE1F25734D147eA8E91fdC', 18, 'MKT', 'MyToken')
 export const DAI_ARBITRUM_ONE = new Token(
   SupportedChainId.ARBITRUM_ONE,
   '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
@@ -331,7 +329,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
   ...(WETH9 as Record<SupportedChainId, Token>),
   [SupportedChainId.HYDRA]: new Token(
     SupportedChainId.HYDRA,
-    '0xc69968922163cdc458258ED2dF9E6D5fd8efd0Af',
+    '0x4c79Cd65a93B4F5A03F31407195DcC72Ba8F4CcA',
     18,
     'WHYDRA',
     'Wrapped Hydra'
@@ -435,6 +433,7 @@ class MaticNativeCurrency extends NativeCurrency {
   }
 }
 
+// Sami: add the native currency for hydra
 class HydraNativeCurrency extends NativeCurrency {
   equals(other: Currency): boolean {
     return other.isNative && other.chainId === this.chainId
