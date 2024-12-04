@@ -111,6 +111,20 @@ export const LYDRA = new Token(
   'LYDRA',
   'Liquid Hydra'
 )
+export const MYTOKEN1 = new Token(
+  SupportedChainId.HYDRA,
+  '0x048a1bbcc569dcEbbC1cF3c3D11ef8C791F8Ce32',
+  18,
+  'MT1',
+  'MyToken1'
+)
+export const MYTOKEN2 = new Token(
+  SupportedChainId.HYDRA,
+  '0xe0ABF31F69Ea2F1886CF550Cc5e272Ec968Cd918',
+  18,
+  'MT2',
+  'MyToken2'
+)
 export const DAI_ARBITRUM_ONE = new Token(
   SupportedChainId.ARBITRUM_ONE,
   '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
@@ -329,7 +343,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
   ...(WETH9 as Record<SupportedChainId, Token>),
   [SupportedChainId.HYDRA]: new Token(
     SupportedChainId.HYDRA,
-    '0x4c79Cd65a93B4F5A03F31407195DcC72Ba8F4CcA',
+    '0xf99Ceee50aF3A113c4f98C6Af0427b76950B5080',
     18,
     'WHYDRA',
     'Wrapped Hydra'

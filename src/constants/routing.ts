@@ -18,6 +18,8 @@ import {
   FRAX,
   FXS,
   LYDRA,
+  MYTOKEN1,
+  MYTOKEN2,
   nativeOnChain,
   PORTAL_ETH_CELO,
   PORTAL_USDC_CELO,
@@ -132,6 +134,8 @@ export const COMMON_BASES: ChainCurrencyList = {
     nativeOnChain(SupportedChainId.HYDRA),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.HYDRA] as Token,
     LYDRA,
+    MYTOKEN1,
+    MYTOKEN2,
   ],
   [SupportedChainId.ROPSTEN]: [
     nativeOnChain(SupportedChainId.ROPSTEN),
