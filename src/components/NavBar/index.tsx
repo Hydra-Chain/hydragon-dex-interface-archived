@@ -91,7 +91,7 @@ const Navbar = () => {
         <Box display="flex" height="full" flexWrap="nowrap">
           <Box className={styles.leftSideContainer}>
             <Box className={styles.logoContainer}>
-              {/* <UniIcon Sami
+              {/* <UniIcon SAMI: Logo changed to HydraIcon
                 width="48"
                 height="48"
                 data-testid="uniswap-logo"
