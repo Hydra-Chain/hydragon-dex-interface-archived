@@ -113,14 +113,14 @@ export const LYDRA = new Token(
 )
 export const MYTOKEN1 = new Token(
   SupportedChainId.HYDRA,
-  '0x048a1bbcc569dcEbbC1cF3c3D11ef8C791F8Ce32',
+  '0x8dE2f2Acd7AE92aA2d5F13C95424a1b4C31CBcB2',
   18,
   'MT1',
   'MyToken1'
 )
 export const MYTOKEN2 = new Token(
   SupportedChainId.HYDRA,
-  '0xe0ABF31F69Ea2F1886CF550Cc5e272Ec968Cd918',
+  '0xdd5C0811D1De34CC5B6A35Ae0A1A68EEfba2B4E2',
   18,
   'MT2',
   'MyToken2'
@@ -343,7 +343,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
   ...(WETH9 as Record<SupportedChainId, Token>),
   [SupportedChainId.HYDRA]: new Token(
     SupportedChainId.HYDRA,
-    '0xf99Ceee50aF3A113c4f98C6Af0427b76950B5080',
+    '0x0A8e55E84cDF937a8201c0f454F0c80B1718A1EB',
     18,
     'WHYDRA',
     'Wrapped Hydra'

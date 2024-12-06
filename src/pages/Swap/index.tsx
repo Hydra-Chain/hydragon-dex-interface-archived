@@ -238,7 +238,6 @@ export default function Swap({ className }: { className?: string }) {
   const fiatValueInput = useStablecoinValue(parsedAmounts[Field.INPUT])
   const fiatValueOutput = useStablecoinValue(parsedAmounts[Field.OUTPUT])
 
-  // SAMI: Debug here for trade state
   const [routeNotFound, routeIsLoading, routeIsSyncing] = useMemo(
     () => [!trade?.swaps, TradeState.LOADING === tradeState, TradeState.SYNCING === tradeState],
     [trade, tradeState]

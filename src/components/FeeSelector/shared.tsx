@@ -12,7 +12,7 @@ export const FEE_AMOUNT_DETAIL: Record<
     description: <Trans>Best for very stable pairs.</Trans>,
     supportedChains: [
       SupportedChainId.MAINNET,
-      // SupportedChainId.HYDRA, SAMI: HYDRA reverts on 0.01 fee, make sure you enableFeeAmount and set tickSpacing before enabling this
+      SupportedChainId.HYDRA, // SAMI: Make sure you allowed 0.01 fee on hydra
       SupportedChainId.POLYGON,
       SupportedChainId.POLYGON_MUMBAI,
       SupportedChainId.CELO,
