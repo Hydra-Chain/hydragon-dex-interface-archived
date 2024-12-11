@@ -28,6 +28,7 @@ import { useSwapCallback } from 'hooks/useSwapCallback'
 import useTransactionDeadline from 'hooks/useTransactionDeadline'
 import JSBI from 'jsbi'
 import { formatSwapQuoteReceivedEventProperties } from 'lib/utils/analytics'
+import { WrongNetworkCard } from 'pages/Pool'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ReactNode } from 'react'
 import { ArrowDown, CheckCircle, HelpCircle, Info } from 'react-feather'
@@ -549,6 +550,10 @@ export default function Swap({ className }: { className?: string }) {
   const showDetailsDropdown = Boolean(
     !showWrap && userHasSpecifiedInputOutput && (trade || routeIsLoading || routeIsSyncing)
   )
+
+  if (!isSupportedChain(chainId)) {
+    return <WrongNetworkCard label="Swap" />
+  }
 
   return (
     <Trace page={InterfacePageName.SWAP_PAGE} shouldLogImpression>

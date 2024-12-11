@@ -2,8 +2,8 @@
  * List of all the networks supported by the Uniswap Interface
  */
 export enum SupportedChainId {
-  MAINNET = 1,
-  HYDRA = 8844,
+  MAINNET = 4488,
+  TESTNET = 8844,
   ROPSTEN = 3,
   RINKEBY = 4,
   GOERLI = 5,
@@ -22,9 +22,13 @@ export enum SupportedChainId {
   CELO_ALFAJORES = 44787,
 }
 
+export const DEFAULT_CHAIN_ID = process.env.REACT_APP_DEFAULT_CHAIN_ID
+  ? Number(process.env.REACT_APP_DEFAULT_CHAIN_ID)
+  : 8844
+
 export const CHAIN_IDS_TO_NAMES = {
-  [SupportedChainId.MAINNET]: 'mainnet',
-  [SupportedChainId.HYDRA]: 'hydra',
+  [SupportedChainId.MAINNET]: 'hydragon',
+  [SupportedChainId.TESTNET]: 'hydragon testnet',
   [SupportedChainId.ROPSTEN]: 'ropsten',
   [SupportedChainId.RINKEBY]: 'rinkeby',
   [SupportedChainId.GOERLI]: 'goerli',
@@ -52,7 +56,7 @@ export function isSupportedChain(chainId: number | null | undefined): chainId is
 
 export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   SupportedChainId.MAINNET,
-  SupportedChainId.HYDRA,
+  SupportedChainId.TESTNET,
   SupportedChainId.POLYGON,
   SupportedChainId.CELO,
   SupportedChainId.OPTIMISM,
@@ -85,7 +89,7 @@ export type SupportedTestnetChainId = typeof TESTNET_CHAIN_IDS[number]
  */
 export const L1_CHAIN_IDS = [
   SupportedChainId.MAINNET,
-  SupportedChainId.HYDRA,
+  SupportedChainId.TESTNET,
   SupportedChainId.ROPSTEN,
   SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,

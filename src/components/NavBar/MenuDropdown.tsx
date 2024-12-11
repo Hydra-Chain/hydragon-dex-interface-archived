@@ -4,23 +4,13 @@ import { PrivacyPolicyModal } from 'components/PrivacyPolicy'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
 import { Box } from 'nft/components/Box'
 import { Column, Row } from 'nft/components/Flex'
-import {
-  BarChartIcon,
-  DiscordIconMenu,
-  EllipsisIcon,
-  GithubIconMenu,
-  GovernanceIcon,
-  TwitterIconMenu,
-} from 'nft/components/icons'
+import { BarChartIcon, EllipsisIcon, GithubIconMenu, TwitterIconMenu } from 'nft/components/icons'
 import { body, bodySmall } from 'nft/css/common.css'
 import { themeVars } from 'nft/css/sprinkles.css'
 import { ReactNode, useReducer, useRef } from 'react'
 import { NavLink, NavLinkProps } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { isDevelopmentEnv, isStagingEnv } from 'utils/env'
 
-import { useToggleModal } from '../../state/application/hooks'
-import { ApplicationModal } from '../../state/application/reducer'
 import * as styles from './MenuDropdown.css'
 import { NavDropdown } from './NavDropdown'
 import { NavIcon } from './NavIcon'
@@ -119,8 +109,8 @@ const Icon = ({ href, children }: { href?: string; children: ReactNode }) => {
 
 export const MenuDropdown = () => {
   const [isOpen, toggleOpen] = useReducer((s) => !s, false)
-  const togglePrivacyPolicy = useToggleModal(ApplicationModal.PRIVACY_POLICY)
-  const openFeatureFlagsModal = useToggleModal(ApplicationModal.FEATURE_FLAGS)
+  // const togglePrivacyPolicy = useToggleModal(ApplicationModal.PRIVACY_POLICY)
+  // const openFeatureFlagsModal = useToggleModal(ApplicationModal.FEATURE_FLAGS)
   const ref = useRef<HTMLDivElement>(null)
   useOnClickOutside(ref, isOpen ? toggleOpen : undefined)
 
@@ -135,15 +125,16 @@ export const MenuDropdown = () => {
           <NavDropdown top={{ sm: 'unset', lg: '56' }} bottom={{ sm: '56', lg: 'unset' }} right="0">
             <Column gap="16">
               <Column paddingX="8" gap="4">
-                <PrimaryMenuRow to="/vote" close={toggleOpen}>
+                {/* VITO: Remove the some options because we do not support vote currently */}
+                {/* <PrimaryMenuRow to="/vote" close={toggleOpen}>
                   <Icon>
                     <GovernanceIcon width={24} height={24} />
                   </Icon>
                   <PrimaryMenuRow.Text>
                     <Trans>Vote in governance</Trans>
                   </PrimaryMenuRow.Text>
-                </PrimaryMenuRow>
-                <PrimaryMenuRow href="https://info.uniswap.org/#/">
+                </PrimaryMenuRow> */}
+                <PrimaryMenuRow href="https://info.hydradex.org/#/">
                   <Icon>
                     <BarChartIcon width={24} height={24} />
                   </Icon>
@@ -160,16 +151,17 @@ export const MenuDropdown = () => {
                 alignItems={{ sm: 'center', md: 'flex-start' }}
                 paddingX="8"
               >
-                <SecondaryLinkedText href="https://help.uniswap.org/en/">
-                  <Trans>Help center</Trans> ↗
+                <SecondaryLinkedText href="https://hydrachain.org/">
+                  <Trans>About</Trans> ↗
                 </SecondaryLinkedText>
-                <SecondaryLinkedText href="https://docs.uniswap.org/">
+                <SecondaryLinkedText href="https://hydrachain.org/developers">
                   <Trans>Documentation</Trans> ↗
                 </SecondaryLinkedText>
-                <SecondaryLinkedText href="https://uniswap.canny.io/feature-requests">
-                  <Trans>Feedback</Trans> ↗
+                <SecondaryLinkedText href="https://hydrachain.org/contacts">
+                  <Trans>Contact Us</Trans> ↗
                 </SecondaryLinkedText>
-                <SecondaryLinkedText
+                {/* VITO: Remove these because we don't need them now */}
+                {/* <SecondaryLinkedText
                   onClick={() => {
                     toggleOpen()
                     togglePrivacyPolicy()
@@ -181,18 +173,19 @@ export const MenuDropdown = () => {
                   <SecondaryLinkedText onClick={openFeatureFlagsModal}>
                     <Trans>Feature Flags</Trans>
                   </SecondaryLinkedText>
-                )}
+                )} */}
               </Box>
               <IconRow>
-                <Icon href="https://discord.com/invite/FCfyBSbCU5">
+                {/* VITO: Remove this because we don't have discord currently */}
+                {/* <Icon href="https://discord.com/invite/FCfyBSbCU5">
                   <DiscordIconMenu
                     className={styles.hover}
                     width={24}
                     height={24}
                     color={themeVars.colors.textSecondary}
                   />
-                </Icon>
-                <Icon href="https://twitter.com/Uniswap">
+                </Icon> */}
+                <Icon href="https://x.com/hydra_chain">
                   <TwitterIconMenu
                     className={styles.hover}
                     width={24}
@@ -200,7 +193,7 @@ export const MenuDropdown = () => {
                     color={themeVars.colors.textSecondary}
                   />
                 </Icon>
-                <Icon href="https://github.com/Uniswap">
+                <Icon href="https://github.com/Hydra-Chain">
                   <GithubIconMenu
                     className={styles.hover}
                     width={24}

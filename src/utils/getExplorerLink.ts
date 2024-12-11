@@ -1,8 +1,9 @@
 import { SupportedChainId } from '../constants/chains'
 
 const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
-  [SupportedChainId.MAINNET]: 'https://etherscan.io',
-  [SupportedChainId.HYDRA]: 'https://hydragon.hydrachain.org',
+  // VITO: Update the mainnet when released
+  [SupportedChainId.MAINNET]: 'https://hydragon.hydrachain.org',
+  [SupportedChainId.TESTNET]: 'https://hydragon.hydrachain.org',
   [SupportedChainId.ROPSTEN]: 'https://ropsten.etherscan.io',
   [SupportedChainId.RINKEBY]: 'https://rinkeby.etherscan.io',
   [SupportedChainId.GOERLI]: 'https://goerli.etherscan.io',

@@ -6,6 +6,7 @@ import {
   AMPL,
   CEUR_CELO,
   CEUR_CELO_ALFAJORES,
+  CKToken_TESTNET,
   CMC02_CELO,
   CUSD_CELO,
   CUSD_CELO_ALFAJORES,
@@ -18,8 +19,11 @@ import {
   FRAX,
   FXS,
   LYDRA,
+  LYDRA_TESTNET,
   MYTOKEN1,
+  MYTOKEN1_TESTNET,
   MYTOKEN2,
+  MYTOKEN2_TESTNET,
   nativeOnChain,
   PORTAL_ETH_CELO,
   PORTAL_USDC_CELO,
@@ -32,6 +36,7 @@ import {
   USDC_MAINNET,
   USDC_OPTIMISM,
   USDC_POLYGON,
+  USDC_TESTNET,
   USDT,
   USDT_ARBITRUM_ONE,
   USDT_OPTIMISM,
@@ -66,6 +71,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET],
     DAI,
     USDC_MAINNET,
+    USDC_TESTNET,
     USDT,
     WBTC,
   ],
@@ -123,19 +129,19 @@ export const CUSTOM_BASES: {
 export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.MAINNET]: [
     nativeOnChain(SupportedChainId.MAINNET),
-    DAI,
-    USDC_MAINNET,
-    USDT,
-    WBTC,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
-  ],
-  // SAMI: add tokens (common bases), staying at the top
-  [SupportedChainId.HYDRA]: [
-    nativeOnChain(SupportedChainId.HYDRA),
-    WRAPPED_NATIVE_CURRENCY[SupportedChainId.HYDRA] as Token,
     LYDRA,
     MYTOKEN1,
     MYTOKEN2,
+  ],
+  // SAMI: add tokens (common bases), staying at the top
+  [SupportedChainId.TESTNET]: [
+    nativeOnChain(SupportedChainId.TESTNET),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.TESTNET] as Token,
+    LYDRA_TESTNET,
+    MYTOKEN1_TESTNET,
+    MYTOKEN2_TESTNET,
+    CKToken_TESTNET,
   ],
   [SupportedChainId.ROPSTEN]: [
     nativeOnChain(SupportedChainId.ROPSTEN),
@@ -209,11 +215,13 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET],
     DAI,
     USDC_MAINNET,
+    USDC_TESTNET,
     USDT,
     WBTC,
   ],
 }
 export const PINNED_PAIRS: { readonly [chainId: number]: [Token, Token][] } = {
+  // VITO: Update when mainnet released
   [SupportedChainId.MAINNET]: [
     [
       new Token(SupportedChainId.MAINNET, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'),

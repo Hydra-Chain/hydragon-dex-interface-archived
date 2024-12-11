@@ -17,12 +17,13 @@ export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
 export const CELO_LIST = 'https://celo-org.github.io/celo-token-list/celo.tokenlist.json'
 
 // SAMI: List and URL for Tokens on Hydra
-export const HYDRA_LIST = 'https://raw.githubusercontent.com/SamBorisov/hydraswap-token-list/main/hydraswap-list.json'
+export const HYDRASWAP_LIST =
+  'https://raw.githubusercontent.com/SamBorisov/hydraswap-token-list/main/hydraswap-list.json'
 
 export const UNSUPPORTED_LIST_URLS: string[] = [BA_LIST, UNI_UNSUPPORTED_LIST]
 
 // default lists to be 'active' aka searched across
-export const DEFAULT_ACTIVE_LIST_URLS: string[] = [HYDRA_LIST, UNI_LIST]
+export const DEFAULT_ACTIVE_LIST_URLS: string[] = [HYDRASWAP_LIST, UNI_LIST]
 export const DEFAULT_INACTIVE_LIST_URLS: string[] = [
   UNI_EXTENDED_LIST,
   COMPOUND_LIST,

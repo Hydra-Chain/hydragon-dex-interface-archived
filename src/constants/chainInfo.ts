@@ -1,6 +1,6 @@
 import celoCircleLogoUrl from 'assets/images/celoCircle.png'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
-import hydraLogo from 'assets/images/hydra-logo-white.png'
+import hydragonLogo from 'assets/images/hydra-logo-white.png'
 import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
 import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'assets/svg/arbitrum_logo.svg'
 import celoLogo from 'assets/svg/celo_logo.svg'
@@ -10,7 +10,7 @@ import ms from 'ms.macro'
 import { darkTheme } from 'theme/colors'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, CELO_LIST, HYDRA_LIST, OPTIMISM_LIST } from './lists'
+import { ARBITRUM_LIST, CELO_LIST, HYDRASWAP_LIST, OPTIMISM_LIST } from './lists'
 
 export const AVERAGE_L1_BLOCK_TIME = ms`12s`
 
@@ -55,26 +55,30 @@ type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo } & 
 } & { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
 
 const CHAIN_INFO: ChainInfoMap = {
+  // VITO: Update the mainnet when released
   [SupportedChainId.MAINNET]: {
-    networkType: NetworkType.L1,
-    docs: 'https://docs.uniswap.org/',
-    explorer: 'https://etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
-    label: 'Ethereum',
-    logoUrl: ethereumLogoUrl,
-    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-    color: darkTheme.chain_1,
-  },
-  [SupportedChainId.HYDRA]: {
     networkType: NetworkType.L1,
     docs: 'https://docs.hydrachain.org/',
     explorer: 'https://hydragon.hydrachain.org/',
     infoLink: 'https://medium.com/hydra-chain/revealing-hydragon-engine-first-dao-proposal-hip-1-19f05d85bde8/',
-    label: 'Hydra',
-    logoUrl: hydraLogo,
+    label: 'HydraGon',
+    logoUrl: hydragonLogo,
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra', symbol: 'HYDRA', decimals: 18 },
-    defaultListUrl: HYDRA_LIST,
+    defaultListUrl: HYDRASWAP_LIST,
+    color: darkTheme.chain_137,
+    backgroundColor: darkTheme.chain_137_background,
+  },
+  [SupportedChainId.TESTNET]: {
+    networkType: NetworkType.L1,
+    docs: 'https://docs.hydrachain.org/',
+    explorer: 'https://hydragon.hydrachain.org/',
+    infoLink: 'https://medium.com/hydra-chain/revealing-hydragon-engine-first-dao-proposal-hip-1-19f05d85bde8/',
+    label: 'HydraGon Testnet',
+    logoUrl: hydragonLogo,
+    circleLogoUrl: polygonCircleLogoUrl,
+    nativeCurrency: { name: 'Hydra Testnet', symbol: 'tHYDRA', decimals: 18 },
+    defaultListUrl: HYDRASWAP_LIST,
     color: darkTheme.chain_137,
     backgroundColor: darkTheme.chain_137_background,
   },

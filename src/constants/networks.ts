@@ -16,17 +16,17 @@ if (typeof INFURA_KEY === 'undefined') {
  * These "Safe" URLs are listed first, followed by other fallback URLs, which are taken from chainlist.org.
  */
 export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
+  // VITO: We need fallback URLs for the RPC and update when mainnet released
   [SupportedChainId.MAINNET]: [
     // "Safe" URLs
-    'https://api.mycryptoapi.com/eth',
-    'https://cloudflare-eth.com',
+    'https://rpc-testnet.hydrachain.org/',
     // "Fallback" URLs
-    'https://rpc.ankr.com/eth',
-    'https://eth-mainnet.public.blastapi.io',
+    // 'https://rpc.ankr.com/eth',
+    // 'https://eth-mainnet.public.blastapi.io',
   ],
-  [SupportedChainId.HYDRA]: [
+  [SupportedChainId.TESTNET]: [
     // "Safe" URLs
-    'https://rpc.testnet.hydrachain.org/',
+    'https://rpc-testnet.hydrachain.org/',
   ],
   [SupportedChainId.ROPSTEN]: [
     // "Fallback" URLs
@@ -98,11 +98,9 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
  * These are the URLs used by the interface when there is not another available source of chain data.
  */
 export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
-  [SupportedChainId.MAINNET]: [
-    `https://mainnet.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.MAINNET],
-  ],
-  [SupportedChainId.HYDRA]: [`https://rpc.testnet.hydrachain.org/`, ...FALLBACK_URLS[SupportedChainId.HYDRA]],
+  // VITO: Update when mainnet released
+  [SupportedChainId.MAINNET]: [`https://rpc.testnet.hydrachain.org/`, ...FALLBACK_URLS[SupportedChainId.MAINNET]],
+  [SupportedChainId.TESTNET]: [`https://rpc.testnet.hydrachain.org/`, ...FALLBACK_URLS[SupportedChainId.TESTNET]],
   [SupportedChainId.RINKEBY]: [
     `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
     ...FALLBACK_URLS[SupportedChainId.RINKEBY],

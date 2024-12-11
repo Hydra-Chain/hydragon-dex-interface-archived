@@ -26,7 +26,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import styled from 'styled-components/macro'
 import { ExplorerDataType, getExplorerLink } from 'utils/getExplorerLink'
 
-import hydraIcon from '../../../assets/images/hydra-logo.png'
+import hydragonIcon from '../../../assets/images/hydra-logo.png'
 import * as styles from './TransactionCompleteModal.css'
 
 const TWITTER_WIDTH = 560
@@ -123,7 +123,13 @@ const TxCompleteModal = () => {
               >
                 <Box className={styles.successModal} onClick={stopPropagation}>
                   {/* <UniIcon color={vars.color.pink400} width="36" height="36" className={styles.uniLogo} /> Sami*/}
-                  <img src={hydraIcon} color={vars.color.pink400} width="36" height="36" className={styles.uniLogo} />
+                  <img
+                    src={hydragonIcon}
+                    color={vars.color.pink400}
+                    width="36"
+                    height="36"
+                    className={styles.uniLogo}
+                  />
                   <Box display="flex" flexWrap="wrap" width="full" height="min">
                     <h1 className={styles.title}>
                       <Trans>Complete!</Trans>

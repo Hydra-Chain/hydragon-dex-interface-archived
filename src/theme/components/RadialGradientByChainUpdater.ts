@@ -48,7 +48,7 @@ export default function RadialGradientByChainUpdater(): null {
 
     switch (chainId) {
       // SAMI: Change styles to backgroundRadialGradientElement
-      case SupportedChainId.HYDRA: {
+      case SupportedChainId.TESTNET: {
         setBackground(backgroundResetStyles)
         const celoLightGradient =
           'radial-gradient(100% 100% at 50% 0%, rgba(62, 68, 117, 0.7) 0%, rgba(51, 58, 121, 0.65) 49.48%, rgba(74, 65, 65, 0) 100%), #FFFFFF'
