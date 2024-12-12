@@ -5,7 +5,7 @@ import styled, { DefaultTheme, useTheme } from 'styled-components/macro'
 
 import { RowBetween } from '../Row'
 
-export { default as LoadingButtonSpinner } from './LoadingButtonSpinner'
+// export { default as LoadingButtonSpinner } from './LoadingButtonSpinner'
 
 type ButtonProps = Omit<ButtonPropsOriginal, 'css'>
 

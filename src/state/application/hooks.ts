@@ -1,18 +1,9 @@
-import { sendAnalyticsEvent } from '@uniswap/analytics'
-import { MoonpayEventName } from '@uniswap/analytics-events'
 import { DEFAULT_TXN_DISMISS_MS } from 'constants/misc'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from 'state/hooks'
 
 import { AppState } from '../index'
-import {
-  addPopup,
-  ApplicationModal,
-  PopupContent,
-  removePopup,
-  setFiatOnrampAvailability,
-  setOpenModal,
-} from './reducer'
+import { addPopup, ApplicationModal, PopupContent, removePopup, setOpenModal } from './reducer'
 
 export function useModalIsOpen(modal: ApplicationModal): boolean {
   const openModal = useAppSelector((state: AppState) => state.application.openModal)
@@ -41,46 +32,47 @@ async function getMoonpayAvailability(): Promise<boolean> {
   return data.isBuyAllowed ?? false
 }
 
-export function useFiatOnrampAvailability(shouldCheck: boolean, callback?: () => void) {
-  const dispatch = useAppDispatch()
-  const { available, availabilityChecked } = useAppSelector((state: AppState) => state.application.fiatOnramp)
-  const [error, setError] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
+// VITO: Uncomment if needed
+// export function useFiatOnrampAvailability(shouldCheck: boolean, callback?: () => void) {
+//   const dispatch = useAppDispatch()
+//   const { available, availabilityChecked } = useAppSelector((state: AppState) => state.application.fiatOnramp)
+//   const [error, setError] = useState<string | null>(null)
+//   const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    async function checkAvailability() {
-      setError(null)
-      setLoading(true)
-      try {
-        const result = await getMoonpayAvailability()
-        sendAnalyticsEvent(MoonpayEventName.MOONPAY_GEOCHECK_COMPLETED, { success: result })
-        if (stale) return
-        dispatch(setFiatOnrampAvailability(result))
-        if (result && callback) {
-          callback()
-        }
-      } catch (e) {
-        console.error('Error checking onramp availability', e.toString())
-        if (stale) return
-        setError('Error, try again later.')
-        dispatch(setFiatOnrampAvailability(false))
-      } finally {
-        if (!stale) setLoading(false)
-      }
-    }
+//   useEffect(() => {
+//     async function checkAvailability() {
+//       setError(null)
+//       setLoading(true)
+//       try {
+//         const result = await getMoonpayAvailability()
+//         sendAnalyticsEvent(MoonpayEventName.MOONPAY_GEOCHECK_COMPLETED, { success: result })
+//         if (stale) return
+//         dispatch(setFiatOnrampAvailability(result))
+//         if (result && callback) {
+//           callback()
+//         }
+//       } catch (e) {
+//         console.error('Error checking onramp availability', e.toString())
+//         if (stale) return
+//         setError('Error, try again later.')
+//         dispatch(setFiatOnrampAvailability(false))
+//       } finally {
+//         if (!stale) setLoading(false)
+//       }
+//     }
 
-    if (!availabilityChecked && shouldCheck) {
-      checkAvailability()
-    }
+//     if (!availabilityChecked && shouldCheck) {
+//       checkAvailability()
+//     }
 
-    let stale = false
-    return () => {
-      stale = true
-    }
-  }, [availabilityChecked, callback, dispatch, shouldCheck])
+//     let stale = false
+//     return () => {
+//       stale = true
+//     }
+//   }, [availabilityChecked, callback, dispatch, shouldCheck])
 
-  return { available, availabilityChecked, loading, error }
-}
+//   return { available, availabilityChecked, loading, error }
+// }
 
 export function useToggleModal(modal: ApplicationModal): () => void {
   const isOpen = useModalIsOpen(modal)
@@ -93,10 +85,11 @@ export function useCloseModal(): () => void {
   return useCallback(() => dispatch(setOpenModal(null)), [dispatch])
 }
 
-export function useOpenModal(modal: ApplicationModal): () => void {
-  const dispatch = useAppDispatch()
-  return useCallback(() => dispatch(setOpenModal(modal)), [dispatch, modal])
-}
+// VITO: Uncomment if needed
+// export function useOpenModal(modal: ApplicationModal): () => void {
+//   const dispatch = useAppDispatch()
+//   return useCallback(() => dispatch(setOpenModal(modal)), [dispatch, modal])
+// }
 
 export function useToggleWalletModal(): () => void {
   return useToggleModal(ApplicationModal.WALLET)
