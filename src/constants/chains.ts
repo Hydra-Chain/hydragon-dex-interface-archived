@@ -1,5 +1,9 @@
+export const DEFAULT_CHAIN_ID = process.env.REACT_APP_DEFAULT_CHAIN_ID
+  ? Number(process.env.REACT_APP_DEFAULT_CHAIN_ID)
+  : 4488
+
 /**
- * List of all the networks supported by the Uniswap Interface
+ * List of all the networks supported by the Hydra Chain DEX Interface
  */
 export enum SupportedChainId {
   MAINNET = 4488,
@@ -22,13 +26,9 @@ export enum SupportedChainId {
   CELO_ALFAJORES = 44787,
 }
 
-export const DEFAULT_CHAIN_ID = process.env.REACT_APP_DEFAULT_CHAIN_ID
-  ? Number(process.env.REACT_APP_DEFAULT_CHAIN_ID)
-  : 8844
-
 export const CHAIN_IDS_TO_NAMES = {
-  [SupportedChainId.MAINNET]: 'hydragon',
-  [SupportedChainId.TESTNET]: 'hydragon testnet',
+  [SupportedChainId.MAINNET]: 'hydrachain',
+  [SupportedChainId.TESTNET]: 'hydrachain_testnet',
   [SupportedChainId.ROPSTEN]: 'ropsten',
   [SupportedChainId.RINKEBY]: 'rinkeby',
   [SupportedChainId.GOERLI]: 'goerli',

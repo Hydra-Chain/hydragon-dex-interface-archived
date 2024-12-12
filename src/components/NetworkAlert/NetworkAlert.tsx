@@ -152,7 +152,13 @@ export function NetworkAlert() {
     return null
   }
 
-  const { label, logoUrl, bridge } = getChainInfo(chainId)
+  const chainInfo = getChainInfo(chainId)
+  if (!chainInfo) {
+    return null
+  }
+
+  const { label, logoUrl, bridge } = chainInfo
+
   const textColor = TEXT_COLORS[chainId]
 
   return bridge ? (

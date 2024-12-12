@@ -1,9 +1,14 @@
+import { getEnvironmentVariable } from 'utils/env'
+
 import { SupportedChainId } from './chains'
 
 const INFURA_KEY = process.env.REACT_APP_INFURA_KEY
 if (typeof INFURA_KEY === 'undefined') {
   throw new Error(`REACT_APP_INFURA_KEY must be a defined environment variable`)
 }
+
+const HYDRACHAIN_MAINNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_MAINNET_RPC')
+const HYDRACHAIN_TESTNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_TESTNET_RPC')
 
 /**
  * Fallback JSON-RPC endpoints.
@@ -19,14 +24,14 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   // VITO: We need fallback URLs for the RPC and update when mainnet released
   [SupportedChainId.MAINNET]: [
     // "Safe" URLs
-    'https://rpc-testnet.hydrachain.org/',
+    HYDRACHAIN_MAINNET_RPC,
     // "Fallback" URLs
     // 'https://rpc.ankr.com/eth',
     // 'https://eth-mainnet.public.blastapi.io',
   ],
   [SupportedChainId.TESTNET]: [
     // "Safe" URLs
-    'https://rpc-testnet.hydrachain.org/',
+    HYDRACHAIN_TESTNET_RPC,
   ],
   [SupportedChainId.ROPSTEN]: [
     // "Fallback" URLs
@@ -99,8 +104,8 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
  */
 export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   // VITO: Update when mainnet released
-  [SupportedChainId.MAINNET]: [`https://rpc.testnet.hydrachain.org/`, ...FALLBACK_URLS[SupportedChainId.MAINNET]],
-  [SupportedChainId.TESTNET]: [`https://rpc.testnet.hydrachain.org/`, ...FALLBACK_URLS[SupportedChainId.TESTNET]],
+  [SupportedChainId.MAINNET]: [HYDRACHAIN_MAINNET_RPC, ...FALLBACK_URLS[SupportedChainId.MAINNET]],
+  [SupportedChainId.TESTNET]: [HYDRACHAIN_TESTNET_RPC, ...FALLBACK_URLS[SupportedChainId.TESTNET]],
   [SupportedChainId.RINKEBY]: [
     `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
     ...FALLBACK_URLS[SupportedChainId.RINKEBY],

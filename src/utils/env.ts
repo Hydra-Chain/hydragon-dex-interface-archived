@@ -18,3 +18,11 @@ export function isProductionEnv(): boolean {
 export function isSentryEnabled(): boolean {
   return process.env.REACT_APP_SENTRY_ENABLED === 'true'
 }
+
+export const getEnvironmentVariable = (name: string): string => {
+  const env = process.env[name]
+  if (!env) {
+    throw new Error(`Couldn't find environment variable: ${name}`)
+  }
+  return env
+}

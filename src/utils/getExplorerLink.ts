@@ -1,9 +1,11 @@
+import { MAINNET_EXPLORER, TESTNET_EXPLORER } from 'constants/chainInfo'
+
 import { SupportedChainId } from '../constants/chains'
 
 const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   // VITO: Update the mainnet when released
-  [SupportedChainId.MAINNET]: 'https://hydragon.hydrachain.org',
-  [SupportedChainId.TESTNET]: 'https://hydragon.hydrachain.org',
+  [SupportedChainId.MAINNET]: MAINNET_EXPLORER,
+  [SupportedChainId.TESTNET]: TESTNET_EXPLORER,
   [SupportedChainId.ROPSTEN]: 'https://ropsten.etherscan.io',
   [SupportedChainId.RINKEBY]: 'https://rinkeby.etherscan.io',
   [SupportedChainId.GOERLI]: 'https://goerli.etherscan.io',

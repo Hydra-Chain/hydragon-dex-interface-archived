@@ -3,18 +3,18 @@ import useHttpLocations from 'hooks/useHttpLocations'
 import { useMemo } from 'react'
 import { isAddress } from 'utils'
 
-import HydragonLogo from '../../assets/images/hydra-logo.png'
+import HydraLogo from '../../assets/images/hydra-logo.png'
 import CeloLogo from '../../assets/svg/celo_logo.svg'
 import MaticLogo from '../../assets/svg/matic-token-icon.svg'
 import { isCelo, isMainnet, isTestnet, NATIVE_CHAIN_ID, nativeOnChain } from '../../constants/tokens'
 
-type Network = 'hydragon' | 'arbitrum' | 'optimism' | 'polygon'
+type Network = 'hydrachain' | 'arbitrum' | 'optimism' | 'polygon'
 
 export function chainIdToNetworkName(networkId: SupportedChainId): Network {
   switch (networkId) {
-    // VITO: Use mainnet and set default to be hydragon
+    // VITO: Use mainnet and set default to be hydrachain
     case SupportedChainId.MAINNET:
-      return 'hydragon'
+      return 'hydrachain'
     case SupportedChainId.ARBITRUM_ONE:
       return 'arbitrum'
     case SupportedChainId.OPTIMISM:
@@ -22,14 +22,14 @@ export function chainIdToNetworkName(networkId: SupportedChainId): Network {
     case SupportedChainId.POLYGON:
       return 'polygon'
     default:
-      return 'hydragon'
+      return 'hydrachain'
   }
 }
 
 export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.MAINNET): string {
   switch (chainId) {
     case SupportedChainId.TESTNET:
-      return HydragonLogo
+      return HydraLogo
     case SupportedChainId.POLYGON:
     case SupportedChainId.POLYGON_MUMBAI:
       return MaticLogo
@@ -37,7 +37,7 @@ export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.MA
     case SupportedChainId.CELO_ALFAJORES:
       return CeloLogo
     default:
-      return HydragonLogo
+      return HydraLogo
   }
 }
 

@@ -367,8 +367,20 @@ export const CEUR_CELO_ALFAJORES = new Token(
 )
 
 export const UNI: { [chainId: number]: Token } = {
-  [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[4488], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.TESTNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[8844], 18, 'UNI', 'Uniswap'),
+  [SupportedChainId.MAINNET]: new Token(
+    SupportedChainId.MAINNET,
+    UNI_ADDRESS[SupportedChainId.MAINNET],
+    18,
+    'UNI',
+    'Uniswap'
+  ),
+  [SupportedChainId.TESTNET]: new Token(
+    SupportedChainId.TESTNET,
+    UNI_ADDRESS[SupportedChainId.TESTNET],
+    18,
+    'UNI',
+    'Uniswap'
+  ),
   [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
@@ -504,14 +516,14 @@ class HydraNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isTestnet(this.chainId)) throw new Error('Not HydraGon Testnet')
+    if (!isTestnet(this.chainId)) throw new Error('Not Hydra Chain Testnet')
     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
     invariant(wrapped instanceof Token)
     return wrapped
   }
 
   public constructor(chainId: number) {
-    if (!isTestnet(chainId)) throw new Error('Not HydraGon Testnet')
+    if (!isTestnet(chainId)) throw new Error('Not Hydra Chain Testnet')
     super(chainId, 18, 'HYDRA', 'Hydra')
   }
 }

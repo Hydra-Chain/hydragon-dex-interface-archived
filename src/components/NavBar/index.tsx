@@ -10,7 +10,7 @@ import { ReactNode } from 'react'
 import { NavLink, NavLinkProps, useLocation } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
-import hydragonIcon from '../../assets/images/hydra-logo-white.png'
+import hydraIcon from '../../assets/images/hydra-logo-white.png'
 import { Bag } from './Bag'
 import { ChainSelector } from './ChainSelector'
 import { MenuDropdown } from './MenuDropdown'
@@ -102,7 +102,7 @@ const Navbar = () => {
                 }}
               /> */}
               <img
-                src={hydragonIcon}
+                src={hydraIcon}
                 alt="HydraIcon"
                 width="48"
                 height="48"

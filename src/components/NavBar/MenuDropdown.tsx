@@ -1,6 +1,13 @@
 import { Trans } from '@lingui/macro'
 import FeatureFlagModal from 'components/FeatureFlagModal/FeatureFlagModal'
 import { PrivacyPolicyModal } from 'components/PrivacyPolicy'
+import {
+  HYDRACHAIN_CONTACT_URL,
+  HYDRACHAIN_DEVELOPERS_URL,
+  HYDRACHAIN_GITHUB_URL,
+  HYDRACHAIN_WEB_URL,
+  HYDRACHAIN_X_URL,
+} from 'constants/chainInfo'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
 import { Box } from 'nft/components/Box'
 import { Column, Row } from 'nft/components/Flex'
@@ -151,13 +158,13 @@ export const MenuDropdown = () => {
                 alignItems={{ sm: 'center', md: 'flex-start' }}
                 paddingX="8"
               >
-                <SecondaryLinkedText href="https://hydrachain.org/">
+                <SecondaryLinkedText href={HYDRACHAIN_WEB_URL}>
                   <Trans>About</Trans> ↗
                 </SecondaryLinkedText>
-                <SecondaryLinkedText href="https://hydrachain.org/developers">
+                <SecondaryLinkedText href={HYDRACHAIN_DEVELOPERS_URL}>
                   <Trans>Documentation</Trans> ↗
                 </SecondaryLinkedText>
-                <SecondaryLinkedText href="https://hydrachain.org/contacts">
+                <SecondaryLinkedText href={HYDRACHAIN_CONTACT_URL}>
                   <Trans>Contact Us</Trans> ↗
                 </SecondaryLinkedText>
                 {/* VITO: Remove these because we don't need them now */}
@@ -185,7 +192,7 @@ export const MenuDropdown = () => {
                     color={themeVars.colors.textSecondary}
                   />
                 </Icon> */}
-                <Icon href="https://x.com/hydra_chain">
+                <Icon href={HYDRACHAIN_X_URL}>
                   <TwitterIconMenu
                     className={styles.hover}
                     width={24}
@@ -193,7 +200,7 @@ export const MenuDropdown = () => {
                     color={themeVars.colors.textSecondary}
                   />
                 </Icon>
-                <Icon href="https://github.com/Hydra-Chain">
+                <Icon href={HYDRACHAIN_GITHUB_URL}>
                   <GithubIconMenu
                     className={styles.hover}
                     width={24}

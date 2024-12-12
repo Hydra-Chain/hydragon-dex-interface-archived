@@ -8,7 +8,7 @@ import { FlyoutAlignment, Menu } from 'components/Menu'
 import PositionList from 'components/PositionList'
 import { RowBetween, RowFixed } from 'components/Row'
 import { SwitchLocaleLink } from 'components/SwitchLocaleLink'
-import { getChainInfo } from 'constants/chainInfo'
+import { getChainInfo, HYDRACHAIN_DOCS_URL } from 'constants/chainInfo'
 import { isSupportedChain, SupportedChainId } from 'constants/chains'
 import { useV3Positions } from 'hooks/useV3Positions'
 import { useMemo } from 'react'
@@ -270,7 +270,7 @@ export default function Pool() {
           <BookOpen size={16} />
         </PoolMenuItem>
       ),
-      link: 'https://docs.hydrachain.org/',
+      link: HYDRACHAIN_DOCS_URL,
       external: true,
     },
   ]

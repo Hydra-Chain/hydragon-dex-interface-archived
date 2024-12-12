@@ -1,6 +1,6 @@
 import celoCircleLogoUrl from 'assets/images/celoCircle.png'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
-import hydragonLogo from 'assets/images/hydra-logo-white.png'
+import hydraLogo from 'assets/images/hydra-logo-white.png'
 import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
 import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'assets/svg/arbitrum_logo.svg'
 import celoLogo from 'assets/svg/celo_logo.svg'
@@ -8,11 +8,22 @@ import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
 import ms from 'ms.macro'
 import { darkTheme } from 'theme/colors'
+import { getEnvironmentVariable } from 'utils/env'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, CELO_LIST, HYDRASWAP_LIST, OPTIMISM_LIST } from './lists'
+import { ARBITRUM_LIST, CELO_LIST, MAINNET_HYDRASWAP_LIST, OPTIMISM_LIST, TESTNET_HYDRASWAP_LIST } from './lists'
 
 export const AVERAGE_L1_BLOCK_TIME = ms`12s`
+
+export const MAINNET_EXPLORER = getEnvironmentVariable('REACT_APP_MAINNET_EXPLORER')
+export const TESTNET_EXPLORER = getEnvironmentVariable('REACT_APP_TESTNET_EXPLORER')
+export const HYDRACHAIN_DOCS_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DOCS_URL')
+const HYDRACHAIN_INFO_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_INFO_URL')
+export const HYDRACHAIN_WEB_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_WEB_URL')
+export const HYDRACHAIN_DEVELOPERS_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEVELOPERS_URL')
+export const HYDRACHAIN_CONTACT_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_CONTACT_URL')
+export const HYDRACHAIN_GITHUB_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_GITHUB_URL')
+export const HYDRACHAIN_X_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_X_URL')
 
 export enum NetworkType {
   L1,
@@ -41,6 +52,7 @@ interface BaseChainInfo {
 interface L1ChainInfo extends BaseChainInfo {
   readonly networkType: NetworkType.L1
   readonly defaultListUrl?: string
+  readonly label: string
 }
 
 export interface L2ChainInfo extends BaseChainInfo {
@@ -48,37 +60,36 @@ export interface L2ChainInfo extends BaseChainInfo {
   readonly bridge: string
   readonly statusPage?: string
   readonly defaultListUrl: string
+  readonly label: string
 }
 
-type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo } & {
-  readonly [chainId in SupportedL2ChainId]: L2ChainInfo
-} & { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
+type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo }
 
 const CHAIN_INFO: ChainInfoMap = {
   // VITO: Update the mainnet when released
   [SupportedChainId.MAINNET]: {
     networkType: NetworkType.L1,
-    docs: 'https://docs.hydrachain.org/',
-    explorer: 'https://hydragon.hydrachain.org/',
-    infoLink: 'https://medium.com/hydra-chain/revealing-hydragon-engine-first-dao-proposal-hip-1-19f05d85bde8/',
-    label: 'HydraGon',
-    logoUrl: hydragonLogo,
+    docs: HYDRACHAIN_DOCS_URL,
+    explorer: MAINNET_EXPLORER,
+    infoLink: HYDRACHAIN_INFO_URL,
+    label: 'Hydra Chain',
+    logoUrl: hydraLogo,
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra', symbol: 'HYDRA', decimals: 18 },
-    defaultListUrl: HYDRASWAP_LIST,
+    defaultListUrl: MAINNET_HYDRASWAP_LIST,
     color: darkTheme.chain_137,
     backgroundColor: darkTheme.chain_137_background,
   },
   [SupportedChainId.TESTNET]: {
     networkType: NetworkType.L1,
-    docs: 'https://docs.hydrachain.org/',
-    explorer: 'https://hydragon.hydrachain.org/',
-    infoLink: 'https://medium.com/hydra-chain/revealing-hydragon-engine-first-dao-proposal-hip-1-19f05d85bde8/',
-    label: 'HydraGon Testnet',
-    logoUrl: hydragonLogo,
+    docs: HYDRACHAIN_DOCS_URL,
+    explorer: TESTNET_EXPLORER,
+    infoLink: HYDRACHAIN_INFO_URL,
+    label: 'Hydra Chain Testnet',
+    logoUrl: hydraLogo,
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra Testnet', symbol: 'tHYDRA', decimals: 18 },
-    defaultListUrl: HYDRASWAP_LIST,
+    defaultListUrl: TESTNET_HYDRASWAP_LIST,
     color: darkTheme.chain_137,
     backgroundColor: darkTheme.chain_137_background,
   },

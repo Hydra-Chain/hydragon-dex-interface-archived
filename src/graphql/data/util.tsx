@@ -55,8 +55,8 @@ export function isPricePoint(p: PricePoint | null): p is PricePoint {
 }
 
 export const CHAIN_ID_TO_BACKEND_NAME: { [key: number]: Chain } = {
-  [SupportedChainId.MAINNET]: Chain.Hydragon,
-  [SupportedChainId.TESTNET]: Chain.HydragonTestnet,
+  [SupportedChainId.MAINNET]: Chain.HydraChain,
+  [SupportedChainId.TESTNET]: Chain.HydraChainTestnet,
   [SupportedChainId.GOERLI]: Chain.EthereumGoerli,
   [SupportedChainId.POLYGON]: Chain.Polygon,
   [SupportedChainId.POLYGON_MUMBAI]: Chain.Polygon,
@@ -87,8 +87,8 @@ export function validateUrlChainParam(chainName: string | undefined) {
 }
 
 export const CHAIN_NAME_TO_CHAIN_ID: { [key: string]: SupportedChainId } = {
-  HYDRAGON: SupportedChainId.MAINNET,
-  HYDRAGON_TESTNET: SupportedChainId.TESTNET,
+  HYDRACHAIN: SupportedChainId.MAINNET,
+  HYDRACHAIN_TESTNET: SupportedChainId.TESTNET,
   POLYGON: SupportedChainId.POLYGON,
   CELO: SupportedChainId.CELO,
   ARBITRUM: SupportedChainId.ARBITRUM_ONE,
