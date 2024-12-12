@@ -25,6 +25,7 @@ export const HYDRACHAIN_CONTACT_URL = getEnvironmentVariable('REACT_APP_HYDRACHA
 export const HYDRACHAIN_GITHUB_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_GITHUB_URL')
 export const HYDRACHAIN_X_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_X_URL')
 export const HYDRACHAIN_TELEGRAM_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_TELEGRAM_URL')
+export const HYDRACHAIN_PRIVACY_POLICY_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_PRIVACY_POLICY_URL')
 
 export enum NetworkType {
   L1,

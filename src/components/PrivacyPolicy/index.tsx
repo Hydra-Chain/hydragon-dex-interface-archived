@@ -1,7 +1,8 @@
 import { Trans } from '@lingui/macro'
 import { sendEvent } from 'components/analytics'
 import Card, { DarkGrayCard } from 'components/Card'
-import Row, { AutoRow, RowBetween } from 'components/Row'
+import { AutoRow, RowBetween } from 'components/Row'
+import { HYDRACHAIN_PRIVACY_POLICY_URL } from 'constants/chainInfo'
 import { useEffect, useRef } from 'react'
 import { ArrowDown, Info, X } from 'react-feather'
 import styled from 'styled-components/macro'
@@ -123,7 +124,7 @@ function PrivacyPolicy() {
     >
       <AutoColumn gap="16px">
         <AutoColumn gap="sm" style={{ width: '100%' }}>
-          <StyledExternalCard>
+          {/* <StyledExternalCard>
             <ExternalLink href="https://uniswap.org/terms-of-service">
               <RowBetween>
                 <AutoRow gap="4px">
@@ -135,9 +136,10 @@ function PrivacyPolicy() {
                 <StyledLinkOut size={20} />
               </RowBetween>
             </ExternalLink>
-          </StyledExternalCard>
+          </StyledExternalCard> */}
           <StyledExternalCard>
-            <ExternalLink href="https://uniswap.org/privacy-policy/">
+            {/* VITO: updated privacy policy and removed terms of service for now */}
+            <ExternalLink href={HYDRACHAIN_PRIVACY_POLICY_URL}>
               <RowBetween>
                 <AutoRow gap="4px">
                   <Info size={20} />
@@ -167,13 +169,14 @@ function PrivacyPolicy() {
               </AutoColumn>
             </DarkGrayCard>
           ))}
-          <ThemedText.DeprecatedBody fontSize={12}>
+          {/* VITO: Redundant for now because we don't have terms of services */}
+          {/* <ThemedText.DeprecatedBody fontSize={12}>
             <Row justify="center" marginBottom="1rem">
               <ExternalLink href="https://help.uniswap.org/en/articles/5675203-terms-of-service-faq">
                 <Trans>Learn more</Trans>
               </ExternalLink>
             </Row>
-          </ThemedText.DeprecatedBody>
+          </ThemedText.DeprecatedBody> */}
         </AutoColumn>
       </AutoColumn>
     </Wrapper>

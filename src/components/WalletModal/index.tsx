@@ -14,6 +14,7 @@ import {
   getIsInjected,
   getIsMetaMaskWallet,
 } from 'connection/utils'
+import { HYDRACHAIN_PRIVACY_POLICY_URL } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import usePrevious from 'hooks/usePrevious'
 import { useCallback, useEffect, useState } from 'react'
@@ -335,9 +336,10 @@ export default function WalletModal({
 
       const content = (
         <Trans>
-          By connecting a wallet, you agree to Uniswap Labs’{' '}
-          <ExternalLink href="https://uniswap.org/terms-of-service/">Terms of Service</ExternalLink> and consent to its{' '}
-          <ExternalLink href="https://uniswap.org/privacy-policy">Privacy Policy</ExternalLink>.
+          By connecting a wallet, you agree to LockTrip LLC{' '}
+          {/* VITO: updated privacy policy and removed terms of service for now */}
+          {/* <ExternalLink href="https://uniswap.org/terms-of-service/">Terms of Service</ExternalLink> and consent to its{' '} */}
+          <ExternalLink href={HYDRACHAIN_PRIVACY_POLICY_URL}>Privacy Policy</ExternalLink>.
         </Trans>
       )
       return (
