@@ -11,28 +11,28 @@ export function useModalIsOpen(modal: ApplicationModal): boolean {
 }
 
 /** @ref https://dashboard.moonpay.com/api_reference/client_side_api#ip_addresses */
-interface MoonpayIPAddressesResponse {
-  alpha3?: string
-  isAllowed?: boolean
-  isBuyAllowed?: boolean
-  isSellAllowed?: boolean
-}
-
-async function getMoonpayAvailability(): Promise<boolean> {
-  const moonpayPublishableKey = process.env.REACT_APP_MOONPAY_PUBLISHABLE_KEY
-  if (!moonpayPublishableKey) {
-    throw new Error('Must provide a publishable key for moonpay.')
-  }
-  const moonpayApiURI = process.env.REACT_APP_MOONPAY_API
-  if (!moonpayApiURI) {
-    throw new Error('Must provide an api endpoint for moonpay.')
-  }
-  const res = await fetch(`${moonpayApiURI}/v4/ip_address?apiKey=${moonpayPublishableKey}`)
-  const data = await (res.json() as Promise<MoonpayIPAddressesResponse>)
-  return data.isBuyAllowed ?? false
-}
-
 // VITO: Uncomment if needed
+// interface MoonpayIPAddressesResponse {
+//   alpha3?: string
+//   isAllowed?: boolean
+//   isBuyAllowed?: boolean
+//   isSellAllowed?: boolean
+// }
+
+// async function getMoonpayAvailability(): Promise<boolean> {
+//   const moonpayPublishableKey = process.env.REACT_APP_MOONPAY_PUBLISHABLE_KEY
+//   if (!moonpayPublishableKey) {
+//     throw new Error('Must provide a publishable key for moonpay.')
+//   }
+//   const moonpayApiURI = process.env.REACT_APP_MOONPAY_API
+//   if (!moonpayApiURI) {
+//     throw new Error('Must provide an api endpoint for moonpay.')
+//   }
+//   const res = await fetch(`${moonpayApiURI}/v4/ip_address?apiKey=${moonpayPublishableKey}`)
+//   const data = await (res.json() as Promise<MoonpayIPAddressesResponse>)
+//   return data.isBuyAllowed ?? false
+// }
+
 // export function useFiatOnrampAvailability(shouldCheck: boolean, callback?: () => void) {
 //   const dispatch = useAppDispatch()
 //   const { available, availabilityChecked } = useAppSelector((state: AppState) => state.application.fiatOnramp)
