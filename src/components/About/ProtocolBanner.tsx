@@ -1,4 +1,5 @@
 import { ButtonEmpty } from 'components/Button'
+import { HYDRACHAIN_WEB_URL } from 'constants/chainInfo'
 import { useIsDarkMode } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 import { BREAKPOINTS } from 'theme'
@@ -89,13 +90,13 @@ const ProtocolBanner = () => {
   return (
     <Banner isDarkMode={isDarkMode}>
       <TextContainer>
-        <HeaderText>Powered by the Uniswap Protocol</HeaderText>
+        <HeaderText>Powered by the HydraDex Protocol</HeaderText>
         <DescriptionText>
           The leading decentralized crypto trading protocol, governed by a global community.
         </DescriptionText>
       </TextContainer>
       <BannerButtonContainer>
-        <BannerButton width="200px" as="a" href="https://uniswap.org" rel="noopener noreferrer" target="_blank">
+        <BannerButton width="200px" as="a" href={HYDRACHAIN_WEB_URL} rel="noopener noreferrer" target="_blank">
           Learn more
         </BannerButton>
       </BannerButtonContainer>

@@ -77,11 +77,11 @@ export default function ShareButton({ currency }: { currency: Currency }) {
   const shareTweet = () => {
     toggleShare()
     window.open(
-      `https://twitter.com/intent/tweet?text=Check%20out%20${currency.name}%20(${
+      `https://x.com/intent/tweet?text=Check%20out%20${currency.name}%20(${
         currency.symbol
-      })%20https://app.uniswap.org/%23/tokens/${chainIdToBackendName(
+      })%20https://hydradex.org/%23/tokens/${chainIdToBackendName(
         currency.chainId
-      ).toLowerCase()}/${address}%20via%20@uniswap`,
+      ).toLowerCase()}/${address}%20via%20@hydradex`,
       'newwindow',
       `left=${positionX}, top=${positionY}, width=${TWITTER_WIDTH}, height=${TWITTER_HEIGHT}`
     )

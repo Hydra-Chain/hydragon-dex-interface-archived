@@ -45,8 +45,8 @@ import {
   WBTC_ARBITRUM_ONE,
   WBTC_OPTIMISM,
   WBTC_POLYGON,
-  WETH_POLYGON,
-  WETH_POLYGON_MUMBAI,
+  WHYDRA_POLYGON,
+  WHYDRA_POLYGON_MUMBAI,
   WRAPPED_NATIVE_CURRENCY,
 } from './tokens'
 
@@ -92,7 +92,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     DAI_POLYGON,
     USDC_POLYGON,
     USDT_POLYGON,
-    WETH_POLYGON,
+    WHYDRA_POLYGON,
   ],
   [SupportedChainId.CELO]: [CUSD_CELO, CEUR_CELO, CMC02_CELO, PORTAL_USDC_CELO, PORTAL_ETH_CELO],
 }
@@ -181,7 +181,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.OPTIMISM_GOERLI]: [nativeOnChain(SupportedChainId.OPTIMISM_GOERLI)],
   [SupportedChainId.POLYGON]: [
     nativeOnChain(SupportedChainId.POLYGON),
-    WETH_POLYGON,
+    WHYDRA_POLYGON,
     USDC_POLYGON,
     DAI_POLYGON,
     USDT_POLYGON,
@@ -190,7 +190,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.POLYGON_MUMBAI]: [
     nativeOnChain(SupportedChainId.POLYGON_MUMBAI),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.POLYGON_MUMBAI] as Token,
-    WETH_POLYGON_MUMBAI,
+    WHYDRA_POLYGON_MUMBAI,
   ],
 
   [SupportedChainId.CELO]: [

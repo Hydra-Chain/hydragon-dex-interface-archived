@@ -1,6 +1,6 @@
 import { getEnvironmentVariable } from 'utils/env'
 
-// eslint-disable-next-line import/no-unused-modules
+// VITO: List and URL for Tokens on Hydra
 export const UNI_LIST = 'https://tokens.uniswap.org'
 export const UNI_EXTENDED_LIST = 'https://extendedtokens.uniswap.org/'
 const UNI_UNSUPPORTED_LIST = 'https://unsupportedtokens.uniswap.org/'

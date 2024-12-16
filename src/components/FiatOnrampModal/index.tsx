@@ -91,8 +91,8 @@ export default function FiatOnrampModal() {
         method: 'POST',
         body: JSON.stringify({
           colorCode: theme.accentAction,
-          defaultCurrencyCode: 'eth',
-          redirectUrl: 'https://app.uniswap.org/#/swap',
+          defaultCurrencyCode: 'hydra',
+          redirectUrl: 'https://hydradex.org/#/swap',
           walletAddresses: JSON.stringify(
             MOONPAY_SUPPORTED_CURRENCY_CODES.reduce(
               (acc, currencyCode) => ({

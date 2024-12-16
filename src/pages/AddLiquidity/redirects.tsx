@@ -9,16 +9,16 @@ export function RedirectDuplicateTokenIds() {
 
   const { chainId } = useWeb3React()
 
-  // prevent weth + eth
-  const isETHOrWETHA =
+  // prevent whydra + eth
+  const isHYDRAOrWHYDRA_A =
     currencyIdA === 'ETH' || (chainId !== undefined && currencyIdA === WRAPPED_NATIVE_CURRENCY[chainId]?.address)
-  const isETHOrWETHB =
+  const isHYDRAOrWHYDRA_B =
     currencyIdB === 'ETH' || (chainId !== undefined && currencyIdB === WRAPPED_NATIVE_CURRENCY[chainId]?.address)
 
   if (
     currencyIdA &&
     currencyIdB &&
-    (currencyIdA.toLowerCase() === currencyIdB.toLowerCase() || (isETHOrWETHA && isETHOrWETHB))
+    (currencyIdA.toLowerCase() === currencyIdB.toLowerCase() || (isHYDRAOrWHYDRA_A && isHYDRAOrWHYDRA_B))
   ) {
     return <Navigate to={`/add/${currencyIdA}`} replace />
   }

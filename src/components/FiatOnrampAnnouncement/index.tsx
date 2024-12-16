@@ -145,7 +145,7 @@ export function FiatOnrampAnnouncement() {
           <Trans>Buy crypto</Trans>
         </Header>
         <Body>
-          <Trans>Get tokens at the best prices in web3 on Uniswap, powered by Moonpay.</Trans>
+          <Trans>Get tokens at the best prices in web3 on HydraDex, powered by Moonpay.</Trans>
         </Body>
       </Wrapper>
     </ArrowWrapper>

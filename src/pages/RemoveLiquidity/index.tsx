@@ -386,7 +386,7 @@ export default function RemoveLiquidity() {
 
   const oneCurrencyIsETH = currencyA?.isNative || currencyB?.isNative
 
-  const oneCurrencyIsWETH = Boolean(
+  const oneCurrencyIsWHYDRA = Boolean(
     chainId &&
       WRAPPED_NATIVE_CURRENCY[chainId] &&
       ((currencyA && WRAPPED_NATIVE_CURRENCY[chainId]?.equals(currencyA)) ||
@@ -529,7 +529,7 @@ export default function RemoveLiquidity() {
                         </Text>
                       </RowFixed>
                     </RowBetween>
-                    {chainId && (oneCurrencyIsWETH || oneCurrencyIsETH) ? (
+                    {chainId && (oneCurrencyIsWHYDRA || oneCurrencyIsETH) ? (
                       <RowBetween style={{ justifyContent: 'flex-end' }}>
                         {oneCurrencyIsETH ? (
                           <StyledInternalLink
@@ -543,9 +543,9 @@ export default function RemoveLiquidity() {
                                 : currencyIdB
                             }`}
                           >
-                            Receive WETH
+                            Receive WHYDRA
                           </StyledInternalLink>
-                        ) : oneCurrencyIsWETH ? (
+                        ) : oneCurrencyIsWHYDRA ? (
                           <StyledInternalLink
                             to={`/remove/v2/${
                               currencyA && WRAPPED_NATIVE_CURRENCY[chainId]?.equals(currencyA) ? 'ETH' : currencyIdA
@@ -674,7 +674,7 @@ export default function RemoveLiquidity() {
 
       {pair ? (
         <AutoColumn style={{ minWidth: '20rem', width: '100%', maxWidth: '400px', marginTop: '1rem' }}>
-          <MinimalPositionCard showUnwrapped={oneCurrencyIsWETH} pair={pair} />
+          <MinimalPositionCard showUnwrapped={oneCurrencyIsWHYDRA} pair={pair} />
         </AutoColumn>
       ) : null}
     </>

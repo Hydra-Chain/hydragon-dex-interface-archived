@@ -300,20 +300,20 @@ export const SWISE = new Token(
   'SWISE',
   'StakeWise'
 )
-export const WETH_POLYGON_MUMBAI = new Token(
+export const WHYDRA_POLYGON_MUMBAI = new Token(
   SupportedChainId.POLYGON_MUMBAI,
   '0xa6fa4fb5f76172d178d61b04b0ecd319c5d1c0aa',
   18,
-  'WETH',
-  'Wrapped Ether'
+  'WHYDRA',
+  'Wrapped Hydra'
 )
 
-export const WETH_POLYGON = new Token(
+export const WHYDRA_POLYGON = new Token(
   SupportedChainId.POLYGON,
   '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
   18,
-  'WETH',
-  'Wrapped Ether'
+  'WHYDRA',
+  'Wrapped Hydra'
 )
 const CELO_CELO = new Token(SupportedChainId.CELO, '0x471EcE3750Da237f93B8E339c536989b8978a438', 18, 'CELO', 'Celo')
 export const CUSD_CELO = new Token(

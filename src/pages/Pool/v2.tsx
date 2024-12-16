@@ -164,7 +164,7 @@ export default function Pool() {
                 <ExternalLink
                   style={{ color: theme.white, textDecoration: 'underline' }}
                   target="_blank"
-                  href="https://docs.uniswap.org/protocol/V2/concepts/core-concepts/pools"
+                  href="https://docs.hydrachain.org/hydradex/adding-and-removing-liquidity"
                 >
                   <ThemedText.DeprecatedWhite fontSize={14}>
                     <Trans>Read more about providing liquidity</Trans>
@@ -231,7 +231,7 @@ export default function Pool() {
                     <ButtonSecondary>
                       <RowBetween>
                         <Trans>
-                          <ExternalLink href={'https://v2.info.uniswap.org/account/' + account}>
+                          <ExternalLink href={'https://info.hydradex.org/account/' + account}>
                             Account analytics and accrued fees
                           </ExternalLink>
                           <span> ↗ </span>

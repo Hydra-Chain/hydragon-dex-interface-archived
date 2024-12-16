@@ -14,7 +14,7 @@ const MAX_UINT128 = BigNumber.from(2).pow(128).sub(1)
 export function useV3PositionFees(
   pool?: Pool,
   tokenId?: BigNumber,
-  asWETH = false
+  asWHYDRA = false
 ): [CurrencyAmount<Currency>, CurrencyAmount<Currency>] | [undefined, undefined] {
   const positionManager = useV3NFTPositionManagerContract(false)
   const owner: string | undefined = useSingleCallResult(tokenId ? positionManager : null, 'ownerOf', [tokenId])
@@ -46,8 +46,8 @@ export function useV3PositionFees(
 
   if (pool && amounts) {
     return [
-      CurrencyAmount.fromRawAmount(asWETH ? pool.token0 : unwrappedToken(pool.token0), amounts[0].toString()),
-      CurrencyAmount.fromRawAmount(asWETH ? pool.token1 : unwrappedToken(pool.token1), amounts[1].toString()),
+      CurrencyAmount.fromRawAmount(asWHYDRA ? pool.token0 : unwrappedToken(pool.token0), amounts[0].toString()),
+      CurrencyAmount.fromRawAmount(asWHYDRA ? pool.token1 : unwrappedToken(pool.token1), amounts[1].toString()),
     ]
   } else {
     return [undefined, undefined]

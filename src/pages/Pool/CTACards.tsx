@@ -97,7 +97,7 @@ export default function CTACards() {
 
   return (
     <CTASection>
-      <CTA1 href="https://support.uniswap.org/hc/en-us/categories/8122334631437-Providing-Liquidity-">
+      <CTA1 href="https://docs.hydrachain.org/hydradex/adding-and-removing-liquidity">
         <ResponsiveColumn>
           <HeaderText>
             <Trans>Learn about providing liquidity</Trans> ↗
@@ -113,7 +113,7 @@ export default function CTACards() {
             <Trans>Top pools</Trans> ↗
           </HeaderText>
           <ThemedText.DeprecatedBody fontWeight={400} style={{ alignSelf: 'flex-start' }}>
-            <Trans>Explore Uniswap Analytics.</Trans>
+            <Trans>Explore HydraDex Analytics.</Trans>
           </ThemedText.DeprecatedBody>
         </ResponsiveColumn>
       </CTA2>

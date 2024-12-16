@@ -188,7 +188,7 @@ export async function signListing(
         // strategy for trade execution (e.g., DutchAuction, StandardSaleForFixedPrice), see addresses in the SDK
         strategy: addresses.STRATEGY_STANDARD_SALE,
         // currency address
-        currency: addresses.WETH,
+        currency: addresses.WETH, // Hydra: This is WHYDRA, we just use the types from looksrare-sdk
         // order nonce (must be unique unless new maker order is meant to override existing one e.g., lower ask price)
         nonce: BigNumber.from(looksRareNonce),
         // startTime timestamp in seconds

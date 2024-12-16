@@ -8,6 +8,7 @@ import { FeeAmount, NonfungiblePositionManager } from '@uniswap/v3-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { sendEvent } from 'components/analytics'
 import UnsupportedCurrencyFooter from 'components/swap/UnsupportedCurrencyFooter'
+import { HYDRACHAIN_DOCS_URL } from 'constants/chainInfo'
 import useParsedQueryString from 'hooks/useParsedQueryString'
 import { useCallback, useEffect, useState } from 'react'
 import { AlertTriangle } from 'react-feather'
@@ -108,7 +109,7 @@ export default function AddLiquidity() {
 
   const baseCurrency = useCurrency(currencyIdA)
   const currencyB = useCurrency(currencyIdB)
-  // prevent an error if they input ETH/WETH
+  // prevent an error if they input ETH/WHYDRA
   const quoteCurrency =
     baseCurrency && currencyB && baseCurrency.wrapped.equals(currencyB.wrapped) ? undefined : currencyB
 
@@ -339,16 +340,16 @@ export default function AddLiquidity() {
         // not ideal, but for now clobber the other if the currency ids are equal
         return [currencyIdNew, undefined]
       } else {
-        // prevent weth + eth
-        const isETHOrWETHNew =
-          currencyIdNew === 'ETH' ||
+        // prevent whydra + hydra
+        const isHYDRAOrWHYDRANew =
+          currencyIdNew === 'HYDRA' ||
           (chainId !== undefined && currencyIdNew === WRAPPED_NATIVE_CURRENCY[chainId]?.address)
-        const isETHOrWETHOther =
+        const isHYDRAOrWHYDRAOther =
           currencyIdOther !== undefined &&
           (currencyIdOther === 'ETH' ||
             (chainId !== undefined && currencyIdOther === WRAPPED_NATIVE_CURRENCY[chainId]?.address))
 
-        if (isETHOrWETHNew && isETHOrWETHOther) {
+        if (isHYDRAOrWHYDRANew && isHYDRAOrWHYDRAOther) {
           return [currencyIdNew, undefined]
         } else {
           return [currencyIdNew, currencyIdOther]
@@ -862,7 +863,7 @@ export default function AddLiquidity() {
                                       Full range positions may earn less fees than concentrated positions. Learn more{' '}
                                       <ExternalLink
                                         style={{ color: theme.deprecated_yellow3, textDecoration: 'underline' }}
-                                        href="https://help.uniswap.org/en/articles/5434296-can-i-provide-liquidity-over-the-full-range-in-v3"
+                                        href={HYDRACHAIN_DOCS_URL}
                                       >
                                         here
                                       </ExternalLink>

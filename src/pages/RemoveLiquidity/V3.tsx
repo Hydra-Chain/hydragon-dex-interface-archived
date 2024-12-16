@@ -65,8 +65,8 @@ function Remove({ tokenId }: { tokenId: BigNumber }) {
   const theme = useTheme()
   const { account, chainId, provider } = useWeb3React()
 
-  // flag for receiving WETH
-  const [receiveWETH, setReceiveWETH] = useState(false)
+  // flag for receiving WHYDRA
+  const [receiveWHYDRA, setReceiveWHYDRA] = useState(false)
   const nativeCurrency = useNativeCurrency()
   const nativeWrappedSymbol = nativeCurrency.wrapped.symbol
 
@@ -81,7 +81,7 @@ function Remove({ tokenId }: { tokenId: BigNumber }) {
     feeValue1,
     outOfRange,
     error,
-  } = useDerivedV3BurnInfo(position, receiveWETH)
+  } = useDerivedV3BurnInfo(position, receiveWHYDRA)
   const { onPercentSelect } = useBurnV3ActionHandlers()
 
   const removed = position?.liquidity?.eq(0)
@@ -261,7 +261,7 @@ function Remove({ tokenId }: { tokenId: BigNumber }) {
     )
   }
 
-  const showCollectAsWeth = Boolean(
+  const showCollectAsWhydra = Boolean(
     liquidityValue0?.currency &&
       liquidityValue1?.currency &&
       (liquidityValue0.currency.isNative ||
@@ -391,15 +391,15 @@ function Remove({ tokenId }: { tokenId: BigNumber }) {
                 </AutoColumn>
               </LightCard>
 
-              {showCollectAsWeth && (
+              {showCollectAsWhydra && (
                 <RowBetween>
                   <ThemedText.DeprecatedMain>
                     <Trans>Collect as {nativeWrappedSymbol}</Trans>
                   </ThemedText.DeprecatedMain>
                   <Toggle
-                    id="receive-as-weth"
-                    isActive={receiveWETH}
-                    toggle={() => setReceiveWETH((receiveWETH) => !receiveWETH)}
+                    id="receive-as-whydra"
+                    isActive={receiveWHYDRA}
+                    toggle={() => setReceiveWHYDRA((receiveWHYDRA) => !receiveWHYDRA)}
                   />
                 </RowBetween>
               )}

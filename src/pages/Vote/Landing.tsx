@@ -3,26 +3,23 @@ import { Trace } from '@uniswap/analytics'
 import { InterfacePageName } from '@uniswap/analytics-events'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
-import { ButtonPrimary, SmallButtonPrimary } from 'components/Button'
 import { AutoColumn } from 'components/Column'
 import { CardBGImage, CardNoise, CardSection, DataCard } from 'components/earn/styled'
-import FormattedCurrencyAmount from 'components/FormattedCurrencyAmount'
-import Loader from 'components/Loader'
-import { AutoRow, RowBetween, RowFixed } from 'components/Row'
+import { RowBetween, RowFixed } from 'components/Row'
 import { SwitchLocaleLink } from 'components/SwitchLocaleLink'
 import Toggle from 'components/Toggle'
-import DelegateModal from 'components/vote/DelegateModal'
+// import DelegateModal from 'components/vote/DelegateModal'
 import ProposalEmptyState from 'components/vote/ProposalEmptyState'
+import { HYDRACHAIN_DAO_URL } from 'constants/chainInfo'
 import JSBI from 'jsbi'
 import { darken } from 'polished'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'rebass/styled-components'
-import { useModalIsOpen, useToggleDelegateModal } from 'state/application/hooks'
-import { ApplicationModal } from 'state/application/reducer'
+// import { useModalIsOpen, useToggleDelegateModal } from 'state/application/hooks'
 import { useTokenBalance } from 'state/connection/hooks'
 import { ProposalData, ProposalState } from 'state/governance/hooks'
-import { useAllProposalData, useUserDelegatee, useUserVotes } from 'state/governance/hooks'
+import { useAllProposalData, useUserDelegatee } from 'state/governance/hooks'
 import styled, { useTheme } from 'styled-components/macro'
 import { ExternalLink, ThemedText } from 'theme'
 import { shortenAddress } from 'utils'
@@ -96,14 +93,14 @@ const WrapSmall = styled(RowBetween)`
     flex-wrap: wrap;
   `};
 `
-
-const TextButton = styled(ThemedText.DeprecatedMain)`
-  color: ${({ theme }) => theme.accentAction};
-  :hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`
+// VITO: Unused stuff commented out
+// const TextButton = styled(ThemedText.DeprecatedMain)`
+//   color: ${({ theme }) => theme.accentAction};
+//   :hover {
+//     cursor: pointer;
+//     text-decoration: underline;
+//   }
+// `
 
 const AddressButton = styled.div`
   padding: 2px 4px;
@@ -125,14 +122,16 @@ export default function Landing() {
   const [hideCancelled, setHideCancelled] = useState(true)
 
   // toggle for showing delegation modal
-  const showDelegateModal = useModalIsOpen(ApplicationModal.DELEGATE)
-  const toggleDelegateModal = useToggleDelegateModal()
+  // const showDelegateModal = useModalIsOpen(ApplicationModal.DELEGATE)
+  // const toggleDelegateModal = useToggleDelegateModal()
 
+  // VITO: Unused stuff commented out
   // get data to list all proposals
-  const { data: allProposals, loading: loadingProposals } = useAllProposalData()
+  // const { data: allProposals, loading: loadingProposals } = useAllProposalData()
+  const { data: allProposals } = useAllProposalData()
 
   // user data
-  const { loading: loadingAvailableVotes, votes: availableVotes } = useUserVotes()
+  // const { loading: loadingAvailableVotes, votes: availableVotes } = useUserVotes()
   const uniBalance: CurrencyAmount<Token> | undefined = useTokenBalance(
     account ?? undefined,
     chainId ? UNI[chainId] : undefined
@@ -147,11 +146,11 @@ export default function Landing() {
     <>
       <Trace page={InterfacePageName.VOTE_PAGE} shouldLogImpression>
         <PageWrapper gap="lg" justify="center">
-          <DelegateModal
+          {/* <DelegateModal
             isOpen={showDelegateModal}
             onDismiss={toggleDelegateModal}
             title={showUnlockVoting ? <Trans>Unlock Votes</Trans> : <Trans>Update Delegation</Trans>}
-          />
+          /> */}
           <TopSection gap="md">
             <VoteCard>
               <CardBGImage />
@@ -160,14 +159,14 @@ export default function Landing() {
                 <AutoColumn gap="md">
                   <RowBetween>
                     <ThemedText.DeprecatedWhite fontWeight={600}>
-                      <Trans>Uniswap Governance</Trans>
+                      <Trans>HydraDex Governance</Trans>
                     </ThemedText.DeprecatedWhite>
                   </RowBetween>
                   <RowBetween>
                     <ThemedText.DeprecatedWhite fontSize={14}>
                       <Trans>
-                        UNI tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself
-                        or delegate your votes to a third party.
+                        WHYDRA tokens represent voting shares in HydraDex governance. You can vote on each proposal
+                        yourself or delegate your votes to a third party.
                       </Trans>
                     </ThemedText.DeprecatedWhite>
                   </RowBetween>
@@ -176,11 +175,11 @@ export default function Landing() {
                       color: theme.white,
                       textDecoration: 'underline',
                     }}
-                    href="https://uniswap.org/blog/uni"
+                    href={HYDRACHAIN_DAO_URL}
                     target="_blank"
                   >
                     <ThemedText.DeprecatedWhite fontSize={14}>
-                      <Trans>Read more about Uniswap governance</Trans>
+                      <Trans>Read more about HydraDex governance</Trans>
                     </ThemedText.DeprecatedWhite>
                   </ExternalLink>
                 </AutoColumn>
@@ -194,7 +193,8 @@ export default function Landing() {
               <ThemedText.DeprecatedMediumHeader style={{ margin: '0.5rem 0.5rem 0.5rem 0', flexShrink: 0 }}>
                 <Trans>Proposals</Trans>
               </ThemedText.DeprecatedMediumHeader>
-              <AutoRow gap="6px" justify="flex-end">
+              {/* VITO: Update when we have discussed the proposals */}
+              {/* <AutoRow gap="6px" justify="flex-end">
                 {loadingProposals || loadingAvailableVotes ? <Loader /> : null}
                 {showUnlockVoting ? (
                   <ButtonPrimary
@@ -231,7 +231,7 @@ export default function Landing() {
                 >
                   <Trans>Create Proposal</Trans>
                 </SmallButtonPrimary>
-              </AutoRow>
+              </AutoRow> */}
             </WrapSmall>
             {!showUnlockVoting && (
               <RowBetween>
@@ -248,9 +248,10 @@ export default function Landing() {
                       >
                         {userDelegatee === account ? <Trans>Self</Trans> : shortenAddress(userDelegatee)}
                       </StyledExternalLink>
-                      <TextButton onClick={toggleDelegateModal} style={{ marginLeft: '4px' }}>
+                      {/* VITO: We do not use delegate modal */}
+                      {/* <TextButton onClick={toggleDelegateModal} style={{ marginLeft: '4px' }}>
                         <Trans>(edit)</Trans>
-                      </TextButton>
+                      </TextButton> */}
                     </AddressButton>
                   </RowFixed>
                 ) : (

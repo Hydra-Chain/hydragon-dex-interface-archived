@@ -99,7 +99,7 @@ export default function ClaimPopup() {
           <AutoColumn style={{ padding: '2rem 0', zIndex: 10 }} justify="center">
             <UniToken width="48px" src={tokenLogo} />{' '}
             <ThemedText.DeprecatedWhite style={{ marginTop: '1rem' }} fontSize={36} fontWeight={600}>
-              {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} UNI
+              {unclaimedAmount?.toFixed(0, { groupSeparator: ',' })} HYDRA
             </ThemedText.DeprecatedWhite>
             <ThemedText.DeprecatedWhite
               style={{ paddingTop: '1.25rem', textAlign: 'center' }}
@@ -116,7 +116,7 @@ export default function ClaimPopup() {
             </ThemedText.DeprecatedWhite>
             <ThemedText.DeprecatedSubHeader style={{ paddingTop: '0.5rem', textAlign: 'center' }} color="white">
               <Trans>
-                Thanks for being part of the Uniswap community <Heart size={12} />
+                Thanks for being part of the HydraDex community <Heart size={12} />
               </Trans>
             </ThemedText.DeprecatedSubHeader>
           </AutoColumn>

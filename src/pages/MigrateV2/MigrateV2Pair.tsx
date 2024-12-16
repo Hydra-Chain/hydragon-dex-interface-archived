@@ -390,7 +390,7 @@ function V2PairMigration({
         {chainId && migrator && (
           <ExternalLink href={getExplorerLink(chainId, migrator.address, ExplorerDataType.ADDRESS)}>
             <ThemedText.DeprecatedBlue display="inline">
-              <Trans>Uniswap migration contract↗</Trans>
+              <Trans>HydraDex migration contract↗</Trans>
             </ThemedText.DeprecatedBlue>
           </ExternalLink>
         )}
@@ -436,7 +436,8 @@ function V2PairMigration({
           {noLiquidity && (
             <BlueCard style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <AlertCircle color={theme.textPrimary} style={{ marginBottom: '12px', opacity: 0.8 }} />
-              <ThemedText.DeprecatedBody
+              {/* VITO: We do not have different version atm */}
+              {/* <ThemedText.DeprecatedBody
                 fontSize={14}
                 style={{ marginBottom: 8, fontWeight: 500, opacity: 0.8 }}
                 textAlign="center"
@@ -445,7 +446,7 @@ function V2PairMigration({
                   You are the first liquidity provider for this Uniswap V3 pool. Your liquidity will migrate at the
                   current {isNotUniswap ? 'SushiSwap' : 'V2'} price.
                 </Trans>
-              </ThemedText.DeprecatedBody>
+              </ThemedText.DeprecatedBody> */}
 
               <ThemedText.DeprecatedBody
                 fontWeight={500}
@@ -509,13 +510,13 @@ function V2PairMigration({
                   </ThemedText.DeprecatedBlack>
                 </RowBetween>
               </AutoColumn>
-              <ThemedText.DeprecatedBody fontSize={14} style={{ marginTop: 8, fontWeight: 400 }}>
+              {/* <ThemedText.DeprecatedBody fontSize={14} style={{ marginTop: 8, fontWeight: 400 }}>
                 <Trans>
                   You should only deposit liquidity into Uniswap V3 at a price you believe is correct. <br />
                   If the price seems incorrect, you can either make a swap to move the price or wait for someone else to
                   do so.
                 </Trans>
-              </ThemedText.DeprecatedBody>
+              </ThemedText.DeprecatedBody> */}
             </YellowCard>
           ) : !noLiquidity && v3SpotPrice ? (
             <RowBetween>

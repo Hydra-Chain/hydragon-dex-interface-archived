@@ -342,9 +342,12 @@ export default function Landing() {
             <Glow />
           </GlowContainer>
           <ContentContainer isDarkMode={isDarkMode}>
-            <TitleText isDarkMode={isDarkMode}>Trade crypto & NFTs with confidence</TitleText>
+            {/* VITO: Removing the nfts for a while */}
+            {/* <TitleText isDarkMode={isDarkMode}>Trade crypto & NFTs with confidence</TitleText> */}
+            <TitleText isDarkMode={isDarkMode}>Trade crypto with confidence</TitleText>
             <SubTextContainer>
-              <SubText>Buy, sell, and explore tokens and NFTs</SubText>
+              {/* <SubText>Buy, sell, and explore tokens and NFTs</SubText> */}
+              <SubText>Buy, sell, and explore tokens</SubText>
             </SubTextContainer>
             <ActionsContainer>
               <TraceEvent

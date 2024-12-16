@@ -50,7 +50,7 @@ const StyledLinkOut = styled(ArrowDown)`
 const EXTERNAL_APIS = [
   {
     name: 'Auto Router',
-    description: <Trans>The app fetches the optimal trade route from a Uniswap Labs server.</Trans>,
+    description: <Trans>The app fetches the optimal trade route from a HydraDex server.</Trans>,
   },
   {
     name: 'Infura',
@@ -61,10 +61,10 @@ const EXTERNAL_APIS = [
     description: (
       <>
         <Trans>
-          The app securely collects your wallet address and shares it with TRM Labs Inc. for risk and compliance
+          The app securely collects your wallet address and shares it with LOCKTRIP LLC. for risk and compliance
           reasons.
         </Trans>{' '}
-        <ExternalLink href="https://help.uniswap.org/en/articles/5675203-terms-of-service-faq">
+        <ExternalLink href={HYDRACHAIN_PRIVACY_POLICY_URL}>
           <Trans>Learn more</Trans>
         </ExternalLink>
       </>
