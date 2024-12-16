@@ -121,7 +121,7 @@ const LogoSectionContent = () => {
     <>
       <StyledLogo src={HydraLogo} alt="Hydra Chain Logo" />
       <SocialLinks>
-        {/* VITO: We do not use discord, but in the future we can replace with telegram link */}
+        {/* Hydra: We do not use discord, but in the future we can replace with telegram link */}
         {/* <SocialLink href="https://discord.gg/FCfyBSbCU5" target="_blank" rel="noopener noreferrer">
           <DiscordIcon size={32} />
         </SocialLink> */}

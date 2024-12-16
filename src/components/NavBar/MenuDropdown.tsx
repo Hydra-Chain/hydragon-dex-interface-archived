@@ -183,7 +183,7 @@ export const MenuDropdown = () => {
                 )} */}
               </Box>
               <IconRow>
-                {/* VITO: Remove this because we don't have discord currently */}
+                {/* Hydra: Remove this because we don't have discord currently */}
                 {/* <Icon href="https://discord.com/invite/FCfyBSbCU5">
                   <DiscordIconMenu
                     className={styles.hover}
