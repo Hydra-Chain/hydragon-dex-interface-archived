@@ -111,7 +111,7 @@ export default function useWrapCallback(
                       type: WrapType.WRAP,
                     })
                     const error = new Error(`Invalid WHYDRA contract
-Please file a bug detailing how this happened - https://github.com/Hydradex/interface/issues/new?labels=bug&template=bug-report.md&title=Invalid%WHYDRA%20contract`)
+Please file a bug detailing how this happened - https://github.com/Hydra-Chain/hydragon-dex-interface-fork/issues/new?assignees=&labels=bug&projects=&template=bug-report.md&title=Invalid%20WHYDRA%20contract`)
                     setError(error)
                     throw error
                   }

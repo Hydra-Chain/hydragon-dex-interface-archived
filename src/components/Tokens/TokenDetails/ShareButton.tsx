@@ -1,5 +1,6 @@
 import { Trans } from '@lingui/macro'
 import { Currency } from '@uniswap/sdk-core'
+import { HYDRACHAIN_DEX_URL } from 'constants/chainInfo'
 import { NATIVE_CHAIN_ID } from 'constants/tokens'
 import { chainIdToBackendName } from 'graphql/data/util'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
@@ -79,7 +80,7 @@ export default function ShareButton({ currency }: { currency: Currency }) {
     window.open(
       `https://x.com/intent/tweet?text=Check%20out%20${currency.name}%20(${
         currency.symbol
-      })%20https://hydradex.org/%23/tokens/${chainIdToBackendName(
+      })%20${HYDRACHAIN_DEX_URL}/%23/tokens/${chainIdToBackendName(
         currency.chainId
       ).toLowerCase()}/${address}%20via%20@hydradex`,
       'newwindow',

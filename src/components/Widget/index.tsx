@@ -15,6 +15,7 @@ import {
   SwapWidgetSkeleton,
 } from '@uniswap/widgets'
 import { useWeb3React } from '@web3-react/core'
+import { HYDRACHAIN_DEX_URL } from 'constants/chainInfo'
 import { usePermit2Enabled } from 'featureFlags/flags/permit2'
 import { useActiveLocale } from 'hooks/useActiveLocale'
 import {
@@ -37,8 +38,6 @@ import { DARK_THEME, LIGHT_THEME } from './theme'
 import { useSyncWidgetTransactions } from './transactions'
 
 export const DEFAULT_WIDGET_WIDTH = 360
-
-const WIDGET_ROUTER_URL = 'https://hydradex.org/v1/'
 
 function useWidgetTheme() {
   return useIsDarkMode() ? DARK_THEME : LIGHT_THEME
@@ -165,7 +164,7 @@ export default function Widget({
         hideConnectionUI
         brandedFooter={false}
         permit2={permit2Enabled}
-        routerUrl={WIDGET_ROUTER_URL}
+        routerUrl={HYDRACHAIN_DEX_URL}
         locale={locale}
         theme={theme}
         width={width}

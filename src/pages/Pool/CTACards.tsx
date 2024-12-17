@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/macro'
 import { useWeb3React } from '@web3-react/core'
 import { AutoColumn } from 'components/Column'
-import { getChainInfoOrDefault } from 'constants/chainInfo'
+import { getChainInfoOrDefault, HYDRACHAIN_DOCS_URL } from 'constants/chainInfo'
 import styled from 'styled-components/macro'
 import { ThemedText } from 'theme'
 
@@ -97,7 +97,7 @@ export default function CTACards() {
 
   return (
     <CTASection>
-      <CTA1 href="https://docs.hydrachain.org/hydradex/adding-and-removing-liquidity">
+      <CTA1 href={`${HYDRACHAIN_DOCS_URL}/hydradex/adding-and-removing-liquidity`}>
         <ResponsiveColumn>
           <HeaderText>
             <Trans>Learn about providing liquidity</Trans> ↗

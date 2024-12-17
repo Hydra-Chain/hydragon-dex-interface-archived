@@ -4,6 +4,7 @@ import { PrivacyPolicyModal } from 'components/PrivacyPolicy'
 import {
   HYDRACHAIN_CONTACT_URL,
   HYDRACHAIN_DEVELOPERS_URL,
+  HYDRACHAIN_DEX_URL,
   HYDRACHAIN_GITHUB_URL,
   HYDRACHAIN_WEB_URL,
   HYDRACHAIN_X_URL,
@@ -132,7 +133,7 @@ export const MenuDropdown = () => {
           <NavDropdown top={{ sm: 'unset', lg: '56' }} bottom={{ sm: '56', lg: 'unset' }} right="0">
             <Column gap="16">
               <Column paddingX="8" gap="4">
-                {/* VITO: Remove the some options because we do not support vote currently */}
+                {/* Hydra: Remove the some options because we do not support vote currently */}
                 {/* <PrimaryMenuRow to="/vote" close={toggleOpen}>
                   <Icon>
                     <GovernanceIcon width={24} height={24} />
@@ -141,7 +142,7 @@ export const MenuDropdown = () => {
                     <Trans>Vote in governance</Trans>
                   </PrimaryMenuRow.Text>
                 </PrimaryMenuRow> */}
-                <PrimaryMenuRow href="https://info.hydradex.org/#/">
+                <PrimaryMenuRow href={HYDRACHAIN_DEX_URL}>
                   <Icon>
                     <BarChartIcon width={24} height={24} />
                   </Icon>
@@ -167,7 +168,7 @@ export const MenuDropdown = () => {
                 <SecondaryLinkedText href={HYDRACHAIN_CONTACT_URL}>
                   <Trans>Contact Us</Trans> ↗
                 </SecondaryLinkedText>
-                {/* VITO: Remove these because we don't need them now */}
+                {/* Hydra: Remove these because we don't need them now */}
                 {/* <SecondaryLinkedText
                   onClick={() => {
                     toggleOpen()

@@ -93,7 +93,7 @@ const WrapSmall = styled(RowBetween)`
     flex-wrap: wrap;
   `};
 `
-// VITO: Unused stuff commented out
+// Hydra: Unused stuff commented out
 // const TextButton = styled(ThemedText.DeprecatedMain)`
 //   color: ${({ theme }) => theme.accentAction};
 //   :hover {
@@ -115,6 +115,8 @@ const StyledExternalLink = styled(ExternalLink)`
   color: ${({ theme }) => theme.textPrimary};
 `
 
+// Hydra: Unused stuff commented out
+// eslint-disable-next-line import/no-unused-modules
 export default function Landing() {
   const theme = useTheme()
   const { account, chainId } = useWeb3React()
