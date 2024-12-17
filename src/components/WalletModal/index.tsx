@@ -206,8 +206,8 @@ export default function WalletModal({
   // Keep the network connector in sync with any active user connector to prevent chain-switching on wallet disconnection.
   useEffect(() => {
     if (!chainId) return
-
-    if (chainId != SupportedChainId.MAINNET && chainId != SupportedChainId.TESTNET) {
+    // SAMI: Auto switch to testnet if not mainnet or testnet (disable or add networks if needed)
+    if (chainId != SupportedChainId.DEVNET) {
       switchChain(connector, SupportedChainId.TESTNET)
     } else if (connector !== networkConnection.connector) {
       networkConnection.connector.activate(chainId)

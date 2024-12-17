@@ -9,6 +9,7 @@ export enum SupportedChainId {
   MAINNET = 4488,
   TESTNET = 8844,
   DEVNET = 88441,
+
   ROPSTEN = 3,
   RINKEBY = 4,
   GOERLI = 5,

@@ -166,10 +166,12 @@ interface WrongNetworkProps {
   label: string
 }
 
+// SAMI: Use this to show a card when the user is on the wrong network
 export function WrongNetworkCard({ label }: WrongNetworkProps) {
   const theme = useTheme()
   const mainnetInfo = getChainInfo(SupportedChainId.MAINNET)
   const testnetInfo = getChainInfo(SupportedChainId.TESTNET)
+  const devnetInfo = getChainInfo(SupportedChainId.DEVNET)
 
   return (
     <>
@@ -188,7 +190,8 @@ export function WrongNetworkCard({ label }: WrongNetworkProps) {
                   <NetworkIcon strokeWidth={1.2} />
                   <div data-testid="pools-unsupported-err">
                     <Trans>
-                      Your connected network is unsupported. Connect to {mainnetInfo.label} or {testnetInfo.label}
+                      Your connected network is unsupported. Connect to {mainnetInfo.label} or {testnetInfo.label} or{' '}
+                      {devnetInfo.label}.
                     </Trans>
                   </div>
                 </ThemedText.DeprecatedBody>

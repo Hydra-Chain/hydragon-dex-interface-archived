@@ -22,6 +22,7 @@ import { NavDropdown } from './NavDropdown'
 const NETWORK_SELECTOR_CHAINS = [
   // SupportedChainId.MAINNET,
   SupportedChainId.TESTNET,
+  SupportedChainId.DEVNET,
   // VITO: Unused stuff commented out
   // SupportedChainId.POLYGON,
   // SupportedChainId.OPTIMISM,

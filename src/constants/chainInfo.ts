@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unused-modules */
 import celoCircleLogoUrl from 'assets/images/celoCircle.png'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
 import hydraLogo from 'assets/images/hydra-logo-white.png'
@@ -11,19 +12,31 @@ import { darkTheme } from 'theme/colors'
 import { getEnvironmentVariable } from 'utils/env'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, CELO_LIST, MAINNET_HYDRASWAP_LIST, OPTIMISM_LIST, TESTNET_HYDRASWAP_LIST } from './lists'
+import {
+  ARBITRUM_LIST,
+  CELO_LIST,
+  DEVNET_HYDRASWAP_LIST,
+  MAINNET_HYDRASWAP_LIST,
+  OPTIMISM_LIST,
+  TESTNET_HYDRASWAP_LIST,
+} from './lists'
 
 export const AVERAGE_L1_BLOCK_TIME = ms`12s`
 
 export const MAINNET_WHYDRA_ADDRESS = getEnvironmentVariable('REACT_APP_MAINNET_WHYDRA_ADDRESS')
+export const MAINNET_EXPLORER = getEnvironmentVariable('REACT_APP_MAINNET_EXPLORER')
+
 export const TESTNET_WHYDRA_ADDRESS = getEnvironmentVariable('REACT_APP_TESTNET_WHYDRA_ADDRESS')
+export const TESTNET_EXPLORER = getEnvironmentVariable('REACT_APP_TESTNET_EXPLORER')
+
 export const DEVNET_WHYDRA_ADDRESS = getEnvironmentVariable('REACT_APP_DEVNET_WHYDRA_ADDRESS')
+export const DEVNET_EXPLORER = getEnvironmentVariable('REACT_APP_DEVNET_EXPLORER')
+
 export const HYDRACHAIN_DEX_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEX_URL')
 export const HYDRACHAIN_DEX_INFO_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEX_INFO_URL')
-export const MAINNET_EXPLORER = getEnvironmentVariable('REACT_APP_MAINNET_EXPLORER')
-export const TESTNET_EXPLORER = getEnvironmentVariable('REACT_APP_TESTNET_EXPLORER')
+
 export const HYDRACHAIN_DOCS_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DOCS_URL')
-const HYDRACHAIN_INFO_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_INFO_URL')
+export const HYDRACHAIN_INFO_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_INFO_URL')
 export const HYDRACHAIN_WEB_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_WEB_URL')
 export const HYDRACHAIN_DEVELOPERS_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEVELOPERS_URL')
 export const HYDRACHAIN_CONTACT_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_CONTACT_URL')
@@ -99,6 +112,19 @@ const CHAIN_INFO: ChainInfoMap = {
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra Testnet', symbol: 'tHYDRA', decimals: 18 },
     defaultListUrl: TESTNET_HYDRASWAP_LIST,
+    color: darkTheme.chain_137,
+    backgroundColor: darkTheme.chain_137_background,
+  },
+  [SupportedChainId.DEVNET]: {
+    networkType: NetworkType.L1,
+    docs: HYDRACHAIN_DOCS_URL,
+    explorer: DEVNET_EXPLORER,
+    infoLink: HYDRACHAIN_INFO_URL,
+    label: 'Hydra Chain Devnet',
+    logoUrl: hydraLogo,
+    circleLogoUrl: polygonCircleLogoUrl,
+    nativeCurrency: { name: 'Hydra Devnet', symbol: 'dHYDRA', decimals: 18 },
+    defaultListUrl: DEVNET_HYDRASWAP_LIST,
     color: darkTheme.chain_137,
     backgroundColor: darkTheme.chain_137_background,
   },

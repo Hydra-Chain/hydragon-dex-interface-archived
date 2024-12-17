@@ -21,6 +21,7 @@ export const CELO_LIST = 'https://celo-org.github.io/celo-token-list/celo.tokenl
 // SAMI: List and URL for Tokens on Hydra
 export const MAINNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_MAINNET_HYDRASWAP_TOKEN_LIST')
 export const TESTNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_TESTNET_HYDRASWAP_TOKEN_LIST')
+export const DEVNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_DEVNET_HYDRASWAP_TOKEN_LIST')
 
 export const UNSUPPORTED_LIST_URLS: string[] = [BA_LIST, UNI_UNSUPPORTED_LIST]
 
