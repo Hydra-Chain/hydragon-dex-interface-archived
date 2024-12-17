@@ -9,6 +9,7 @@ if (typeof INFURA_KEY === 'undefined') {
 
 const HYDRACHAIN_MAINNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_MAINNET_RPC')
 const HYDRACHAIN_TESTNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_TESTNET_RPC')
+const HYDRACHAIN_DEVNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEVNET_RPC')
 
 /**
  * Fallback JSON-RPC endpoints.
@@ -32,6 +33,10 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   [SupportedChainId.TESTNET]: [
     // "Safe" URLs
     HYDRACHAIN_TESTNET_RPC,
+  ],
+  [SupportedChainId.DEVNET]: [
+    // "Safe" URLs
+    HYDRACHAIN_DEVNET_RPC,
   ],
   [SupportedChainId.ROPSTEN]: [
     // "Fallback" URLs
@@ -106,6 +111,7 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   // VITO: Update when mainnet released
   [SupportedChainId.MAINNET]: [HYDRACHAIN_MAINNET_RPC, ...FALLBACK_URLS[SupportedChainId.MAINNET]],
   [SupportedChainId.TESTNET]: [HYDRACHAIN_TESTNET_RPC, ...FALLBACK_URLS[SupportedChainId.TESTNET]],
+  [SupportedChainId.DEVNET]: [HYDRACHAIN_DEVNET_RPC, ...FALLBACK_URLS[SupportedChainId.DEVNET]],
   [SupportedChainId.RINKEBY]: [
     `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
     ...FALLBACK_URLS[SupportedChainId.RINKEBY],

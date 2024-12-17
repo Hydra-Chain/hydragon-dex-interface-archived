@@ -8,6 +8,7 @@ export const DEFAULT_CHAIN_ID = process.env.REACT_APP_DEFAULT_CHAIN_ID
 export enum SupportedChainId {
   MAINNET = 4488,
   TESTNET = 8844,
+  DEVNET = 88441,
   ROPSTEN = 3,
   RINKEBY = 4,
   GOERLI = 5,
@@ -29,6 +30,7 @@ export enum SupportedChainId {
 export const CHAIN_IDS_TO_NAMES = {
   [SupportedChainId.MAINNET]: 'hydrachain',
   [SupportedChainId.TESTNET]: 'hydrachain_testnet',
+  [SupportedChainId.DEVNET]: 'hydrachain_devnet',
   [SupportedChainId.ROPSTEN]: 'ropsten',
   [SupportedChainId.RINKEBY]: 'rinkeby',
   [SupportedChainId.GOERLI]: 'goerli',

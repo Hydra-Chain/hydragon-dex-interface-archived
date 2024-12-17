@@ -2,6 +2,7 @@ import { Currency, Ether, NativeCurrency, Token, WETH9 } from '@uniswap/sdk-core
 import invariant from 'tiny-invariant'
 
 import { UNI_ADDRESS } from './addresses'
+import { DEVNET_WHYDRA_ADDRESS, MAINNET_WHYDRA_ADDRESS, TESTNET_WHYDRA_ADDRESS } from './chainInfo'
 import { SupportedChainId } from './chains'
 
 export const NATIVE_CHAIN_ID = 'NATIVE'
@@ -392,18 +393,19 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
   ...(WETH9 as Record<SupportedChainId, Token>),
   [SupportedChainId.MAINNET]: new Token(
     SupportedChainId.MAINNET,
-    '0x0A8e55E84cDF937a8201c0f454F0c80B1718A1EB',
+    MAINNET_WHYDRA_ADDRESS,
     18,
     'WHYDRA',
     'Wrapped Hydra'
   ),
   [SupportedChainId.TESTNET]: new Token(
     SupportedChainId.TESTNET,
-    '0x0A8e55E84cDF937a8201c0f454F0c80B1718A1EB',
+    TESTNET_WHYDRA_ADDRESS,
     18,
     'WHYDRA',
     'Wrapped Hydra'
   ),
+  [SupportedChainId.DEVNET]: new Token(SupportedChainId.DEVNET, DEVNET_WHYDRA_ADDRESS, 18, 'WHYDRA', 'Wrapped Hydra'),
   [SupportedChainId.OPTIMISM]: new Token(
     SupportedChainId.OPTIMISM,
     '0x4200000000000000000000000000000000000006',
