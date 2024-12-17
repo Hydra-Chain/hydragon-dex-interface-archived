@@ -299,7 +299,7 @@ const AuthenticatedHeader = () => {
       </HeaderWrapper>
       <Column>
         <BalanceWrapper>
-          <ThemedText.SubHeaderSmall>ETH Balance</ThemedText.SubHeaderSmall>
+          <ThemedText.SubHeaderSmall>HYDRA Balance</ThemedText.SubHeaderSmall>
           <ThemedText.HeadlineLarge fontSize={36} fontWeight={400}>
             {balanceString} {nativeCurrencySymbol}
           </ThemedText.HeadlineLarge>

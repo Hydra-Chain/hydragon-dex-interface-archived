@@ -7,9 +7,11 @@ import { Row } from 'nft/components/Flex'
 import { useProfilePageState } from 'nft/hooks'
 import { ProfilePageStateType } from 'nft/types'
 import { ReactNode } from 'react'
-import { NavLink, NavLinkProps, useLocation } from 'react-router-dom'
+import { NavLink, NavLinkProps, useLocation, useNavigate } from 'react-router-dom'
+import { useIsDarkMode } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 
+import hydraIconDark from '../../assets/images/hydra-logo.png'
 import hydraIcon from '../../assets/images/hydra-logo-white.png'
 import { Bag } from './Bag'
 import { ChainSelector } from './ChainSelector'
@@ -81,7 +83,8 @@ const Navbar = () => {
   const isNftPage = useIsNftPage()
   const sellPageState = useProfilePageState((state) => state.state)
   const isNftListV2 = useNftListV2Flag() === NftListV2Variant.Enabled
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
+  const isDarkMode = useIsDarkMode()
 
   return (
     <>
@@ -102,17 +105,17 @@ const Navbar = () => {
                 }}
               /> */}
               <img
-                src={hydraIcon}
+                src={isDarkMode ? hydraIcon : hydraIconDark}
                 alt="HydraIcon"
                 width="48"
                 height="48"
                 className={styles.logo}
-                // onClick={() => {
-                //   navigate({
-                //     pathname: '/',
-                //     search: '?intro=true',
-                //   })
-                // }}
+                onClick={() => {
+                  navigate({
+                    pathname: '/',
+                    search: '?intro=true',
+                  })
+                }}
               />
             </Box>
             {!isNftPage && (

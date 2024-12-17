@@ -6,8 +6,8 @@ import { BREAKPOINTS } from 'theme'
 
 import meshSrc from './images/Mesh.png'
 
-const DARK_MODE_GRADIENT = 'radial-gradient(101.8% 4091.31% at 0% 0%, #4673FA 0%, #9646FA 100%)'
-
+const DARK_MODE_GRADIENT = 'radial-gradient(101.8% 4091.31% at 0% 0%,rgb(57, 86, 173) 0%,rgb(105, 51, 170) 100%)'
+// SAMI: Change the styles to the ProtocolBanner
 const Banner = styled.div<{ isDarkMode: boolean }>`
   height: 340px;
   width: 100%;
@@ -26,7 +26,7 @@ const Banner = styled.div<{ isDarkMode: boolean }>`
   background: ${({ isDarkMode }) =>
     isDarkMode
       ? `url(${meshSrc}), ${DARK_MODE_GRADIENT}`
-      : `url(${meshSrc}), linear-gradient(93.06deg, #FF00C7 2.66%, #FF9FFB 98.99%);`};
+      : `url(${meshSrc}), linear-gradient(93.06deg,rgb(146, 83, 227) 2.66%,rgb(106, 94, 239) 98.99%);`};
 
   @media screen and (min-width: ${BREAKPOINTS.lg}px) {
     height: 140px;

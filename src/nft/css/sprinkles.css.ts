@@ -148,6 +148,7 @@ const zIndices = {
   modalOverTooltip: '1090',
 }
 
+// SAMI - Change the colors to the new uniswap colors
 export const vars = createGlobalTheme(':root', {
   color: {
     ...themeVars.colors,
@@ -202,6 +203,7 @@ export const vars = createGlobalTheme(':root', {
     lightGrayOverlay: '#99A1BD14',
     accentActiveSoft: '#4c82fb3d',
     accentActive: '#4C82FB',
+    lightBlue: '#5d8fde', // Btn color for light theme replace (was pink400)
   },
   border: {
     transculent: '1.5px solid rgba(0, 0, 0, 0.1)',

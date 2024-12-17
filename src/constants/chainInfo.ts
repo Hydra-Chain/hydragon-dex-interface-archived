@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unused-modules */
 import celoCircleLogoUrl from 'assets/images/celoCircle.png'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
+import hydraLogoDark from 'assets/images/hydra-logo.png'
 import hydraLogo from 'assets/images/hydra-logo-white.png'
 import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
 import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'assets/svg/arbitrum_logo.svg'
@@ -95,7 +96,7 @@ const CHAIN_INFO: ChainInfoMap = {
     explorer: MAINNET_EXPLORER,
     infoLink: HYDRACHAIN_INFO_URL,
     label: 'Hydra Chain',
-    logoUrl: hydraLogo,
+    logoUrl: hydraLogo ? hydraLogo : hydraLogoDark,
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra', symbol: 'HYDRA', decimals: 18 },
     defaultListUrl: MAINNET_HYDRASWAP_LIST,
@@ -121,7 +122,7 @@ const CHAIN_INFO: ChainInfoMap = {
     explorer: DEVNET_EXPLORER,
     infoLink: HYDRACHAIN_INFO_URL,
     label: 'Hydra Chain Devnet',
-    logoUrl: hydraLogo,
+    logoUrl: hydraLogoDark,
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra Devnet', symbol: 'dHYDRA', decimals: 18 },
     defaultListUrl: DEVNET_HYDRASWAP_LIST,

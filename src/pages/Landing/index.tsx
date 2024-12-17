@@ -76,7 +76,7 @@ const Glow = styled.div`
   position: absolute;
   top: 68px;
   bottom: 0;
-  background: radial-gradient(72.04% 72.04% at 50% 3.99%, #ff37eb 0%, rgba(166, 151, 255, 0) 100%);
+  background: radial-gradient(72.04% 72.04% at 50% 3.99%, #5d8fde 0%, rgba(166, 151, 255, 0) 100%);
   filter: blur(72px);
   border-radius: 24px;
   max-width: 480px;
@@ -102,7 +102,7 @@ const ContentContainer = styled.div<{ isDarkMode: boolean }>`
     pointer-events: auto;
   }
 `
-
+// Sami: color changes in front page
 const TitleText = styled.h1<{ isDarkMode: boolean }>`
   color: transparent;
   font-size: 36px;
@@ -112,8 +112,8 @@ const TitleText = styled.h1<{ isDarkMode: boolean }>`
   margin: 0 0 24px;
   background: ${({ isDarkMode }) =>
     isDarkMode
-      ? 'linear-gradient(20deg, rgba(255, 244, 207, 1) 10%, rgba(255, 87, 218, 1) 100%)'
-      : 'linear-gradient(10deg, rgba(255,79,184,1) 0%, rgba(255,159,251,1) 100%)'};
+      ? 'linear-gradient(20deg, rgb(61, 82, 140) 10%, rgb(123, 55, 154) 100%)'
+      : 'linear-gradient(10deg,rgb(137, 193, 243) 0%, rgb(152, 83, 205) 100%)'};
   background-clip: text;
   -webkit-background-clip: text;
 
@@ -153,14 +153,15 @@ const LandingButton = styled(BaseButton)`
   border-radius: 24px;
 `
 
+// Sami: color changes in front page
 const ButtonCTA = styled(LandingButton)`
-  background: linear-gradient(93.06deg, #ff00c7 2.66%, #ff9ffb 98.99%);
+  background: linear-gradient(93.06deg, rgb(75, 153, 210) 2.66%, rgb(152, 86, 218) 98.99%);
   border: none;
   color: ${({ theme }) => theme.white};
   transition: ${({ theme }) => `all ${theme.transition.duration.medium} ${theme.transition.timing.ease}`};
 
   &:hover {
-    box-shadow: 0px 0px 16px 0px #ff00c7;
+    box-shadow: 0px 0px 16px 0px #5d8fde;
   }
 `
 

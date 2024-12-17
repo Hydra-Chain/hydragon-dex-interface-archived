@@ -7,10 +7,12 @@ import {
   HYDRACHAIN_GITHUB_URL,
   HYDRACHAIN_X_URL,
 } from 'constants/chainInfo'
+import { useIsDarkMode } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 import { BREAKPOINTS, ExternalLink, StyledRouterLink } from 'theme'
 
-import HydraLogo from '../../assets/images/hydra-logo.png'
+import HydraLogoDark from '../../assets/images/hydra-logo.png'
+import HydraLogo from '../../assets/images/hydra-logo-white.png'
 import { GithubIcon, TwitterIcon } from './Icons'
 
 const Footer = styled.div`
@@ -116,10 +118,10 @@ const Copyright = styled.span`
 
 const LogoSectionContent = () => {
   // VITO: add this when we have theme feature
-  // const isDarkMode = useIsDarkMode()
+  const isDarkMode = useIsDarkMode()
   return (
     <>
-      <StyledLogo src={HydraLogo} alt="Hydra Chain Logo" />
+      <StyledLogo src={isDarkMode ? HydraLogo : HydraLogoDark} alt="Hydra Chain Logo" />
       <SocialLinks>
         {/* Hydra: We do not use discord, but in the future we can replace with telegram link */}
         {/* <SocialLink href="https://discord.gg/FCfyBSbCU5" target="_blank" rel="noopener noreferrer">
@@ -154,8 +156,8 @@ export const AboutFooter = () => {
         <LinkGroup>
           <LinkGroupTitle>App</LinkGroupTitle>
           <TextLink to="/swap">Swap</TextLink>
-          <TextLink to="/tokens">Tokens</TextLink>
-          <TextLink to="/nfts">NFTs</TextLink>
+          {/* <TextLink to="/tokens">Tokens</TextLink>
+          <TextLink to="/nfts">NFTs</TextLink> */}
           <TextLink to="/pool">Pools</TextLink>
         </LinkGroup>
         <LinkGroup>

@@ -9,7 +9,7 @@ import { Portal } from 'nft/components/common/Portal'
 import { Row } from 'nft/components/Flex'
 import { BackArrowIcon, ChevronUpIcon, LightningBoltIcon, TwitterIcon } from 'nft/components/icons'
 import { Overlay, stopPropagation } from 'nft/components/modals/Overlay'
-import { themeVars, vars } from 'nft/css/sprinkles.css'
+import { themeVars } from 'nft/css/sprinkles.css'
 import { useIsMobile, useSendTransaction, useTransactionResponse } from 'nft/hooks'
 import { TxResponse, TxStateType } from 'nft/types'
 import {
@@ -123,7 +123,7 @@ const TxCompleteModal = () => {
               >
                 <Box className={styles.successModal} onClick={stopPropagation}>
                   {/* <UniIcon color={vars.color.pink400} width="36" height="36" className={styles.uniLogo} /> Sami*/}
-                  <img src={hydraIcon} color={vars.color.pink400} width="36" height="36" className={styles.uniLogo} />
+                  <img src={hydraIcon} width="36" height="36" />
                   <Box display="flex" flexWrap="wrap" width="full" height="min">
                     <h1 className={styles.title}>
                       <Trans>Complete!</Trans>

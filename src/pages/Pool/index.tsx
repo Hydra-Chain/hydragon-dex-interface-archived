@@ -167,6 +167,7 @@ interface WrongNetworkProps {
 }
 
 // SAMI: Use this to show a card when the user is on the wrong network
+// eslint-disable-next-line import/no-unused-modules
 export function WrongNetworkCard({ label }: WrongNetworkProps) {
   const theme = useTheme()
   const mainnetInfo = getChainInfo(SupportedChainId.MAINNET)
