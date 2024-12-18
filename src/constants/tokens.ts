@@ -533,14 +533,14 @@ class HydraNativeCurrency extends NativeCurrency {
 
   get wrapped(): Token {
     if (!isTestnet(this.chainId) && !isDevnet(this.chainId) && !isMainnet(this.chainId))
-      throw new Error('Not Hydra Chain Testnet')
+      throw new Error('Not Hydra Chain')
     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
     invariant(wrapped instanceof Token)
     return wrapped
   }
 
   public constructor(chainId: number) {
-    if (!isTestnet(chainId) && !isDevnet(chainId) && !isMainnet(chainId)) throw new Error('Not Hydra Chain Testnet')
+    if (!isTestnet(chainId) && !isDevnet(chainId) && !isMainnet(chainId)) throw new Error('Not Hydra Chain')
     super(chainId, 18, 'HYDRA', 'Hydra')
   }
 }
