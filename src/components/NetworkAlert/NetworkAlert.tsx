@@ -27,7 +27,7 @@ const RootWrapper = styled.div`
   position: relative;
   margin-top: 16px;
 `
-
+// SAMI: Change extra styles to the Network
 const SHOULD_SHOW_ALERT = {
   [SupportedChainId.OPTIMISM]: true,
   [SupportedChainId.OPTIMISM_GOERLI]: true,

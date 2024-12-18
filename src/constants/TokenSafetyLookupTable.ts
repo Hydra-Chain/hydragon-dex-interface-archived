@@ -5,6 +5,7 @@ import { UNI_EXTENDED_LIST, UNI_LIST, UNSUPPORTED_LIST_URLS } from './lists'
 import brokenTokenList from './tokenLists/broken.tokenlist.json'
 import { NATIVE_CHAIN_ID } from './tokens'
 
+// eslint-disable-next-line import/no-unused-modules
 export enum TOKEN_LIST_TYPES {
   UNI_DEFAULT = 1,
   UNI_EXTENDED,
@@ -55,4 +56,5 @@ class TokenSafetyLookupTable {
   }
 }
 
+// eslint-disable-next-line import/no-unused-modules
 export default new TokenSafetyLookupTable()

@@ -103,6 +103,28 @@ export const DAI = new Token(
   'DAI',
   'Dai Stablecoin'
 )
+// SAMI: add tokens to your chain here that will stay at the top (all token can be used from tokenList)
+export const LYDRA = new Token(
+  SupportedChainId.HYDRA,
+  '0x0000000000000000000000000000000000001013',
+  18,
+  'LYDRA',
+  'Liquid Hydra'
+)
+export const MYTOKEN1 = new Token(
+  SupportedChainId.HYDRA,
+  '0x8dE2f2Acd7AE92aA2d5F13C95424a1b4C31CBcB2',
+  18,
+  'MT1',
+  'MyToken1'
+)
+export const MYTOKEN2 = new Token(
+  SupportedChainId.HYDRA,
+  '0xdd5C0811D1De34CC5B6A35Ae0A1A68EEfba2B4E2',
+  18,
+  'MT2',
+  'MyToken2'
+)
 export const DAI_ARBITRUM_ONE = new Token(
   SupportedChainId.ARBITRUM_ONE,
   '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
@@ -319,6 +341,13 @@ export const UNI: { [chainId: number]: Token } = {
 
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
   ...(WETH9 as Record<SupportedChainId, Token>),
+  [SupportedChainId.HYDRA]: new Token(
+    SupportedChainId.HYDRA,
+    '0x0A8e55E84cDF937a8201c0f454F0c80B1718A1EB',
+    18,
+    'WHYDRA',
+    'Wrapped Hydra'
+  ),
   [SupportedChainId.OPTIMISM]: new Token(
     SupportedChainId.OPTIMISM,
     '0x4200000000000000000000000000000000000006',
@@ -381,6 +410,10 @@ export function isCelo(chainId: number): chainId is SupportedChainId.CELO | Supp
   return chainId === SupportedChainId.CELO_ALFAJORES || chainId === SupportedChainId.CELO
 }
 
+export function isHydra(chainId: number): chainId is SupportedChainId.HYDRA {
+  return chainId === SupportedChainId.HYDRA
+}
+
 function getCeloNativeCurrency(chainId: number) {
   switch (chainId) {
     case SupportedChainId.CELO_ALFAJORES:
@@ -414,6 +447,25 @@ class MaticNativeCurrency extends NativeCurrency {
   }
 }
 
+// Sami: add the native currency for hydra
+class HydraNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId
+  }
+
+  get wrapped(): Token {
+    if (!isHydra(this.chainId)) throw new Error('Not hydra')
+    const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
+    invariant(wrapped instanceof Token)
+    return wrapped
+  }
+
+  public constructor(chainId: number) {
+    if (!isHydra(chainId)) throw new Error('Not hydra')
+    super(chainId, 18, 'HYDRA', 'Hydra')
+  }
+}
+
 class ExtendedEther extends Ether {
   public get wrapped(): Token {
     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
@@ -432,7 +484,9 @@ const cachedNativeCurrency: { [chainId: number]: NativeCurrency | Token } = {}
 export function nativeOnChain(chainId: number): NativeCurrency | Token {
   if (cachedNativeCurrency[chainId]) return cachedNativeCurrency[chainId]
   let nativeCurrency: NativeCurrency | Token
-  if (isMatic(chainId)) {
+  if (isHydra(chainId)) {
+    nativeCurrency = new HydraNativeCurrency(chainId)
+  } else if (isMatic(chainId)) {
     nativeCurrency = new MaticNativeCurrency(chainId)
   } else if (isCelo(chainId)) {
     nativeCurrency = getCeloNativeCurrency(chainId)
@@ -442,7 +496,9 @@ export function nativeOnChain(chainId: number): NativeCurrency | Token {
   return (cachedNativeCurrency[chainId] = nativeCurrency)
 }
 
-export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedChainId]?: string } } = {
+export const TOKEN_SHORTHANDS: {
+  [shorthand: string]: { [chainId in SupportedChainId]?: string }
+} = {
   USDC: {
     [SupportedChainId.MAINNET]: USDC_MAINNET.address,
     [SupportedChainId.ARBITRUM_ONE]: USDC_ARBITRUM.address,

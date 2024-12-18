@@ -7,7 +7,7 @@ import { OpacityHoverState } from 'components/Common'
 import { Box } from 'nft/components/Box'
 import { Portal } from 'nft/components/common/Portal'
 import { Row } from 'nft/components/Flex'
-import { BackArrowIcon, ChevronUpIcon, LightningBoltIcon, TwitterIcon, UniIcon } from 'nft/components/icons'
+import { BackArrowIcon, ChevronUpIcon, LightningBoltIcon, TwitterIcon } from 'nft/components/icons'
 import { Overlay, stopPropagation } from 'nft/components/modals/Overlay'
 import { themeVars, vars } from 'nft/css/sprinkles.css'
 import { useIsMobile, useSendTransaction, useTransactionResponse } from 'nft/hooks'
@@ -26,6 +26,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import styled from 'styled-components/macro'
 import { ExplorerDataType, getExplorerLink } from 'utils/getExplorerLink'
 
+import hydraIcon from '../../../assets/images/hydra-logo.png'
 import * as styles from './TransactionCompleteModal.css'
 
 const TWITTER_WIDTH = 560
@@ -121,13 +122,14 @@ const TxCompleteModal = () => {
                 shouldLogImpression
               >
                 <Box className={styles.successModal} onClick={stopPropagation}>
-                  <UniIcon color={vars.color.pink400} width="36" height="36" className={styles.uniLogo} />
+                  {/* <UniIcon color={vars.color.pink400} width="36" height="36" className={styles.uniLogo} /> Sami*/}
+                  <img src={hydraIcon} color={vars.color.pink400} width="36" height="36" className={styles.uniLogo} />
                   <Box display="flex" flexWrap="wrap" width="full" height="min">
                     <h1 className={styles.title}>
                       <Trans>Complete!</Trans>
                     </h1>
                     <p className={styles.subHeading}>
-                      <Trans>Uniswap has granted your wish!</Trans>
+                      <Trans>Hydraswap has granted your wish!</Trans>
                     </p>
                   </Box>
                   <UploadLink onClick={shareTweet} target="_blank">

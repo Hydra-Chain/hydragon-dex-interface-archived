@@ -1,4 +1,5 @@
 import TokenLogoLookupTable from 'constants/TokenLogoLookupTable'
+import { isHydra } from 'constants/tokens'
 import { chainIdToNetworkName, getNativeLogoURI } from 'lib/hooks/useCurrencyLogoURIs'
 import uriToHttp from 'lib/utils/uriToHttp'
 import { useCallback, useEffect, useState } from 'react'
@@ -34,16 +35,22 @@ function prioritizeLogoSources(uris: string[]) {
   return coingeckoUrl ? [...preferredUris, coingeckoUrl] : preferredUris
 }
 
-function getInitialUrl(address?: string | null, chainId?: number | null, isNative?: boolean) {
+function getInitialUrl(address?: string | null, chainId?: number | null, isNative?: boolean): string | undefined {
   if (chainId && isNative) return getNativeLogoURI(chainId)
 
   const networkName = chainId ? chainIdToNetworkName(chainId) : 'ethereum'
   const checksummedAddress = isAddress(address)
   if (checksummedAddress) {
-    return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${checksummedAddress}/logo.png`
-  } else {
-    return undefined
+    // SAMI: add token logos here to use for hydraswap, create and use links to token logos
+    if (chainId && isHydra(chainId)) {
+      return `https://raw.githubusercontent.com/SamBorisov/hydraswap-token-list/main/assets/${checksummedAddress}/logo.png`
+    } else if (!chainId) {
+      return `https://raw.githubusercontent.com/SamBorisov/hydraswap-token-list/main/icons/token_icon.jpg`
+    } else {
+      return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${checksummedAddress}/logo.png`
+    }
   }
+  return undefined
 }
 
 export default function useAssetLogoSource(

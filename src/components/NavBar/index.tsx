@@ -6,13 +6,13 @@ import { chainIdToBackendName } from 'graphql/data/util'
 import { useIsNftPage } from 'hooks/useIsNftPage'
 import { Box } from 'nft/components/Box'
 import { Row } from 'nft/components/Flex'
-import { UniIcon } from 'nft/components/icons'
 import { useProfilePageState } from 'nft/hooks'
 import { ProfilePageStateType } from 'nft/types'
 import { ReactNode } from 'react'
 import { NavLink, NavLinkProps, useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
+import hydraIcon from '../../assets/images/hydra-logo-white.png'
 import { Bag } from './Bag'
 import { ChainSelector } from './ChainSelector'
 import { MenuDropdown } from './MenuDropdown'
@@ -66,14 +66,15 @@ export const PageTabs = () => {
       <MenuItem href="/swap" isActive={pathname.startsWith('/swap')}>
         <Trans>Swap</Trans>
       </MenuItem>
-      <MenuItem href={`/tokens/${chainName.toLowerCase()}`} isActive={pathname.startsWith('/tokens')}>
+      {/* SAMI: disable NFTs and Tokens since we do not use them now */}
+      {/* <MenuItem href={`/tokens/${chainName.toLowerCase()}`} isActive={pathname.startsWith('/tokens')}>
         <Trans>Tokens</Trans>
       </MenuItem>
       <MenuItem dataTestId="nft-nav" href="/nfts" isActive={isNftPage}>
         <Trans>NFTs</Trans>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem href="/pool" id="pool-nav-link" isActive={isPoolActive}>
-        <Trans>Pool</Trans>
+        <Trans>Pools</Trans>
       </MenuItem>
     </>
   )
@@ -91,17 +92,30 @@ const Navbar = () => {
         <Box display="flex" height="full" flexWrap="nowrap">
           <Box className={styles.leftSideContainer}>
             <Box className={styles.logoContainer}>
-              <UniIcon
+              {/* <UniIcon SAMI: Logo changed to HydraIcon + disable redirect
                 width="48"
                 height="48"
                 data-testid="uniswap-logo"
                 className={styles.logo}
                 onClick={() => {
                   navigate({
-                    pathname: '/',
-                    search: '?intro=true',
-                  })
+                    pathname: "/",
+                    search: "?intro=true",
+                  });
                 }}
+              /> */}
+              <img
+                src={hydraIcon}
+                alt="HydraIcon"
+                width="48"
+                height="48"
+                className={styles.logo}
+                // onClick={() => {
+                //   navigate({
+                //     pathname: '/',
+                //     search: '?intro=true',
+                //   })
+                // }}
               />
             </Box>
             {!isNftPage && (

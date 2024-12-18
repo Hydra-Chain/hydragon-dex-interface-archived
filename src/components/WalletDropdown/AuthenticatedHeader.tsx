@@ -5,11 +5,9 @@ import { formatUSDPrice } from '@uniswap/conedison/format'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import { ButtonEmphasis, ButtonSize, LoadingButtonSpinner, ThemeButton } from 'components/Button'
-import Tooltip from 'components/Tooltip'
 import { getConnection } from 'connection/utils'
 import { getChainInfoOrDefault } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
-import { BaseVariant } from 'featureFlags'
 import { useFiatOnrampFlag } from 'featureFlags/flags/fiatOnramp'
 import useCopyClipboard from 'hooks/useCopyClipboard'
 import useStablecoinPrice from 'hooks/useStablecoinPrice'
@@ -19,7 +17,7 @@ import { useProfilePageState, useSellAsset, useWalletCollections } from 'nft/hoo
 import { useIsNftClaimAvailable } from 'nft/hooks/useIsNftClaimAvailable'
 import { ProfilePageStateType } from 'nft/types'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Copy, CreditCard, ExternalLink as ExternalLinkIcon, Info, Power } from 'react-feather'
+import { Copy, ExternalLink as ExternalLinkIcon, Info, Power } from 'react-feather'
 import { useNavigate } from 'react-router-dom'
 import { useCurrencyBalanceString } from 'state/connection/hooks'
 import { useAppDispatch } from 'state/hooks'
@@ -308,15 +306,15 @@ const AuthenticatedHeader = () => {
           </ThemedText.HeadlineLarge>
           {amountUSD !== undefined && <USDText>{formatUSDPrice(amountUSD)} USD</USDText>}
         </BalanceWrapper>
-        <ProfileButton
+        {/* <ProfileButton
           data-testid="nft-view-self-nfts"
           onClick={navigateToProfile}
           size={ButtonSize.medium}
           emphasis={ButtonEmphasis.medium}
         >
           <Trans>View and sell NFTs</Trans>
-        </ProfileButton>
-        {fiatOnrampFlag === BaseVariant.Enabled && (
+        </ProfileButton> */}
+        {/* {fiatOnrampFlag === BaseVariant.Enabled && (
           <>
             <BuyCryptoButton
               $animateBorder={animateBuyCryptoButtonBorder}
@@ -357,10 +355,10 @@ const AuthenticatedHeader = () => {
               </FiatOnrampNotAvailableText>
             )}
           </>
-        )}
+        )} */}
         {isUnclaimed && (
           <UNIButton onClick={openClaimModal} size={ButtonSize.medium} emphasis={ButtonEmphasis.medium}>
-            <Trans>Claim</Trans> {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} <Trans>reward</Trans>
+            <Trans>Claim</Trans> {unclaimedAmount?.toFixed(0, { groupSeparator: ',' })} <Trans>reward</Trans>
           </UNIButton>
         )}
         {isClaimAvailable && (

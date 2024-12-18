@@ -87,6 +87,7 @@ export function validateUrlChainParam(chainName: string | undefined) {
 
 export const CHAIN_NAME_TO_CHAIN_ID: { [key: string]: SupportedChainId } = {
   ETHEREUM: SupportedChainId.MAINNET,
+  HYDRA: SupportedChainId.HYDRA,
   POLYGON: SupportedChainId.POLYGON,
   CELO: SupportedChainId.CELO,
   ARBITRUM: SupportedChainId.ARBITRUM_ONE,
