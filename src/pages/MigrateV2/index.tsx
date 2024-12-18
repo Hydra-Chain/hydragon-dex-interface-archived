@@ -115,7 +115,7 @@ export default function MigrateV2() {
       <BodyWrapper style={{ padding: 24 }}>
         <AutoColumn gap="16px">
           <AutoRow style={{ alignItems: 'center', justifyContent: 'space-between' }} gap="8px">
-            {/* VITO: We donot have different version atm */}
+            {/* VITO: We do not have different version atm */}
             {/* <BackArrow to="/pool/v2" />
             <ThemedText.DeprecatedMediumHeader>
               <Trans>Migrate V2 Liquidity</Trans>

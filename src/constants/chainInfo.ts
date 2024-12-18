@@ -2,6 +2,7 @@
 import celoCircleLogoUrl from 'assets/images/celoCircle.png'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
 import hydraLogoDark from 'assets/images/hydra-logo.png'
+import hydraLogoBlue from 'assets/images/hydra-logo-blue.png'
 import hydraLogo from 'assets/images/hydra-logo-white.png'
 import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
 import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'assets/svg/arbitrum_logo.svg'
@@ -96,7 +97,7 @@ const CHAIN_INFO: ChainInfoMap = {
     explorer: MAINNET_EXPLORER,
     infoLink: HYDRACHAIN_INFO_URL,
     label: 'Hydra Chain',
-    logoUrl: hydraLogo ? hydraLogo : hydraLogoDark,
+    logoUrl: hydraLogoBlue,
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra', symbol: 'HYDRA', decimals: 18 },
     defaultListUrl: MAINNET_HYDRASWAP_LIST,

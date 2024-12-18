@@ -28,7 +28,11 @@ export const UNSUPPORTED_LIST_URLS: string[] = [BA_LIST, UNI_UNSUPPORTED_LIST]
 // default lists to be 'active' aka searched across
 // VITO: Adapt to Hydra Chain
 // --- search for default active list and replace
-export const DEFAULT_ACTIVE_LIST_URLS: string[] = [MAINNET_HYDRASWAP_LIST]
+export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
+  MAINNET_HYDRASWAP_LIST,
+  TESTNET_HYDRASWAP_LIST,
+  DEVNET_HYDRASWAP_LIST,
+]
 export const DEFAULT_INACTIVE_LIST_URLS: string[] = [
   // UNI_EXTENDED_LIST,
   // COMPOUND_LIST,

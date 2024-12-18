@@ -21,10 +21,8 @@ import {
   LYDRA,
   LYDRA_DEV,
   LYDRA_TESTNET,
-  MYTOKEN1,
   MYTOKEN1_DEV,
   MYTOKEN1_TESTNET,
-  MYTOKEN2,
   MYTOKEN2_DEV,
   MYTOKEN2_TESTNET,
   nativeOnChain,
@@ -134,8 +132,6 @@ export const COMMON_BASES: ChainCurrencyList = {
     nativeOnChain(SupportedChainId.MAINNET),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
     LYDRA,
-    MYTOKEN1,
-    MYTOKEN2,
   ],
   // SAMI: add tokens (common bases), staying at the top
   [SupportedChainId.TESTNET]: [

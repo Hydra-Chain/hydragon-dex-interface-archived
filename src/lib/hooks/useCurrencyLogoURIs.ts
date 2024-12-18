@@ -28,7 +28,7 @@ export function chainIdToNetworkName(networkId: SupportedChainId): Network {
 
 export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.MAINNET): string {
   switch (chainId) {
-    case SupportedChainId.TESTNET || SupportedChainId.DEVNET:
+    case SupportedChainId.TESTNET || SupportedChainId.DEVNET || SupportedChainId.MAINNET:
       return HydraLogo
     case SupportedChainId.POLYGON:
     case SupportedChainId.POLYGON_MUMBAI:
@@ -47,7 +47,7 @@ function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedC
   // SAMI: Urls for wrapped native tokens
   if (isMainnet(chainId) || isTestnet(chainId) || isDevnet(chainId)) {
     if (address === nativeOnChain(chainId).wrapped.address) {
-      return 'https://raw.githubusercontent.com/weichain/hydraswap-token-list/main/icons/hydra-logo.png'
+      return 'https://raw.githubusercontent.com/Hydra-Chain/hydragon-dex-token-list/main/assets/icons/hydra-logo.png'
     }
   }
 

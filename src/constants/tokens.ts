@@ -119,20 +119,7 @@ export const LYDRA = new Token(
   'LYDRA',
   'Liquid Hydra'
 )
-export const MYTOKEN1 = new Token(
-  SupportedChainId.MAINNET,
-  '0x8dE2f2Acd7AE92aA2d5F13C95424a1b4C31CBcB2',
-  18,
-  'MT1',
-  'MyToken1'
-)
-export const MYTOKEN2 = new Token(
-  SupportedChainId.MAINNET,
-  '0xdd5C0811D1De34CC5B6A35Ae0A1A68EEfba2B4E2',
-  18,
-  'MT2',
-  'MyToken2'
-)
+// DEVNET HYDRA CHAIN
 export const MYTOKEN1_DEV = new Token(
   SupportedChainId.DEVNET,
   '0xfbBa4908b44163698CC6622034F98727C346B361',
@@ -154,6 +141,7 @@ export const LYDRA_DEV = new Token(
   'LYDRA',
   'Liquid Hydra'
 )
+// TESTNET HYDRA CHAIN
 export const LYDRA_TESTNET = new Token(
   SupportedChainId.TESTNET,
   '0x0000000000000000000000000000000000001013',
@@ -182,6 +170,7 @@ export const CKToken_TESTNET = new Token(
   'CK',
   'CryptoKiddie'
 )
+//////////////////////////////////////////
 export const DAI_ARBITRUM_ONE = new Token(
   SupportedChainId.ARBITRUM_ONE,
   '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
@@ -543,14 +532,15 @@ class HydraNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isTestnet(this.chainId) && !isDevnet(this.chainId)) throw new Error('Not Hydra Chain Testnet')
+    if (!isTestnet(this.chainId) && !isDevnet(this.chainId) && !isMainnet(this.chainId))
+      throw new Error('Not Hydra Chain Testnet')
     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
     invariant(wrapped instanceof Token)
     return wrapped
   }
 
   public constructor(chainId: number) {
-    if (!isTestnet(chainId) && !isDevnet(chainId)) throw new Error('Not Hydra Chain Testnet')
+    if (!isTestnet(chainId) && !isDevnet(chainId) && !isMainnet(chainId)) throw new Error('Not Hydra Chain Testnet')
     super(chainId, 18, 'HYDRA', 'Hydra')
   }
 }
@@ -573,7 +563,8 @@ const cachedNativeCurrency: { [chainId: number]: NativeCurrency | Token } = {}
 export function nativeOnChain(chainId: number): NativeCurrency | Token {
   if (cachedNativeCurrency[chainId]) return cachedNativeCurrency[chainId]
   let nativeCurrency: NativeCurrency | Token
-  if (isTestnet(chainId) || isDevnet(chainId)) {
+  // SAMI: Native currency for hydra chain
+  if (isTestnet(chainId) || isDevnet(chainId) || isMainnet(chainId)) {
     nativeCurrency = new HydraNativeCurrency(chainId)
   } else if (isMatic(chainId)) {
     nativeCurrency = new MaticNativeCurrency(chainId)
