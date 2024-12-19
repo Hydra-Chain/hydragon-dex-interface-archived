@@ -84,9 +84,11 @@ const BlockedWarning: Warning = {
 export function checkWarning(tokenAddress: string) {
   if (tokenAddress === NATIVE_CHAIN_ID || tokenAddress === ZERO_ADDRESS) {
     return null
-  } else {
+  } else if (tokenAddress === '0x0') {
     // SAMI: DISABLED WARNING LEVELS
     return MediumWarning
+  } else {
+    return null
   }
   // switch (WarningCache.checkToken(tokenAddress.toLowerCase())) {
   //   case TOKEN_LIST_TYPES.UNI_DEFAULT:
