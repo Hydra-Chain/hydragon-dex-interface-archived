@@ -4,7 +4,8 @@ import { SupportedChainId } from '../constants/chains'
 
 const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   // VITO: Update the mainnet when released
-  [SupportedChainId.MAINNET]: MAINNET_EXPLORER,
+  [SupportedChainId.MAINNET]: 'https://etherscan.io',
+  [SupportedChainId.HYDRA]: MAINNET_EXPLORER,
   [SupportedChainId.TESTNET]: TESTNET_EXPLORER,
   [SupportedChainId.DEVNET]: DEVNET_EXPLORER,
   [SupportedChainId.ROPSTEN]: 'https://ropsten.etherscan.io',

@@ -5,6 +5,7 @@ import { MetaMask } from '@web3-react/metamask'
 import { Network } from '@web3-react/network'
 import { Connector } from '@web3-react/types'
 import { WalletConnect } from '@web3-react/walletconnect'
+import { IS_PROD } from 'constants/chainInfo'
 import { DEFAULT_CHAIN_ID, SupportedChainId } from 'constants/chains'
 
 import HYDRA_LOGO_URL from '../assets/images/hydra-logo-white.svg'
@@ -83,7 +84,7 @@ const [web3CoinbaseWallet, web3CoinbaseWalletHooks] = initializeConnector<Coinba
       actions,
       options: {
         // VITO: Set to mainnet when released
-        url: RPC_URLS[SupportedChainId.TESTNET][0],
+        url: RPC_URLS[IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET][0],
         appName: 'HydraDex',
         appLogoUrl: HYDRA_LOGO_URL,
         reloadOnDisconnect: false,

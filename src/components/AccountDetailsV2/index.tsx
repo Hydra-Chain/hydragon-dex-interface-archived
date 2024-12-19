@@ -1,5 +1,5 @@
 import { useWeb3React } from '@web3-react/core'
-import { getChainInfoOrDefault } from 'constants/chainInfo'
+import { getChainInfoOrDefault, IS_PROD } from 'constants/chainInfo'
 import { DEFAULT_CHAIN_ID, SupportedChainId } from 'constants/chains'
 import { useMemo } from 'react'
 import { AlertTriangle, CheckCircle } from 'react-feather'
@@ -58,7 +58,9 @@ export const TransactionSummary = ({
   const { chainId = DEFAULT_CHAIN_ID } = useWeb3React()
   const tx = transactionDetails
   // VITO: Update when mainnet released
-  const { explorer } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.TESTNET)
+  const { explorer } = getChainInfoOrDefault(
+    chainId ? chainId : IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET
+  )
   const { info, receipt, hash } = tx
 
   const transactionState = useMemo(() => {

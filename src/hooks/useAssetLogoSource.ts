@@ -1,5 +1,5 @@
 import TokenLogoLookupTable from 'constants/TokenLogoLookupTable'
-import { isDevnet, isMainnet, isTestnet } from 'constants/tokens'
+import { isDevnet, isHydra, isHydraMain, isTestnet } from 'constants/tokens'
 import { chainIdToNetworkName, getNativeLogoURI } from 'lib/hooks/useCurrencyLogoURIs'
 import uriToHttp from 'lib/utils/uriToHttp'
 import { useCallback, useEffect, useState } from 'react'
@@ -51,8 +51,8 @@ function getInitialUrl(address?: string | null, chainId?: number | null, isNativ
   const checksummedAddress = isAddress(address)
   if (checksummedAddress) {
     // SAMI: add token logos here to use for hydraswap, create and use links to token logos
-    if (chainId && (isMainnet(chainId) || isTestnet(chainId) || isDevnet(chainId))) {
-      if (isMainnet(chainId)) {
+    if (chainId && isHydra(chainId)) {
+      if (isHydraMain(chainId)) {
         return `${MAINNET_HYDRASWAP_LOGO}${checksummedAddress}/logo.png`
       } else if (isTestnet(chainId)) {
         return `${TESTNET_HYDRASWAP_LOGO}${checksummedAddress}/logo.png`

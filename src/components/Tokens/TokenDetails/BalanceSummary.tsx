@@ -3,7 +3,7 @@ import { formatCurrencyAmount, NumberType } from '@uniswap/conedison/format'
 import { Currency } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import CurrencyLogo from 'components/Logo/CurrencyLogo'
-import { getChainInfo } from 'constants/chainInfo'
+import { getChainInfo, IS_PROD } from 'constants/chainInfo'
 import { isSupportedChain, SupportedChainId } from 'constants/chains'
 import { useStablecoinValue } from 'hooks/useStablecoinPrice'
 import useCurrencyBalance from 'lib/hooks/useCurrencyBalance'
@@ -67,7 +67,9 @@ export default function BalanceSummary({ token }: { token: Currency }) {
   const { account, chainId } = useWeb3React()
   const theme = useTheme()
   // VITO: Update when mainnet released
-  const { label, color } = getChainInfo(isSupportedChain(chainId) ? chainId : SupportedChainId.TESTNET)
+  const { label, color } = getChainInfo(
+    isSupportedChain(chainId) ? chainId : IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET
+  )
   const balance = useCurrencyBalance(account, token)
   const formattedBalance = formatCurrencyAmount(balance, NumberType.TokenNonTx)
   const formattedUsdValue = formatCurrencyAmount(useStablecoinValue(balance), NumberType.FiatTokenStats)

@@ -6,7 +6,7 @@ import { isAddress } from 'utils'
 import HydraLogo from '../../assets/images/hydra-logo.png'
 import CeloLogo from '../../assets/svg/celo_logo.svg'
 import MaticLogo from '../../assets/svg/matic-token-icon.svg'
-import { isCelo, isDevnet, isMainnet, isTestnet, NATIVE_CHAIN_ID, nativeOnChain } from '../../constants/tokens'
+import { isCelo, isHydra, NATIVE_CHAIN_ID, nativeOnChain } from '../../constants/tokens'
 
 type Network = 'hydrachain' | 'arbitrum' | 'optimism' | 'polygon'
 
@@ -45,7 +45,7 @@ function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedC
   const networkName = chainIdToNetworkName(chainId)
   const networksWithUrls = [SupportedChainId.ARBITRUM_ONE, SupportedChainId.MAINNET, SupportedChainId.OPTIMISM]
   // SAMI: Urls for wrapped native tokens
-  if (isMainnet(chainId) || isTestnet(chainId) || isDevnet(chainId)) {
+  if (isHydra(chainId)) {
     if (address === nativeOnChain(chainId).wrapped.address) {
       return 'https://raw.githubusercontent.com/Hydra-Chain/hydragon-dex-token-list/main/assets/icons/hydra-logo.png'
     }

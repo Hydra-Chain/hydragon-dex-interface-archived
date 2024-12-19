@@ -131,6 +131,15 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.MAINNET]: [
     nativeOnChain(SupportedChainId.MAINNET),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
+    DAI,
+    USDC_MAINNET,
+    USDC_TESTNET,
+    USDT,
+    WBTC,
+  ],
+  [SupportedChainId.HYDRA]: [
+    nativeOnChain(SupportedChainId.HYDRA),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.HYDRA] as Token,
     LYDRA,
   ],
   // SAMI: add tokens (common bases), staying at the top

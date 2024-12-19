@@ -113,7 +113,7 @@ export const DAI = new Token(
 )
 // SAMI: add tokens to your chain here that will stay at the top (all token can be used from tokenList)
 export const LYDRA = new Token(
-  SupportedChainId.MAINNET,
+  SupportedChainId.HYDRA,
   '0x0000000000000000000000000000000000001013',
   18,
   'LYDRA',
@@ -385,13 +385,28 @@ export const UNI: { [chainId: number]: Token } = {
     'UNI',
     'Uniswap'
   ),
-  [SupportedChainId.TESTNET]: new Token(
-    SupportedChainId.TESTNET,
-    UNI_ADDRESS[SupportedChainId.TESTNET],
-    18,
-    'UNI',
-    'Uniswap'
-  ),
+  // SAMI : add the uniswap token for hydra chain if needed
+  // [SupportedChainId.HYDRA]: new Token(
+  //   SupportedChainId.HYDRA,
+  //   UNI_ADDRESS[SupportedChainId.HYDRA],
+  //   18,
+  //   'UNI',
+  //   'Uniswap'
+  // ),
+  // [SupportedChainId.TESTNET]: new Token(
+  //   SupportedChainId.TESTNET,
+  //   UNI_ADDRESS[SupportedChainId.TESTNET],
+  //   18,
+  //   'UNI',
+  //   'Uniswap'
+  // ),
+  // [SupportedChainId.DEVNET]: new Token(
+  //   SupportedChainId.DEVNET,
+  //   UNI_ADDRESS[SupportedChainId.DEVNET],
+  //   18,
+  //   'UNI',
+  //   'Uniswap'
+  // ),
   [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
@@ -401,13 +416,8 @@ export const UNI: { [chainId: number]: Token } = {
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
   // VITO: add the wrapped native currency for hydra mainnet
   ...(WETH9 as Record<SupportedChainId, Token>),
-  [SupportedChainId.MAINNET]: new Token(
-    SupportedChainId.MAINNET,
-    MAINNET_WHYDRA_ADDRESS,
-    18,
-    'WHYDRA',
-    'Wrapped Hydra'
-  ),
+  [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, MAINNET_WHYDRA_ADDRESS, 18, 'WETH', 'Wrapped Ether'),
+  [SupportedChainId.HYDRA]: new Token(SupportedChainId.HYDRA, MAINNET_WHYDRA_ADDRESS, 18, 'WHYDRA', 'Wrapped Hydra'),
   [SupportedChainId.TESTNET]: new Token(
     SupportedChainId.TESTNET,
     TESTNET_WHYDRA_ADDRESS,
@@ -480,8 +490,8 @@ export function isCelo(chainId: number): chainId is SupportedChainId.CELO | Supp
 
 // VITO: use it when mainnet is released
 // eslint-disable-next-line import/no-unused-modules
-export function isMainnet(chainId: number): chainId is SupportedChainId.MAINNET {
-  return chainId === SupportedChainId.MAINNET
+export function isHydraMain(chainId: number): chainId is SupportedChainId.HYDRA {
+  return chainId === SupportedChainId.HYDRA
 }
 
 export function isTestnet(chainId: number): chainId is SupportedChainId.TESTNET {
@@ -490,6 +500,14 @@ export function isTestnet(chainId: number): chainId is SupportedChainId.TESTNET 
 
 export function isDevnet(chainId: number): chainId is SupportedChainId.DEVNET {
   return chainId === SupportedChainId.DEVNET
+}
+
+export function isHydra(
+  chainId: number
+): chainId is SupportedChainId.HYDRA | SupportedChainId.TESTNET | SupportedChainId.DEVNET {
+  return (
+    chainId === SupportedChainId.HYDRA || chainId === SupportedChainId.TESTNET || chainId === SupportedChainId.DEVNET
+  )
 }
 
 function getCeloNativeCurrency(chainId: number) {
@@ -532,15 +550,14 @@ class HydraNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isTestnet(this.chainId) && !isDevnet(this.chainId) && !isMainnet(this.chainId))
-      throw new Error('Not Hydra Chain')
+    if (!isHydra(this.chainId)) throw new Error('Not Hydra Chain')
     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
     invariant(wrapped instanceof Token)
     return wrapped
   }
 
   public constructor(chainId: number) {
-    if (!isTestnet(chainId) && !isDevnet(chainId) && !isMainnet(chainId)) throw new Error('Not Hydra Chain')
+    if (!isHydra(chainId)) throw new Error('Not Hydra Chain')
     super(chainId, 18, 'HYDRA', 'Hydra')
   }
 }
@@ -564,7 +581,7 @@ export function nativeOnChain(chainId: number): NativeCurrency | Token {
   if (cachedNativeCurrency[chainId]) return cachedNativeCurrency[chainId]
   let nativeCurrency: NativeCurrency | Token
   // SAMI: Native currency for hydra chain
-  if (isTestnet(chainId) || isDevnet(chainId) || isMainnet(chainId)) {
+  if (isHydra(chainId)) {
     nativeCurrency = new HydraNativeCurrency(chainId)
   } else if (isMatic(chainId)) {
     nativeCurrency = new MaticNativeCurrency(chainId)

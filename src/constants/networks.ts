@@ -24,6 +24,13 @@ const HYDRACHAIN_DEVNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEVNE
 export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   // VITO: We need fallback URLs for the RPC and update when mainnet released
   [SupportedChainId.MAINNET]: [
+    'https://api.mycryptoapi.com/eth',
+    'https://cloudflare-eth.com',
+    // "Fallback" URLs
+    'https://rpc.ankr.com/eth',
+    'https://eth-mainnet.public.blastapi.io',
+  ],
+  [SupportedChainId.HYDRA]: [
     // "Safe" URLs
     HYDRACHAIN_MAINNET_RPC,
     // "Fallback" URLs
@@ -110,6 +117,7 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
 export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   // VITO: Update when mainnet released
   [SupportedChainId.MAINNET]: [HYDRACHAIN_MAINNET_RPC, ...FALLBACK_URLS[SupportedChainId.MAINNET]],
+  [SupportedChainId.HYDRA]: [HYDRACHAIN_MAINNET_RPC, ...FALLBACK_URLS[SupportedChainId.HYDRA]],
   [SupportedChainId.TESTNET]: [HYDRACHAIN_TESTNET_RPC, ...FALLBACK_URLS[SupportedChainId.TESTNET]],
   [SupportedChainId.DEVNET]: [HYDRACHAIN_DEVNET_RPC, ...FALLBACK_URLS[SupportedChainId.DEVNET]],
   [SupportedChainId.RINKEBY]: [

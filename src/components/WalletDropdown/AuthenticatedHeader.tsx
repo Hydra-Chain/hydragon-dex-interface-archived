@@ -4,7 +4,7 @@ import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import { ButtonEmphasis, ButtonSize, ThemeButton } from 'components/Button'
 import { getConnection } from 'connection/utils'
-import { getChainInfoOrDefault } from 'constants/chainInfo'
+import { getChainInfoOrDefault, IS_PROD } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import useCopyClipboard from 'hooks/useCopyClipboard'
 import useStablecoinPrice from 'hooks/useStablecoinPrice'
@@ -183,7 +183,7 @@ const AuthenticatedHeader = () => {
     nativeCurrency: { symbol: nativeCurrencySymbol },
     explorer,
     // VITO: Update when mainnet released
-  } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.TESTNET)
+  } = getChainInfoOrDefault(chainId ? chainId : IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET)
   // const navigate = useNavigate()
   // const closeModal = useCloseModal()
   // const setSellPageState = useProfilePageState((state) => state.setProfilePageState)

@@ -1,5 +1,5 @@
 import { useWeb3React } from '@web3-react/core'
-import { getChainInfo } from 'constants/chainInfo'
+import { getChainInfo, IS_PROD } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
 import useSelectChain from 'hooks/useSelectChain'
@@ -19,16 +19,19 @@ import * as styles from './ChainSelector.css'
 import ChainSelectorRow from './ChainSelectorRow'
 import { NavDropdown } from './NavDropdown'
 
-const NETWORK_SELECTOR_CHAINS = [
-  // SupportedChainId.MAINNET,
-  SupportedChainId.TESTNET,
-  SupportedChainId.DEVNET,
-  // VITO: Unused stuff commented out
-  // SupportedChainId.POLYGON,
-  // SupportedChainId.OPTIMISM,
-  // SupportedChainId.ARBITRUM_ONE,
-  // SupportedChainId.CELO,
-]
+const NETWORK_SELECTOR_CHAINS = IS_PROD
+  ? [SupportedChainId.HYDRA]
+  : [
+      // SupportedChainId.MAINNET,
+      SupportedChainId.HYDRA,
+      SupportedChainId.TESTNET,
+      SupportedChainId.DEVNET,
+      // VITO: Unused stuff commented out
+      // SupportedChainId.POLYGON,
+      // SupportedChainId.OPTIMISM,
+      // SupportedChainId.ARBITRUM_ONE,
+      // SupportedChainId.CELO,
+    ]
 
 interface ChainSelectorProps {
   leftAlign?: boolean

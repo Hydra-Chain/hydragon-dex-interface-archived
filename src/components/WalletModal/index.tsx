@@ -14,7 +14,7 @@ import {
   getIsInjected,
   getIsMetaMaskWallet,
 } from 'connection/utils'
-import { HYDRACHAIN_PRIVACY_POLICY_URL } from 'constants/chainInfo'
+import { HYDRACHAIN_PRIVACY_POLICY_URL, IS_PROD } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import usePrevious from 'hooks/usePrevious'
 import { useCallback, useEffect, useState } from 'react'
@@ -207,8 +207,14 @@ export default function WalletModal({
   useEffect(() => {
     if (!chainId) return
     // SAMI: Auto switch to testnet if not devnet or testnet (disable or add networks if needed)
-    if (chainId != SupportedChainId.DEVNET && chainId != SupportedChainId.TESTNET) {
-      switchChain(connector, SupportedChainId.MAINNET)
+    if (IS_PROD && chainId != SupportedChainId.HYDRA) {
+      switchChain(connector, SupportedChainId.HYDRA)
+    } else if (
+      chainId != SupportedChainId.HYDRA &&
+      chainId != SupportedChainId.TESTNET &&
+      chainId != SupportedChainId.DEVNET
+    ) {
+      switchChain(connector, SupportedChainId.TESTNET)
     } else if (connector !== networkConnection.connector) {
       networkConnection.connector.activate(chainId)
     }

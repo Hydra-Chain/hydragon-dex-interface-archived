@@ -23,7 +23,9 @@ import {
   TESTNET_HYDRASWAP_LIST,
 } from './lists'
 
-export const AVERAGE_L1_BLOCK_TIME = ms`12s`
+export const AVERAGE_L1_BLOCK_TIME = ms`1s` // SAMI: Update if not correct
+
+export const IS_PROD = getEnvironmentVariable('REACT_APP_PROD') === 'true'
 
 export const MAINNET_WHYDRA_ADDRESS = getEnvironmentVariable('REACT_APP_MAINNET_WHYDRA_ADDRESS')
 export const MAINNET_EXPLORER = getEnvironmentVariable('REACT_APP_MAINNET_EXPLORER')
@@ -92,6 +94,16 @@ type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo }
 const CHAIN_INFO: ChainInfoMap = {
   // VITO: Update the mainnet when released
   [SupportedChainId.MAINNET]: {
+    networkType: NetworkType.L1,
+    docs: HYDRACHAIN_DOCS_URL,
+    explorer: 'https://etherscan.io/',
+    infoLink: 'https://info.uniswap.org/#/',
+    label: 'Ethereum',
+    logoUrl: ethereumLogoUrl,
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    color: darkTheme.chain_1,
+  },
+  [SupportedChainId.HYDRA]: {
     networkType: NetworkType.L1,
     docs: HYDRACHAIN_DOCS_URL,
     explorer: MAINNET_EXPLORER,

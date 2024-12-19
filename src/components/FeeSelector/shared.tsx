@@ -11,7 +11,8 @@ export const FEE_AMOUNT_DETAIL: Record<
     label: '0.01',
     description: <Trans>Best for very stable pairs.</Trans>,
     supportedChains: [
-      SupportedChainId.MAINNET, // SAMI: Make sure you allowed 0.01 fee on hydra
+      SupportedChainId.MAINNET,
+      SupportedChainId.HYDRA, // SAMI: Make sure you allowed 0.01 fee on hydra
       SupportedChainId.TESTNET,
       SupportedChainId.DEVNET,
       SupportedChainId.POLYGON,

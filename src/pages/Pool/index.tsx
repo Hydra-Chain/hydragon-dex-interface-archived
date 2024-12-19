@@ -8,7 +8,7 @@ import { FlyoutAlignment, Menu } from 'components/Menu'
 import PositionList from 'components/PositionList'
 import { RowBetween, RowFixed } from 'components/Row'
 import { SwitchLocaleLink } from 'components/SwitchLocaleLink'
-import { getChainInfo, HYDRACHAIN_DOCS_URL } from 'constants/chainInfo'
+import { getChainInfo, HYDRACHAIN_DOCS_URL, IS_PROD } from 'constants/chainInfo'
 import { isSupportedChain, SupportedChainId } from 'constants/chains'
 import { useV3Positions } from 'hooks/useV3Positions'
 import { useMemo } from 'react'
@@ -170,7 +170,7 @@ interface WrongNetworkProps {
 // eslint-disable-next-line import/no-unused-modules
 export function WrongNetworkCard({ label }: WrongNetworkProps) {
   const theme = useTheme()
-  const mainnetInfo = getChainInfo(SupportedChainId.MAINNET)
+  const hydraInfo = getChainInfo(SupportedChainId.HYDRA)
   const testnetInfo = getChainInfo(SupportedChainId.TESTNET)
   const devnetInfo = getChainInfo(SupportedChainId.DEVNET)
 
@@ -191,8 +191,8 @@ export function WrongNetworkCard({ label }: WrongNetworkProps) {
                   <NetworkIcon strokeWidth={1.2} />
                   <div data-testid="pools-unsupported-err">
                     <Trans>
-                      Your connected network is unsupported. Connect to {mainnetInfo.label} or {testnetInfo.label} or{' '}
-                      {devnetInfo.label}.
+                      Your connected network is unsupported. Connect to {hydraInfo.label}
+                      {!IS_PROD && ' or ' + testnetInfo.label + ' or ' + devnetInfo.label}.
                     </Trans>
                   </div>
                 </ThemedText.DeprecatedBody>
