@@ -33,6 +33,8 @@ const NETWORK_SELECTOR_CHAINS = IS_PROD
       // SupportedChainId.CELO,
     ]
 
+const needSelector = NETWORK_SELECTOR_CHAINS.length > 1
+
 interface ChainSelectorProps {
   leftAlign?: boolean
 }
@@ -71,7 +73,7 @@ export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
 
   const isSupported = !!info
 
-  const dropdown = (
+  const dropdown = needSelector && (
     <NavDropdown top="56" left={leftAlign ? '0' : 'auto'} right={leftAlign ? 'auto' : '0'} ref={modalRef}>
       <Column paddingX="8">
         {NETWORK_SELECTOR_CHAINS.map((chainId: SupportedChainId) => (
@@ -100,7 +102,7 @@ export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
         className={styles.ChainSelector}
         background={isOpen ? 'accentActiveSoft' : 'none'}
         data-testid="chain-selector"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => (needSelector ? setIsOpen(!isOpen) : null)}
       >
         {!isSupported ? (
           <>
@@ -117,7 +119,7 @@ export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
             </Box>
           </>
         )}
-        {isOpen ? <ChevronUp {...chevronProps} /> : <ChevronDown {...chevronProps} />}
+        {needSelector ? isOpen ? <ChevronUp {...chevronProps} /> : <ChevronDown {...chevronProps} /> : null}
       </Row>
       {isOpen && (isMobile ? <Portal>{dropdown}</Portal> : <>{dropdown}</>)}
     </Box>
