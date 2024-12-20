@@ -127,7 +127,7 @@ const Navbar = () => {
               <PageTabs />
             </Row>
           </Box>
-          {/* VITO: We do not need the search bar here at this moment */}
+          {/* SAMVI Unused: We do not need the search bar here at this moment */}
           {/* <Box className={styles.searchContainer}>
             <SearchBar />
           </Box> */}

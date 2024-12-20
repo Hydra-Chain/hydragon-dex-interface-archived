@@ -127,7 +127,7 @@ export default function Landing() {
   // const showDelegateModal = useModalIsOpen(ApplicationModal.DELEGATE)
   // const toggleDelegateModal = useToggleDelegateModal()
 
-  // VITO: Unused stuff commented out
+  // SAMVI Unused: Unused stuff commented out
   // get data to list all proposals
   // const { data: allProposals, loading: loadingProposals } = useAllProposalData()
   const { data: allProposals } = useAllProposalData()
@@ -195,7 +195,7 @@ export default function Landing() {
               <ThemedText.DeprecatedMediumHeader style={{ margin: '0.5rem 0.5rem 0.5rem 0', flexShrink: 0 }}>
                 <Trans>Proposals</Trans>
               </ThemedText.DeprecatedMediumHeader>
-              {/* VITO: Update when we have discussed the proposals */}
+              {/* SAMVI Update: Update when we have discussed the proposals */}
               {/* <AutoRow gap="6px" justify="flex-end">
                 {loadingProposals || loadingAvailableVotes ? <Loader /> : null}
                 {showUnlockVoting ? (
@@ -250,7 +250,7 @@ export default function Landing() {
                       >
                         {userDelegatee === account ? <Trans>Self</Trans> : shortenAddress(userDelegatee)}
                       </StyledExternalLink>
-                      {/* VITO: We do not use delegate modal */}
+                      {/* SAMVI Unused: We do not use delegate modal */}
                       {/* <TextButton onClick={toggleDelegateModal} style={{ marginLeft: '4px' }}>
                         <Trans>(edit)</Trans>
                       </TextButton> */}

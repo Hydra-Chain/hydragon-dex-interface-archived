@@ -19,7 +19,7 @@ export const MAIN_CARDS = [
     lightBackgroundImgSrc: swapCardImgSrc,
     elementName: InterfaceElementName.ABOUT_PAGE_SWAP_CARD,
   },
-  // VITO: We currently do not have the NFTs option
+  // SAMVI Unused: We currently do not have the NFTs option
   // {
   //   to: '/nfts',
   //   title: 'Trade NFTs',
@@ -39,7 +39,7 @@ const StyledCardLogo = styled.img`
 `
 
 export const MORE_CARDS = [
-  // VITO: We currently do not have the buy option
+  // SAMVI Unused: We currently do not have the buy option
   // {
   //   to: 'https://support.uniswap.org/hc/en-us/articles/11306574799117-How-to-use-Moon-Pay-on-the-Uniswap-web-app-',
   //   external: true,

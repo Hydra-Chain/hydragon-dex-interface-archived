@@ -43,7 +43,7 @@ export default function ConnectedAccountBlocked(props: ConnectedAccountBlockedPr
         </ThemedText.DeprecatedMain>
         <ThemedText.DeprecatedMain fontSize={12}>
           <Trans>If you believe this is an error, please send an email including your address to </Trans>{' '}
-          {/* VITO: Use the contact form of the website */}
+          {/* SAMVI Info: Use the contact form of the website */}
           <ExternalLink href={HYDRACHAIN_CONTACT_URL}>
             <Trans>our contact form</Trans>
           </ExternalLink>

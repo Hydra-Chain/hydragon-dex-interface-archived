@@ -22,7 +22,7 @@ const HYDRACHAIN_DEVNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEVNE
  * These "Safe" URLs are listed first, followed by other fallback URLs, which are taken from chainlist.org.
  */
 export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
-  // VITO: We need fallback URLs for the RPC and update when mainnet released
+  // SAMVI Update: We need fallback URLs for the RPCs of Hydra Mainnet
   [SupportedChainId.MAINNET]: [
     'https://api.mycryptoapi.com/eth',
     'https://cloudflare-eth.com',
@@ -115,7 +115,6 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
  * These are the URLs used by the interface when there is not another available source of chain data.
  */
 export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
-  // VITO: Update when mainnet released
   [SupportedChainId.MAINNET]: [HYDRACHAIN_MAINNET_RPC, ...FALLBACK_URLS[SupportedChainId.MAINNET]],
   [SupportedChainId.HYDRA]: [HYDRACHAIN_MAINNET_RPC, ...FALLBACK_URLS[SupportedChainId.HYDRA]],
   [SupportedChainId.TESTNET]: [HYDRACHAIN_TESTNET_RPC, ...FALLBACK_URLS[SupportedChainId.TESTNET]],

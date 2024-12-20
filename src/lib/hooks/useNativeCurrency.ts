@@ -12,7 +12,7 @@ export default function useNativeCurrency(): NativeCurrency | Token {
       chainId
         ? nativeOnChain(chainId)
         : // display mainnet when not connected
-          // VITO: Update when mainnet released
+          // SAMVI Info: Default chain is HYDRA
           nativeOnChain(IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET),
     [chainId]
   )

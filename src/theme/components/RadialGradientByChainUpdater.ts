@@ -53,23 +53,23 @@ export default function RadialGradientByChainUpdater(): null {
         const hydraLightGradient =
           'radial-gradient(100% 100% at 50% 0%, hsl(180, 17.60%, 93.30%) 0%, rgba(229, 234, 236, 0.65) 49.48%, rgba(159, 113, 172, 0) 100%),rgb(75, 114, 135)'
         const hydraDarkGradient =
-          'radial-gradient(100% 100% at 50% 0%, rgba(65, 78, 119, 0.29) 0%, rgba(50, 47, 100, 0.65) 49.48%, rgba(51, 27, 66, 0) 100%, rgba(31, 33, 40, 0) 100%), #0D0E0E'
+          'radial-gradient(100% 100% at 50% 0%, rgba(176, 95, 97, 0.29) 0%, rgba(79, 75, 150, 0.65) 49.48%, rgba(51, 27, 66, 0) 100%, rgba(31, 33, 40, 0) 100%), #0D0E0E'
         backgroundRadialGradientElement.style.background = darkMode ? hydraDarkGradient : hydraLightGradient
         break
       }
       case SupportedChainId.TESTNET: {
         setBackground(backgroundResetStyles)
         const hydraLightGradient =
-          'radial-gradient(100% 100% at 50% 0%, rgba(129, 50, 50, 0.7) 0%, rgba(22, 47, 187, 0.65) 49.48%, rgba(74, 65, 65, 0) 100%),rgb(247, 205, 205)'
+          'radial-gradient(100% 100% at 50% 0%, rgba(129, 50, 50, 0.7) 0%, rgba(76, 94, 194, 0.65) 49.48%, rgba(74, 65, 65, 0) 100%),rgb(247, 205, 205)'
         const hydraDarkGradient =
-          'radial-gradient(100% 100% at 50% 0%, rgba(176, 95, 97, 0.29) 0%, rgba(79, 75, 150, 0.65) 49.48%, rgba(51, 27, 66, 0) 100%, rgba(31, 33, 40, 0) 100%), #0D0E0E'
+          'radial-gradient(100% 100% at 50% 0%, rgba(80, 96, 147, 0.29) 0%, rgba(50, 47, 100, 0.65) 49.48%, rgba(51, 27, 66, 0) 100%, rgba(31, 33, 40, 0) 100%), #0D0E0E'
         backgroundRadialGradientElement.style.background = darkMode ? hydraDarkGradient : hydraLightGradient
         break
       }
       case SupportedChainId.DEVNET: {
         setBackground(backgroundResetStyles)
         const hydraLightGradient =
-          'radial-gradient(100% 100% at 50% 0%, rgba(22, 91, 116, 0.7) 0%, rgba(68, 78, 167, 0.65) 49.48%, rgba(96, 54, 54, 0) 100%),rgb(166, 218, 238)'
+          'radial-gradient(100% 100% at 50% 0%, rgba(22, 91, 116, 0.7) 0%, rgba(74, 86, 197, 0.65) 49.48%, rgba(96, 54, 54, 0) 100%),rgb(166, 218, 238)'
         const hydraDarkGradient =
           'radial-gradient(100% 100% at 50% 0%, rgba(67, 44, 86, 0.29) 0%, rgba(34, 52, 84, 0.65) 49.48%, rgba(50, 30, 62, 0) 100%, rgba(57, 64, 43, 0) 100%), #0D0E0E'
         backgroundRadialGradientElement.style.background = darkMode ? hydraDarkGradient : hydraLightGradient

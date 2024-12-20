@@ -3,7 +3,7 @@ import { DEVNET_EXPLORER, MAINNET_EXPLORER, TESTNET_EXPLORER } from 'constants/c
 import { SupportedChainId } from '../constants/chains'
 
 const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
-  // VITO: Update the mainnet when released
+  // SAMVI Info: Explorer links to different chains
   [SupportedChainId.MAINNET]: 'https://etherscan.io',
   [SupportedChainId.HYDRA]: MAINNET_EXPLORER,
   [SupportedChainId.TESTNET]: TESTNET_EXPLORER,

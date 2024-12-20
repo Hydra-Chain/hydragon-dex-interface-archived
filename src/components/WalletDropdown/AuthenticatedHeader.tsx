@@ -182,7 +182,7 @@ const AuthenticatedHeader = () => {
   const {
     nativeCurrency: { symbol: nativeCurrencySymbol },
     explorer,
-    // VITO: Update when mainnet released
+    // SAMVI Info: Default chain is HYDRA for prod, TESTNET for dev
   } = getChainInfoOrDefault(chainId ? chainId : IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET)
   // const navigate = useNavigate()
   // const closeModal = useCloseModal()
@@ -213,7 +213,7 @@ const AuthenticatedHeader = () => {
     return price * balance
   }, [balanceString, nativeCurrencyPrice])
 
-  // VITO: Unused stuff are commented out
+  // SAMVI Unused: Unused stuff are commented out
   // const navigateToProfile = useCallback(() => {
   //   resetSellAssets()
   //   setSellPageState(ProfilePageStateType.VIEWING)

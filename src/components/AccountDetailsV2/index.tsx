@@ -57,7 +57,7 @@ export const TransactionSummary = ({
 }) => {
   const { chainId = DEFAULT_CHAIN_ID } = useWeb3React()
   const tx = transactionDetails
-  // VITO: Update when mainnet released
+  // SAMVI Info: Get the chain info or default to the chain id
   const { explorer } = getChainInfoOrDefault(
     chainId ? chainId : IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET
   )

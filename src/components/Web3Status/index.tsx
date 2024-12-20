@@ -316,7 +316,7 @@ export default function Web3Status() {
   return (
     <span ref={ref}>
       <Web3StatusInner />
-      {/* VITO: We do not support on-ramp currently */}
+      {/* SAMVI Unused: We do not support on-ramp currently */}
       {/* <FiatOnrampAnnouncement /> */}
       <WalletModal ENSName={ENSName ?? undefined} pendingTransactions={pending} confirmedTransactions={confirmed} />
       <Portal>

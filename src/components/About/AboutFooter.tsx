@@ -117,7 +117,7 @@ const Copyright = styled.span`
 `
 
 const LogoSectionContent = () => {
-  // VITO: add this when we have theme feature
+  // SAMVI Update: add this when we have theme feature
   const isDarkMode = useIsDarkMode()
   return (
     <>
@@ -183,7 +183,7 @@ export const AboutFooter = () => {
             <ExternalTextLink href={HYDRACHAIN_BLOG_URL}>Blog</ExternalTextLink>
           </TraceEvent>
         </LinkGroup>
-        {/* VITO: Update when able to */}
+        {/* SAMVI Update: Update when able to */}
         {/* <LinkGroup>
           <LinkGroupTitle>Get Help</LinkGroupTitle>
           <TraceEvent

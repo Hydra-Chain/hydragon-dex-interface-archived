@@ -26,7 +26,6 @@ const STAKING_REWARDS_INFO: {
       tokens: [WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token, DAI],
       stakingRewardAddress: '0xa1484C3aa22a66C62b77E0AE78E15258bd0cB711',
     },
-    // VITO: Update when mainnet released
     {
       tokens: [WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token, USDC_MAINNET],
       stakingRewardAddress: '0x7FBa4B8Dc5E7616e59622806932DBea72537A56b',
@@ -41,7 +40,6 @@ const STAKING_REWARDS_INFO: {
     },
   ],
   [SupportedChainId.TESTNET]: [
-    // VITO: Update when mainnet released
     {
       tokens: [WRAPPED_NATIVE_CURRENCY[SupportedChainId.TESTNET] as Token, USDC_TESTNET],
       stakingRewardAddress: '0x7FBa4B8Dc5E7616e59622806932DBea72537A56b',

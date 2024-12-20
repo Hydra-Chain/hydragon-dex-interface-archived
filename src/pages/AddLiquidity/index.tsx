@@ -403,7 +403,7 @@ export default function AddLiquidity() {
     setTxHash('')
   }, [navigate, onFieldAInput, txHash])
 
-  // VITO: Adapt this in a later stage
+  // SAMVI Update: Adapt this in a later stage
   const addIsUnsupported = false // useIsSwapUnsupported(currencies?.CURRENCY_A, currencies?.CURRENCY_B)
 
   const clearAll = useCallback(() => {

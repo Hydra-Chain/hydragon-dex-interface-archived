@@ -346,7 +346,7 @@ export default function Landing() {
             <Glow isDarkMode={isDarkMode} />
           </GlowContainer>
           <ContentContainer isDarkMode={isDarkMode}>
-            {/* VITO: Removing the nfts for a while */}
+            {/* SAMVI Unused: Removing the nfts for a while */}
             {/* <TitleText isDarkMode={isDarkMode}>Trade crypto & NFTs with confidence</TitleText> */}
             <TitleText isDarkMode={isDarkMode}>Trade crypto with confidence</TitleText>
             <SubTextContainer>

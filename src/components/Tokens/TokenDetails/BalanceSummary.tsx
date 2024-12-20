@@ -66,7 +66,7 @@ const StyledNetworkLabel = styled.div`
 export default function BalanceSummary({ token }: { token: Currency }) {
   const { account, chainId } = useWeb3React()
   const theme = useTheme()
-  // VITO: Update when mainnet released
+  // SAMVI Info: Default chain is HYDRA for prod, TESTNET for dev
   const { label, color } = getChainInfo(
     isSupportedChain(chainId) ? chainId : IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET
   )

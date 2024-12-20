@@ -161,6 +161,7 @@ function getDateFromBlock(
   return undefined
 }
 
+// eslint-disable-next-line import/no-unused-modules
 export default function VotePage() {
   // see https://github.com/remix-run/react-router/issues/8200#issuecomment-962520661
   const { governorIndex, id } = useParams() as { governorIndex: string; id: string }
@@ -274,7 +275,7 @@ export default function VotePage() {
     <Trace page={InterfacePageName.VOTE_PAGE} shouldLogImpression>
       <>
         <PageWrapper gap="lg" justify="center">
-          {/* VITO: Hide the whole page for any network except ethereum */}
+          {/* SAMVI Unused: Hide the whole page for any network except ethereum */}
           {chainId != 1 ? (
             <>
               <VoteModal

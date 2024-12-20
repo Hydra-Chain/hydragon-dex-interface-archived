@@ -1,6 +1,5 @@
 import { getEnvironmentVariable } from 'utils/env'
 
-// VITO: List and URL for Tokens on Hydra
 export const UNI_LIST = 'https://tokens.uniswap.org'
 export const UNI_EXTENDED_LIST = 'https://extendedtokens.uniswap.org/'
 const UNI_UNSUPPORTED_LIST = 'https://unsupportedtokens.uniswap.org/'
@@ -26,7 +25,6 @@ export const DEVNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_DEVNET_HY
 export const UNSUPPORTED_LIST_URLS: string[] = [BA_LIST, UNI_UNSUPPORTED_LIST]
 
 // default lists to be 'active' aka searched across
-// VITO: Adapt to Hydra Chain
 // --- search for default active list and replace
 export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
   MAINNET_HYDRASWAP_LIST,

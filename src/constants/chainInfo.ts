@@ -92,7 +92,6 @@ export interface L2ChainInfo extends BaseChainInfo {
 type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo }
 
 const CHAIN_INFO: ChainInfoMap = {
-  // VITO: Update the mainnet when released
   [SupportedChainId.MAINNET]: {
     networkType: NetworkType.L1,
     docs: HYDRACHAIN_DOCS_URL,
@@ -103,6 +102,7 @@ const CHAIN_INFO: ChainInfoMap = {
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: darkTheme.chain_1,
   },
+  // SAMVI Info: Chain info for each chain
   [SupportedChainId.HYDRA]: {
     networkType: NetworkType.L1,
     docs: HYDRACHAIN_DOCS_URL,

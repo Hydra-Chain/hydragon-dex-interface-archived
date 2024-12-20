@@ -414,7 +414,7 @@ export const UNI: { [chainId: number]: Token } = {
 }
 
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
-  // VITO: add the wrapped native currency for hydra mainnet
+  // SAMVI Info: add the wrapped native currency your chain here
   ...(WETH9 as Record<SupportedChainId, Token>),
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, MAINNET_WHYDRA_ADDRESS, 18, 'WETH', 'Wrapped Ether'),
   [SupportedChainId.HYDRA]: new Token(SupportedChainId.HYDRA, MAINNET_WHYDRA_ADDRESS, 18, 'WHYDRA', 'Wrapped Hydra'),
@@ -488,8 +488,6 @@ export function isCelo(chainId: number): chainId is SupportedChainId.CELO | Supp
   return chainId === SupportedChainId.CELO_ALFAJORES || chainId === SupportedChainId.CELO
 }
 
-// VITO: use it when mainnet is released
-// eslint-disable-next-line import/no-unused-modules
 export function isHydraMain(chainId: number): chainId is SupportedChainId.HYDRA {
   return chainId === SupportedChainId.HYDRA
 }

@@ -436,7 +436,7 @@ function V2PairMigration({
           {noLiquidity && (
             <BlueCard style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <AlertCircle color={theme.textPrimary} style={{ marginBottom: '12px', opacity: 0.8 }} />
-              {/* VITO: We do not have different version atm */}
+              {/* SAMVI Unused: We do not have different version atm */}
               {/* <ThemedText.DeprecatedBody
                 fontSize={14}
                 style={{ marginBottom: 8, fontWeight: 500, opacity: 0.8 }}

@@ -83,7 +83,7 @@ const [web3CoinbaseWallet, web3CoinbaseWalletHooks] = initializeConnector<Coinba
     new CoinbaseWallet({
       actions,
       options: {
-        // VITO: Set to mainnet when released
+        // SAMVI Info: Set to hydra chain for production, testnet for development
         url: RPC_URLS[IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET][0],
         appName: 'HydraDex',
         appLogoUrl: HYDRA_LOGO_URL,

@@ -11,7 +11,7 @@ export function useModalIsOpen(modal: ApplicationModal): boolean {
 }
 
 /** @ref https://dashboard.moonpay.com/api_reference/client_side_api#ip_addresses */
-// VITO: Uncomment if needed
+// SAMVI Unused: Uncomment if needed
 // interface MoonpayIPAddressesResponse {
 //   alpha3?: string
 //   isAllowed?: boolean
@@ -85,7 +85,7 @@ export function useCloseModal(): () => void {
   return useCallback(() => dispatch(setOpenModal(null)), [dispatch])
 }
 
-// VITO: Uncomment if needed
+// SAMVI Unused: Uncomment if needed
 // export function useOpenModal(modal: ApplicationModal): () => void {
 //   const dispatch = useAppDispatch()
 //   return useCallback(() => dispatch(setOpenModal(modal)), [dispatch, modal])

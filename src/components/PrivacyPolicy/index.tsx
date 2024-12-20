@@ -138,7 +138,7 @@ function PrivacyPolicy() {
             </ExternalLink>
           </StyledExternalCard> */}
           <StyledExternalCard>
-            {/* VITO: updated privacy policy and removed terms of service for now */}
+            {/* SAMVI Update: updated privacy policy and removed terms of service for now */}
             <ExternalLink href={HYDRACHAIN_PRIVACY_POLICY_URL}>
               <RowBetween>
                 <AutoRow gap="4px">
@@ -169,7 +169,7 @@ function PrivacyPolicy() {
               </AutoColumn>
             </DarkGrayCard>
           ))}
-          {/* VITO: Redundant for now because we don't have terms of services */}
+          {/* SAMVI Info: Redundant for now because we don't have terms of services */}
           {/* <ThemedText.DeprecatedBody fontSize={12}>
             <Row justify="center" marginBottom="1rem">
               <ExternalLink href="https://help.uniswap.org/en/articles/5675203-terms-of-service-faq">

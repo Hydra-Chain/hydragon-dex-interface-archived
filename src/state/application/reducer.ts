@@ -59,7 +59,7 @@ const applicationSlice = createSlice({
   name: 'application',
   initialState,
   reducers: {
-    // VITO: setFiatOnrampAvailability is not used currently
+    // SAMVI Unused: setFiatOnrampAvailability is not used currently
     // setFiatOnrampAvailability(state, { payload: available }) {
     //   state.fiatOnramp = { available, availabilityChecked: true }
     // },
@@ -90,7 +90,7 @@ const applicationSlice = createSlice({
   },
 })
 
-// VITO: setFiatOnrampAvailability is not used currently
+// SAMVI Unused: setFiatOnrampAvailability is not used currently
 // export const { updateChainId, setFiatOnrampAvailability, setOpenModal, addPopup, removePopup } =
 //   applicationSlice.actions
 export const { updateChainId, setOpenModal, addPopup, removePopup } = applicationSlice.actions

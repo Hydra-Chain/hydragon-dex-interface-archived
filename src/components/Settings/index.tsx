@@ -130,7 +130,7 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
 
   const [expertMode, toggleExpertMode] = useExpertModeManager()
 
-  // VITO: Unused stuff are commented out
+  // SAMVI Unused: Unused stuff are commented out
   // const [clientSideRouter, setClientSideRouter] = useClientSideRouter()
 
   // show confirmation view before turning on

@@ -19,14 +19,14 @@ import * as styles from './ChainSelector.css'
 import ChainSelectorRow from './ChainSelectorRow'
 import { NavDropdown } from './NavDropdown'
 
+// SAMVI Info: Chain selector
 const NETWORK_SELECTOR_CHAINS = IS_PROD
   ? [SupportedChainId.HYDRA]
   : [
-      // SupportedChainId.MAINNET,
       SupportedChainId.HYDRA,
       SupportedChainId.TESTNET,
       SupportedChainId.DEVNET,
-      // VITO: Unused stuff commented out
+      // SupportedChainId.MAINNET,
       // SupportedChainId.POLYGON,
       // SupportedChainId.OPTIMISM,
       // SupportedChainId.ARBITRUM_ONE,
