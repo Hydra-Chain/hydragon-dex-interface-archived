@@ -2,6 +2,7 @@ import { Connector } from '@web3-react/types'
 import COINBASE_ICON_URL from 'assets/images/coinbaseWalletIcon.svg'
 import { coinbaseWalletConnection, ConnectionType } from 'connection'
 import { getConnectionName } from 'connection/utils'
+import { HYDRACHAIN_DEX_URL } from 'constants/chainInfo'
 
 import Option from './Option'
 
@@ -11,7 +12,7 @@ const BASE_PROPS = {
   id: 'coinbase-wallet',
 }
 
-const encodedURL = encodeURIComponent('https://new.hydradex.org/#/swap')
+const encodedURL = encodeURIComponent(`${HYDRACHAIN_DEX_URL}/#/swap`)
 
 export function OpenCoinbaseWalletOption() {
   const isActive = coinbaseWalletConnection.hooks.useIsActive()
