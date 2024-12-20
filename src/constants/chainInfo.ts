@@ -23,7 +23,7 @@ import {
   TESTNET_HYDRASWAP_LIST,
 } from './lists'
 
-export const AVERAGE_L1_BLOCK_TIME = ms`1s` // SAMI: Update if not correct
+export const AVERAGE_L1_BLOCK_TIME = ms`1s` // SAMVI Update: Update if not correct
 
 export const IS_PROD = getEnvironmentVariable('REACT_APP_PROD') === 'true'
 

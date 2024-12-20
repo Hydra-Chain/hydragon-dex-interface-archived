@@ -7,7 +7,7 @@ import { BREAKPOINTS } from 'theme'
 import meshSrc from './images/Mesh.png'
 
 const DARK_MODE_GRADIENT = 'radial-gradient(101.8% 4091.31% at 0% 0%,rgb(57, 86, 173) 0%,rgb(105, 51, 170) 100%)'
-// SAMI: Change the styles to the ProtocolBanner
+// SAMVI Style: Change the styles to the ProtocolBanner
 const Banner = styled.div<{ isDarkMode: boolean }>`
   height: 340px;
   width: 100%;

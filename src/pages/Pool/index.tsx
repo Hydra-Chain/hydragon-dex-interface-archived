@@ -166,7 +166,7 @@ interface WrongNetworkProps {
   label: string
 }
 
-// SAMI: Use this to show a card when the user is on the wrong network
+// SAMVI Info: Use this to show a card when the user is on the wrong network
 // eslint-disable-next-line import/no-unused-modules
 export function WrongNetworkCard({ label }: WrongNetworkProps) {
   const theme = useTheme()
@@ -246,7 +246,7 @@ export default function Pool() {
       link: '/add/ETH',
       external: false,
     },
-    // SAMI: Disable Migrate and V2 liquidity
+    // SAMVI Unused: Disable Migrate and V2 liquidity
     // {
     //   content: (
     //     <PoolMenuItem>

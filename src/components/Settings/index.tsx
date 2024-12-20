@@ -205,7 +205,7 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
             <Text fontWeight={600} fontSize={14}>
               <Trans>Interface Settings</Trans>
             </Text>
-            {/* {isSupportedChainId(chainId) && (             // SAMI: Removed Auto Router API
+            {/* {isSupportedChainId(chainId) && (             // SAMVI Unused: Removed Auto Router API
               <RowBetween>
                 <RowFixed>
                   <ThemedText.DeprecatedBlack fontWeight={400} fontSize={14} color={theme.textSecondary}>

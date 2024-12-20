@@ -206,7 +206,7 @@ export default function WalletModal({
   // Keep the network connector in sync with any active user connector to prevent chain-switching on wallet disconnection.
   useEffect(() => {
     if (!chainId) return
-    // SAMI: Auto switch to testnet if not devnet or testnet (disable or add networks if needed)
+    // SAMVI Info: Auto switch network to hydra (testnet if not prod)
     if (IS_PROD && chainId != SupportedChainId.HYDRA) {
       switchChain(connector, SupportedChainId.HYDRA)
     } else if (
@@ -273,7 +273,7 @@ export default function WalletModal({
     const isMetaMaskBrowser = isMobile && hasMetaMaskExtension
     const isInjectedMobileBrowser = isCoinbaseWalletBrowser || isMetaMaskBrowser
 
-    // SAMI: TODO: Add metamask for mobile
+    // SAMVI Todo: Add metamask for mobile
     let injectedOption
     if (!isInjected) {
       if (!isMobile) {

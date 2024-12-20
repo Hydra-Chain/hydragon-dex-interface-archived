@@ -8,7 +8,7 @@ import { getEnvironmentVariable } from 'utils/env'
 
 const BAD_SRCS: { [tokenAddress: string]: true } = {}
 
-// SAMI: URLs for token logos on hydraswap
+// SAMVI Style: URLs for token logos on hydraswap
 // eslint-disable-next-line import/no-unused-modules
 export const MAINNET_HYDRASWAP_LOGO = getEnvironmentVariable('REACT_APP_MAINNET_HYDRASWAP_TOKEN_LOGO')
 // eslint-disable-next-line import/no-unused-modules
@@ -50,7 +50,7 @@ function getInitialUrl(address?: string | null, chainId?: number | null, isNativ
   const networkName = chainId ? chainIdToNetworkName(chainId) : 'ethereum'
   const checksummedAddress = isAddress(address)
   if (checksummedAddress) {
-    // SAMI: add token logos here to use for hydraswap, create and use links to token logos
+    // SAMVI Info: add token logos here to use for hydraswap, create and use links to token logos
     if (chainId && isHydra(chainId)) {
       if (isHydraMain(chainId)) {
         return `${MAINNET_HYDRASWAP_LOGO}${checksummedAddress}/logo.png`

@@ -47,7 +47,7 @@ export default function RadialGradientByChainUpdater(): null {
     }
 
     switch (chainId) {
-      // SAMI: Change styles to backgroundRadialGradientElement
+      // SAMVI Style: Chains background colors
       case SupportedChainId.HYDRA: {
         setBackground(backgroundResetStyles)
         const hydraLightGradient =

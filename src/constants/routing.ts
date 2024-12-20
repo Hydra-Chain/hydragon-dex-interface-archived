@@ -137,12 +137,12 @@ export const COMMON_BASES: ChainCurrencyList = {
     USDT,
     WBTC,
   ],
+  // SAMVI Info: add tokens (common bases), staying at the top
   [SupportedChainId.HYDRA]: [
     nativeOnChain(SupportedChainId.HYDRA),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.HYDRA] as Token,
     LYDRA,
   ],
-  // SAMI: add tokens (common bases), staying at the top
   [SupportedChainId.TESTNET]: [
     nativeOnChain(SupportedChainId.TESTNET),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.TESTNET] as Token,

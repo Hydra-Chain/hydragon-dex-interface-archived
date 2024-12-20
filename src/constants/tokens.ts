@@ -111,7 +111,7 @@ export const DAI = new Token(
   'DAI',
   'Dai Stablecoin'
 )
-// SAMI: add tokens to your chain here that will stay at the top (all token can be used from tokenList)
+// SAMVI Info: add tokens to your chain here that will stay at the top next to each other (other tokens can be imported from tokenList)
 export const LYDRA = new Token(
   SupportedChainId.HYDRA,
   '0x0000000000000000000000000000000000001013',
@@ -385,7 +385,7 @@ export const UNI: { [chainId: number]: Token } = {
     'UNI',
     'Uniswap'
   ),
-  // SAMI : add the uniswap token for hydra chain if needed
+  // SAMVI Update: add the uniswap token for hydra chain if needed
   // [SupportedChainId.HYDRA]: new Token(
   //   SupportedChainId.HYDRA,
   //   UNI_ADDRESS[SupportedChainId.HYDRA],
@@ -543,7 +543,7 @@ class MaticNativeCurrency extends NativeCurrency {
   }
 }
 
-// Sami: add the native currency for hydra
+// SAMVI Info: add the native currency for hydra
 class HydraNativeCurrency extends NativeCurrency {
   equals(other: Currency): boolean {
     return other.isNative && other.chainId === this.chainId
@@ -580,7 +580,7 @@ const cachedNativeCurrency: { [chainId: number]: NativeCurrency | Token } = {}
 export function nativeOnChain(chainId: number): NativeCurrency | Token {
   if (cachedNativeCurrency[chainId]) return cachedNativeCurrency[chainId]
   let nativeCurrency: NativeCurrency | Token
-  // SAMI: Native currency for hydra chain
+  // SAMVI Info: Native currency for hydra chain
   if (isHydra(chainId)) {
     nativeCurrency = new HydraNativeCurrency(chainId)
   } else if (isMatic(chainId)) {

@@ -20,7 +20,7 @@ export function OpenCoinbaseWalletOption() {
     <Option
       {...BASE_PROPS}
       isActive={isActive}
-      link={`https://go.cb-w.com/dapp?cb_url=${encodedURL}`} // SAMI: Update this link for the Coinbase Wallet
+      link={`https://go.cb-w.com/dapp?cb_url=${encodedURL}`} // SAMVI Update: Update this link for the Coinbase Wallet
       header="Open in Coinbase Wallet"
     />
   )

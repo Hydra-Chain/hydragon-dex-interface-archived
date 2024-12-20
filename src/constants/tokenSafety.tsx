@@ -85,7 +85,7 @@ export function checkWarning(tokenAddress: string) {
   if (tokenAddress === NATIVE_CHAIN_ID || tokenAddress === ZERO_ADDRESS) {
     return null
   } else if (tokenAddress === '0x0') {
-    // SAMI: DISABLED WARNING LEVELS
+    // SAMVI Info: DISABLED WARNING LEVELS
     return MediumWarning
   } else {
     return null

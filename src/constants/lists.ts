@@ -18,7 +18,7 @@ export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json
 export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
 export const CELO_LIST = 'https://celo-org.github.io/celo-token-list/celo.tokenlist.json'
 
-// SAMI: List and URL for Tokens on Hydra
+// SAMVI Info: List and URL for Tokens on Hydra
 export const MAINNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_MAINNET_HYDRASWAP_TOKEN_LIST')
 export const TESTNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_TESTNET_HYDRASWAP_TOKEN_LIST')
 export const DEVNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_DEVNET_HYDRASWAP_TOKEN_LIST')

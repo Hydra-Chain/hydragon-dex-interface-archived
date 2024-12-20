@@ -121,7 +121,7 @@ const commonTheme = {
   hoverDefault: opacify(8, colors.gray200),
 }
 
-// SAMI: Styles for themes
+// SAMVI Style: Styles for themes
 export const darkTheme = {
   ...commonTheme,
 

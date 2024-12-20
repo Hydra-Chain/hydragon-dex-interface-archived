@@ -65,7 +65,7 @@ export const PageTabs = () => {
       <MenuItem href="/swap" isActive={pathname.startsWith('/swap')}>
         <Trans>Swap</Trans>
       </MenuItem>
-      {/* SAMI: disable NFTs and Tokens since we do not use them now */}
+      {/* SAMVI Unused: disable NFTs and Tokens since we do not use them now */}
       {/* <MenuItem href={`/tokens/${chainName.toLowerCase()}`} isActive={pathname.startsWith('/tokens')}>
         <Trans>Tokens</Trans>
       </MenuItem>
@@ -92,7 +92,7 @@ const Navbar = () => {
         <Box display="flex" height="full" flexWrap="nowrap">
           <Box className={styles.leftSideContainer}>
             <Box className={styles.logoContainer}>
-              {/* <UniIcon SAMI: Logo changed to HydraIcon + disable redirect
+              {/* <UniIcon SAMVI Style: Logo changed to HydraIcon + disable redirect
                 width="48"
                 height="48"
                 data-testid="uniswap-logo"

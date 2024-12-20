@@ -122,7 +122,7 @@ const TxCompleteModal = () => {
                 shouldLogImpression
               >
                 <Box className={styles.successModal} onClick={stopPropagation}>
-                  {/* <UniIcon color={vars.color.pink400} width="36" height="36" className={styles.uniLogo} /> Sami*/}
+                  {/* <UniIcon color={vars.color.pink400} width="36" height="36" className={styles.uniLogo} /> SAMVI Style: logo*/}
                   <img src={hydraIcon} width="36" height="36" />
                   <Box display="flex" flexWrap="wrap" width="full" height="min">
                     <h1 className={styles.title}>

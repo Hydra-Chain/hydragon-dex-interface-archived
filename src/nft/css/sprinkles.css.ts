@@ -148,7 +148,7 @@ const zIndices = {
   modalOverTooltip: '1090',
 }
 
-// SAMI - Change the colors to the new uniswap colors
+// SAMVI Style - Change the colors to the new uniswap colors
 export const vars = createGlobalTheme(':root', {
   color: {
     ...themeVars.colors,

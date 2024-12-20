@@ -44,7 +44,7 @@ export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.MA
 function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedChainId.MAINNET): string | void {
   const networkName = chainIdToNetworkName(chainId)
   const networksWithUrls = [SupportedChainId.ARBITRUM_ONE, SupportedChainId.MAINNET, SupportedChainId.OPTIMISM]
-  // SAMI: Urls for wrapped native tokens
+  // SAMVI Info: Urls for wrapped native tokens
   if (isHydra(chainId)) {
     if (address === nativeOnChain(chainId).wrapped.address) {
       return 'https://raw.githubusercontent.com/Hydra-Chain/hydragon-dex-token-list/main/assets/icons/hydra-logo.png'

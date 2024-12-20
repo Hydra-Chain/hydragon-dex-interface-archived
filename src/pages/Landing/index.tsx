@@ -71,7 +71,7 @@ const GlowContainer = styled.div`
     height: 100vh;
   }
 `
-
+// SAMVI Style: glow color changes in front page
 const Glow = styled.div<{ isDarkMode: boolean }>`
   position: absolute;
   top: 68px;
@@ -105,7 +105,7 @@ const ContentContainer = styled.div<{ isDarkMode: boolean }>`
     pointer-events: auto;
   }
 `
-// Sami: color changes in front page
+// SAMVI Style: color changes in front page
 const TitleText = styled.h1<{ isDarkMode: boolean }>`
   color: transparent;
   font-size: 36px;
@@ -156,7 +156,7 @@ const LandingButton = styled(BaseButton)`
   border-radius: 24px;
 `
 
-// Sami: color changes in front page
+// SAMVI Style: color changes in front page
 const ButtonCTA = styled(LandingButton)`
   background: linear-gradient(93.06deg, rgb(75, 153, 210) 2.66%, rgb(152, 86, 218) 98.99%);
   border: none;
