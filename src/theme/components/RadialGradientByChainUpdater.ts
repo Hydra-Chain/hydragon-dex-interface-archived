@@ -60,9 +60,9 @@ export default function RadialGradientByChainUpdater(): null {
       case SupportedChainId.TESTNET: {
         setBackground(backgroundResetStyles)
         const hydraLightGradient =
-          'radial-gradient(100% 100% at 50% 0%, rgba(62, 68, 117, 0.7) 0%, rgba(51, 58, 121, 0.65) 49.48%, rgba(74, 65, 65, 0) 100%), #FFFFFF'
+          'radial-gradient(100% 100% at 50% 0%, rgba(129, 50, 50, 0.7) 0%, rgba(22, 47, 187, 0.65) 49.48%, rgba(74, 65, 65, 0) 100%),rgb(247, 205, 205)'
         const hydraDarkGradient =
-          'radial-gradient(100% 100% at 50% 0%, rgba(65, 78, 119, 0.29) 0%, rgba(50, 47, 100, 0.65) 49.48%, rgba(51, 27, 66, 0) 100%, rgba(31, 33, 40, 0) 100%), #0D0E0E'
+          'radial-gradient(100% 100% at 50% 0%, rgba(176, 95, 97, 0.29) 0%, rgba(79, 75, 150, 0.65) 49.48%, rgba(51, 27, 66, 0) 100%, rgba(31, 33, 40, 0) 100%), #0D0E0E'
         backgroundRadialGradientElement.style.background = darkMode ? hydraDarkGradient : hydraLightGradient
         break
       }
