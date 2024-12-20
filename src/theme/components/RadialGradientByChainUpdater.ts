@@ -51,7 +51,7 @@ export default function RadialGradientByChainUpdater(): null {
       case SupportedChainId.HYDRA: {
         setBackground(backgroundResetStyles)
         const hydraLightGradient =
-          'radial-gradient(100% 100% at 50% 0%, rgba(62, 68, 117, 0.7) 0%, rgba(51, 58, 121, 0.65) 49.48%, rgba(74, 65, 65, 0) 100%), #FFFFFF'
+          'radial-gradient(100% 100% at 50% 0%, hsl(180, 17.60%, 93.30%) 0%, rgba(229, 234, 236, 0.65) 49.48%, rgba(159, 113, 172, 0) 100%),rgb(75, 114, 135)'
         const hydraDarkGradient =
           'radial-gradient(100% 100% at 50% 0%, rgba(65, 78, 119, 0.29) 0%, rgba(50, 47, 100, 0.65) 49.48%, rgba(51, 27, 66, 0) 100%, rgba(31, 33, 40, 0) 100%), #0D0E0E'
         backgroundRadialGradientElement.style.background = darkMode ? hydraDarkGradient : hydraLightGradient
