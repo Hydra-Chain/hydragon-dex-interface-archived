@@ -17,7 +17,7 @@ export function OpenCoinbaseWalletOption() {
     <Option
       {...BASE_PROPS}
       isActive={isActive}
-      link="https://go.cb-w.com/mtUDhEZPy1"
+      link="https://new.hydradex.org/#/swap" // SAMI: Update this link for the Coinbase Wallet
       header="Open in Coinbase Wallet"
     />
   )
