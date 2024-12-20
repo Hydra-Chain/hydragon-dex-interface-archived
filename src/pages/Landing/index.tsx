@@ -72,11 +72,14 @@ const GlowContainer = styled.div`
   }
 `
 
-const Glow = styled.div`
+const Glow = styled.div<{ isDarkMode: boolean }>`
   position: absolute;
   top: 68px;
   bottom: 0;
-  background: radial-gradient(72.04% 72.04% at 50% 3.99%, #5d8fde 0%, rgba(166, 151, 255, 0) 100%);
+  background: ${({ isDarkMode }) =>
+    isDarkMode
+      ? 'radial-gradient(72.04% 72.04% at 50% 3.99%, rgb(107, 62, 169) 0%, rgba(166, 151, 255, 0) 100%)'
+      : 'radial-gradient(72.04% 72.04% at 50% 3.99%, rgb(68, 152, 209) 0%, rgba(166, 151, 255, 0) 100%)'};
   filter: blur(72px);
   border-radius: 24px;
   max-width: 480px;
@@ -340,7 +343,7 @@ export default function Landing() {
           </LandingSwapContainer>
           <Gradient isDarkMode={isDarkMode} />
           <GlowContainer>
-            <Glow />
+            <Glow isDarkMode={isDarkMode} />
           </GlowContainer>
           <ContentContainer isDarkMode={isDarkMode}>
             {/* VITO: Removing the nfts for a while */}

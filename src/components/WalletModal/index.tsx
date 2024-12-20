@@ -273,6 +273,7 @@ export default function WalletModal({
     const isMetaMaskBrowser = isMobile && hasMetaMaskExtension
     const isInjectedMobileBrowser = isCoinbaseWalletBrowser || isMetaMaskBrowser
 
+    // SAMI: TODO: Add metamask for mobile
     let injectedOption
     if (!isInjected) {
       if (!isMobile) {
