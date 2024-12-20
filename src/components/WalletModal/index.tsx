@@ -342,7 +342,7 @@ export default function WalletModal({
 
       const content = (
         <Trans>
-          By connecting a wallet, you agree to LockTrip LLC{' '}
+          By connecting a wallet, you agree to Hydra DAO Foundation{' '}
           {/* VITO: updated privacy policy and removed terms of service for now */}
           {/* <ExternalLink href="https://uniswap.org/terms-of-service/">Terms of Service</ExternalLink> and consent to its{' '} */}
           <ExternalLink href={HYDRACHAIN_PRIVACY_POLICY_URL}>Privacy Policy</ExternalLink>.

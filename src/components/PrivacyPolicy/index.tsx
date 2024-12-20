@@ -61,7 +61,7 @@ const EXTERNAL_APIS = [
     description: (
       <>
         <Trans>
-          The app securely collects your wallet address and shares it with LOCKTRIP LLC. for risk and compliance
+          The app securely collects your wallet address and shares it with Hydra DAO Foundation for risk and compliance
           reasons.
         </Trans>{' '}
         <ExternalLink href={HYDRACHAIN_PRIVACY_POLICY_URL}>
