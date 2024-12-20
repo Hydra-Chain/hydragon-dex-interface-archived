@@ -99,7 +99,7 @@ export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
       <Row
         as="button"
         gap="8"
-        className={styles.ChainSelector}
+        className={needSelector ? styles.ChainSelector : styles.ChainSelectorOne}
         background={isOpen ? 'accentActiveSoft' : 'none'}
         data-testid="chain-selector"
         onClick={() => (needSelector ? setIsOpen(!isOpen) : null)}

@@ -15,6 +15,16 @@ export const ChainSelector = style([
   }),
 ])
 
+export const ChainSelectorOne = style([
+  sprinkles({
+    borderRadius: '8',
+    height: '40',
+    border: 'none',
+    color: 'textPrimary',
+    background: 'none',
+  }),
+])
+
 export const Image = style([
   sprinkles({
     width: '20',
