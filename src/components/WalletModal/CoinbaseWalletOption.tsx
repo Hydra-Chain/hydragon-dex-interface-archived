@@ -11,13 +11,15 @@ const BASE_PROPS = {
   id: 'coinbase-wallet',
 }
 
+const encodedURL = encodeURIComponent('https://new.hydradex.org/#/swap')
+
 export function OpenCoinbaseWalletOption() {
   const isActive = coinbaseWalletConnection.hooks.useIsActive()
   return (
     <Option
       {...BASE_PROPS}
       isActive={isActive}
-      link="https://new.hydradex.org/#/swap" // SAMI: Update this link for the Coinbase Wallet
+      link={`https://go.cb-w.com/dapp?cb_url=${encodedURL}`} // SAMI: Update this link for the Coinbase Wallet
       header="Open in Coinbase Wallet"
     />
   )
