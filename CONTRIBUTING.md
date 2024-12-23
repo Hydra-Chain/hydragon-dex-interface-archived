@@ -4,7 +4,7 @@ Thank you for your interest in contributing to the Hydragon Dex Interface!
 
 # About
 
-Use node 14.21 to install and tun the project
+Use node 14.21 to install and run the project
 
 To find something useful and specific for adding chain or more use comment:
 
