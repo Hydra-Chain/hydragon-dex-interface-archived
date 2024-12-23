@@ -5,6 +5,7 @@ import {
   HYDRACHAIN_DAO_URL,
   HYDRACHAIN_DEVELOPERS_URL,
   HYDRACHAIN_GITHUB_URL,
+  HYDRACHAIN_WEB_URL,
   HYDRACHAIN_X_URL,
 } from 'constants/chainInfo'
 import { useIsDarkMode } from 'state/user/hooks'
@@ -180,6 +181,7 @@ export const AboutFooter = () => {
             name={SharedEventName.ELEMENT_CLICKED}
             element={InterfaceElementName.BLOG_LINK}
           >
+            <ExternalTextLink href={HYDRACHAIN_WEB_URL}>Site</ExternalTextLink>
             <ExternalTextLink href={HYDRACHAIN_BLOG_URL}>Blog</ExternalTextLink>
           </TraceEvent>
         </LinkGroup>
