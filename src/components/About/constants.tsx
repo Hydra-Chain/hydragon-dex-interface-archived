@@ -31,7 +31,6 @@ export const MAIN_CARDS = [
     lightBackgroundImgSrc: swapCardImgSrc,
     elementName: InterfaceElementName.ABOUT_PAGE_SWAP_CARD,
   },
-
   // SAMVI Unused: We currently do not have the NFTs option
   // {
   //   to: '/nfts',
