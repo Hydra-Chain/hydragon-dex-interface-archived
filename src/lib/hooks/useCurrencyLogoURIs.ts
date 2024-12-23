@@ -3,16 +3,22 @@ import useHttpLocations from 'hooks/useHttpLocations'
 import { useMemo } from 'react'
 import { isAddress } from 'utils'
 
-import EthereumLogo from '../../assets/images/ethereum-logo.png'
-import HydraLogo from '../../assets/images/hydra-logo.png'
+import HydraLogo from '../../assets/hydra/hydra-logo.png'
 import CeloLogo from '../../assets/svg/celo_logo.svg'
 import MaticLogo from '../../assets/svg/matic-token-icon.svg'
 import { isCelo, isHydra, NATIVE_CHAIN_ID, nativeOnChain } from '../../constants/tokens'
 
-type Network = 'ethereum' | 'arbitrum' | 'optimism' | 'polygon'
+type Network = 'hydrachain' | 'ethereum' | 'arbitrum' | 'optimism' | 'polygon'
 
 export function chainIdToNetworkName(networkId: SupportedChainId): Network {
   switch (networkId) {
+    // SAMVI Unused: Mainly used for URLs with token logos, but we use custom URLs for token logos
+    case SupportedChainId.HYDRA:
+      return 'hydrachain'
+    case SupportedChainId.TESTNET:
+      return 'hydrachain'
+    case SupportedChainId.DEVNET:
+      return 'hydrachain'
     case SupportedChainId.MAINNET:
       return 'ethereum'
     case SupportedChainId.ARBITRUM_ONE:
@@ -22,13 +28,13 @@ export function chainIdToNetworkName(networkId: SupportedChainId): Network {
     case SupportedChainId.POLYGON:
       return 'polygon'
     default:
-      return 'ethereum'
+      return 'hydrachain'
   }
 }
 
 export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.MAINNET): string {
   switch (chainId) {
-    case SupportedChainId.HYDRA:
+    case SupportedChainId.TESTNET || SupportedChainId.DEVNET || SupportedChainId.MAINNET:
       return HydraLogo
     case SupportedChainId.POLYGON:
     case SupportedChainId.POLYGON_MUMBAI:
@@ -37,20 +43,20 @@ export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.MA
     case SupportedChainId.CELO_ALFAJORES:
       return CeloLogo
     default:
-      return EthereumLogo
+      return HydraLogo
   }
 }
 
 function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedChainId.MAINNET): string | void {
-  const networkName = chainIdToNetworkName(chainId)
-  const networksWithUrls = [SupportedChainId.ARBITRUM_ONE, SupportedChainId.MAINNET, SupportedChainId.OPTIMISM]
-  // SAMI: Urls for wrapped native tokens
+  // SAMVI Info: Urls for wrapped native tokens
   if (isHydra(chainId)) {
     if (address === nativeOnChain(chainId).wrapped.address) {
-      return 'https://raw.githubusercontent.com/weichain/hydraswap-token-list/main/icons/hydra-logo.png'
+      return 'https://raw.githubusercontent.com/Hydra-Chain/hydragon-dex-token-list/main/assets/icons/hydra-logo.png'
     }
   }
 
+  const networkName = chainIdToNetworkName(chainId)
+  const networksWithUrls = [SupportedChainId.ARBITRUM_ONE, SupportedChainId.MAINNET, SupportedChainId.OPTIMISM]
   if (networksWithUrls.includes(chainId)) {
     return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${address}/logo.png`
   }

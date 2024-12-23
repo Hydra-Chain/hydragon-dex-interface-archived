@@ -6,6 +6,7 @@ import {
   AMPL,
   CEUR_CELO,
   CEUR_CELO_ALFAJORES,
+  CKToken_TESTNET,
   CMC02_CELO,
   CUSD_CELO,
   CUSD_CELO_ALFAJORES,
@@ -18,8 +19,12 @@ import {
   FRAX,
   FXS,
   LYDRA,
-  MYTOKEN1,
-  MYTOKEN2,
+  LYDRA_DEV,
+  LYDRA_TESTNET,
+  MYTOKEN1_DEV,
+  MYTOKEN1_TESTNET,
+  MYTOKEN2_DEV,
+  MYTOKEN2_TESTNET,
   nativeOnChain,
   PORTAL_ETH_CELO,
   PORTAL_USDC_CELO,
@@ -32,6 +37,7 @@ import {
   USDC_MAINNET,
   USDC_OPTIMISM,
   USDC_POLYGON,
+  USDC_TESTNET,
   USDT,
   USDT_ARBITRUM_ONE,
   USDT_OPTIMISM,
@@ -40,8 +46,8 @@ import {
   WBTC_ARBITRUM_ONE,
   WBTC_OPTIMISM,
   WBTC_POLYGON,
-  WETH_POLYGON,
-  WETH_POLYGON_MUMBAI,
+  WHYDRA_POLYGON,
+  WHYDRA_POLYGON_MUMBAI,
   WRAPPED_NATIVE_CURRENCY,
 } from './tokens'
 
@@ -66,6 +72,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET],
     DAI,
     USDC_MAINNET,
+    USDC_TESTNET,
     USDT,
     WBTC,
   ],
@@ -86,7 +93,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     DAI_POLYGON,
     USDC_POLYGON,
     USDT_POLYGON,
-    WETH_POLYGON,
+    WHYDRA_POLYGON,
   ],
   [SupportedChainId.CELO]: [CUSD_CELO, CEUR_CELO, CMC02_CELO, PORTAL_USDC_CELO, PORTAL_ETH_CELO],
 }
@@ -123,19 +130,33 @@ export const CUSTOM_BASES: {
 export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.MAINNET]: [
     nativeOnChain(SupportedChainId.MAINNET),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
     DAI,
     USDC_MAINNET,
+    USDC_TESTNET,
     USDT,
     WBTC,
-    WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
   ],
-  // SAMI: add tokens (common bases), staying at the top
+  // SAMVI Info: add tokens (common bases), staying at the top
   [SupportedChainId.HYDRA]: [
     nativeOnChain(SupportedChainId.HYDRA),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.HYDRA] as Token,
     LYDRA,
-    MYTOKEN1,
-    MYTOKEN2,
+  ],
+  [SupportedChainId.TESTNET]: [
+    nativeOnChain(SupportedChainId.TESTNET),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.TESTNET] as Token,
+    LYDRA_TESTNET,
+    MYTOKEN1_TESTNET,
+    MYTOKEN2_TESTNET,
+    CKToken_TESTNET,
+  ],
+  [SupportedChainId.DEVNET]: [
+    nativeOnChain(SupportedChainId.DEVNET),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.DEVNET] as Token,
+    LYDRA_DEV,
+    MYTOKEN1_DEV,
+    MYTOKEN2_DEV,
   ],
   [SupportedChainId.ROPSTEN]: [
     nativeOnChain(SupportedChainId.ROPSTEN),
@@ -175,7 +196,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.OPTIMISM_GOERLI]: [nativeOnChain(SupportedChainId.OPTIMISM_GOERLI)],
   [SupportedChainId.POLYGON]: [
     nativeOnChain(SupportedChainId.POLYGON),
-    WETH_POLYGON,
+    WHYDRA_POLYGON,
     USDC_POLYGON,
     DAI_POLYGON,
     USDT_POLYGON,
@@ -184,7 +205,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.POLYGON_MUMBAI]: [
     nativeOnChain(SupportedChainId.POLYGON_MUMBAI),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.POLYGON_MUMBAI] as Token,
-    WETH_POLYGON_MUMBAI,
+    WHYDRA_POLYGON_MUMBAI,
   ],
 
   [SupportedChainId.CELO]: [
@@ -209,6 +230,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET],
     DAI,
     USDC_MAINNET,
+    USDC_TESTNET,
     USDT,
     WBTC,
   ],

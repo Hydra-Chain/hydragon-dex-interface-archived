@@ -11,7 +11,7 @@ import styled, { useTheme } from 'styled-components/macro'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { useModalIsOpen, useToggleSettingsMenu } from '../../state/application/hooks'
 import { ApplicationModal } from '../../state/application/reducer'
-import { useClientSideRouter, useExpertModeManager } from '../../state/user/hooks'
+import { useExpertModeManager } from '../../state/user/hooks'
 import { ThemedText } from '../../theme'
 import { ButtonError } from '../Button'
 import { AutoColumn } from '../Column'
@@ -130,7 +130,8 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
 
   const [expertMode, toggleExpertMode] = useExpertModeManager()
 
-  const [clientSideRouter, setClientSideRouter] = useClientSideRouter()
+  // SAMVI Unused: Unused stuff are commented out
+  // const [clientSideRouter, setClientSideRouter] = useClientSideRouter()
 
   // show confirmation view before turning on
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -204,7 +205,7 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
             <Text fontWeight={600} fontSize={14}>
               <Trans>Interface Settings</Trans>
             </Text>
-            {/* {isSupportedChainId(chainId) && (             // SAMI: Removed Auto Router API
+            {/* {isSupportedChainId(chainId) && (             // SAMVI Unused: Removed Auto Router API
               <RowBetween>
                 <RowFixed>
                   <ThemedText.DeprecatedBlack fontWeight={400} fontSize={14} color={theme.textSecondary}>

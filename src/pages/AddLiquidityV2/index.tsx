@@ -61,7 +61,7 @@ export default function AddLiquidity() {
 
   const wrappedNativeCurrency = chainId ? WRAPPED_NATIVE_CURRENCY[chainId] : undefined
 
-  const oneCurrencyIsWETH = Boolean(
+  const oneCurrencyIsWHYDRA = Boolean(
     chainId &&
       wrappedNativeCurrency &&
       ((currencyA && currencyA.equals(wrappedNativeCurrency)) || (currencyB && currencyB.equals(wrappedNativeCurrency)))
@@ -506,7 +506,7 @@ export default function AddLiquidity() {
       {!addIsUnsupported ? (
         pair && !noLiquidity && pairState !== PairState.INVALID ? (
           <AutoColumn style={{ minWidth: '20rem', width: '100%', maxWidth: '400px', marginTop: '1rem' }}>
-            <MinimalPositionCard showUnwrapped={oneCurrencyIsWETH} pair={pair} />
+            <MinimalPositionCard showUnwrapped={oneCurrencyIsWHYDRA} pair={pair} />
           </AutoColumn>
         ) : null
       ) : (

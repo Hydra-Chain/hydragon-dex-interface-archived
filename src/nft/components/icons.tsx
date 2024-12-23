@@ -460,6 +460,7 @@ export const TwitterIcon = (props: SVGProps) => (
   </svg>
 )
 
+// eslint-disable-next-line import/no-unused-modules
 export const DiscordIconMenu = (props: SVGProps) => (
   <svg fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
@@ -501,6 +502,7 @@ export const CheckMarkIcon = (props: SVGProps) => (
   </svg>
 )
 
+// eslint-disable-next-line import/no-unused-modules
 export const GovernanceIcon = (props: SVGProps) => (
   <svg fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path

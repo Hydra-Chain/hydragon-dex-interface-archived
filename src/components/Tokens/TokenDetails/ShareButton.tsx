@@ -1,5 +1,6 @@
 import { Trans } from '@lingui/macro'
 import { Currency } from '@uniswap/sdk-core'
+import { HYDRACHAIN_DEX_URL } from 'constants/chainInfo'
 import { NATIVE_CHAIN_ID } from 'constants/tokens'
 import { chainIdToBackendName } from 'graphql/data/util'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
@@ -77,11 +78,11 @@ export default function ShareButton({ currency }: { currency: Currency }) {
   const shareTweet = () => {
     toggleShare()
     window.open(
-      `https://twitter.com/intent/tweet?text=Check%20out%20${currency.name}%20(${
+      `https://x.com/intent/tweet?text=Check%20out%20${currency.name}%20(${
         currency.symbol
-      })%20https://app.uniswap.org/%23/tokens/${chainIdToBackendName(
+      })%20${HYDRACHAIN_DEX_URL}/%23/tokens/${chainIdToBackendName(
         currency.chainId
-      ).toLowerCase()}/${address}%20via%20@uniswap`,
+      ).toLowerCase()}/${address}%20via%20@hydradex`,
       'newwindow',
       `left=${positionX}, top=${positionY}, width=${TWITTER_WIDTH}, height=${TWITTER_HEIGHT}`
     )

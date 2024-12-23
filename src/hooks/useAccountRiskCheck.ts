@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { ApplicationModal, setOpenModal } from 'state/application/reducer'
 import { useAppDispatch } from 'state/hooks'
 
+// eslint-disable-next-line import/no-unused-modules
 export default function useAccountRiskCheck(account: string | null | undefined) {
   const dispatch = useAppDispatch()
 
@@ -16,7 +17,7 @@ export default function useAccountRiskCheck(account: string | null | undefined) 
         const checkExpirationTime = storedTime ? parseInt(storedTime) : now - 1
         if (checkExpirationTime < Date.now()) {
           const headers = new Headers({ 'Content-Type': 'application/json' })
-          fetch('https://screening-worker.uniswap.workers.dev', {
+          fetch('https://screening-worker.hydradex.workers.dev', {
             method: 'POST',
             headers,
             body: JSON.stringify({ address: account }),

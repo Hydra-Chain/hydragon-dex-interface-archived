@@ -1,8 +1,6 @@
 import { Trans } from '@lingui/macro'
-import { useWeb3React } from '@web3-react/core'
 import Web3Status from 'components/Web3Status'
 import { NftListV2Variant, useNftListV2Flag } from 'featureFlags/flags/nftListV2'
-import { chainIdToBackendName } from 'graphql/data/util'
 import { useIsNftPage } from 'hooks/useIsNftPage'
 import { Box } from 'nft/components/Box'
 import { Row } from 'nft/components/Flex'
@@ -10,13 +8,14 @@ import { useProfilePageState } from 'nft/hooks'
 import { ProfilePageStateType } from 'nft/types'
 import { ReactNode } from 'react'
 import { NavLink, NavLinkProps, useLocation, useNavigate } from 'react-router-dom'
+import { useIsDarkMode } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 
-import hydraIcon from '../../assets/images/hydra-logo-white.png'
+import hydraIconDark from '../../assets/hydra/hydra-logo.png'
+import hydraIcon from '../../assets/hydra/hydra-logo-white.png'
 import { Bag } from './Bag'
 import { ChainSelector } from './ChainSelector'
 import { MenuDropdown } from './MenuDropdown'
-import { SearchBar } from './SearchBar'
 import * as styles from './style.css'
 
 const Nav = styled.nav`
@@ -50,8 +49,8 @@ const MenuItem = ({ href, dataTestId, id, isActive, children }: MenuItemProps) =
 
 export const PageTabs = () => {
   const { pathname } = useLocation()
-  const { chainId: connectedChainId } = useWeb3React()
-  const chainName = chainIdToBackendName(connectedChainId)
+  // const { chainId: connectedChainId } = useWeb3React()
+  // const chainName = chainIdToBackendName(connectedChainId)
 
   const isPoolActive =
     pathname.startsWith('/pool') ||
@@ -59,14 +58,14 @@ export const PageTabs = () => {
     pathname.startsWith('/remove') ||
     pathname.startsWith('/increase')
 
-  const isNftPage = useIsNftPage()
+  // const isNftPage = useIsNftPage()
 
   return (
     <>
       <MenuItem href="/swap" isActive={pathname.startsWith('/swap')}>
         <Trans>Swap</Trans>
       </MenuItem>
-      {/* SAMI: disable NFTs and Tokens since we do not use them now */}
+      {/* SAMVI Unused: disable NFTs and Tokens since we do not use them now */}
       {/* <MenuItem href={`/tokens/${chainName.toLowerCase()}`} isActive={pathname.startsWith('/tokens')}>
         <Trans>Tokens</Trans>
       </MenuItem>
@@ -85,6 +84,7 @@ const Navbar = () => {
   const sellPageState = useProfilePageState((state) => state.state)
   const isNftListV2 = useNftListV2Flag() === NftListV2Variant.Enabled
   const navigate = useNavigate()
+  const isDarkMode = useIsDarkMode()
 
   return (
     <>
@@ -92,7 +92,7 @@ const Navbar = () => {
         <Box display="flex" height="full" flexWrap="nowrap">
           <Box className={styles.leftSideContainer}>
             <Box className={styles.logoContainer}>
-              {/* <UniIcon SAMI: Logo changed to HydraIcon + disable redirect
+              {/* <UniIcon SAMVI Style: Logo changed to HydraIcon + disable redirect
                 width="48"
                 height="48"
                 data-testid="uniswap-logo"
@@ -105,17 +105,17 @@ const Navbar = () => {
                 }}
               /> */}
               <img
-                src={hydraIcon}
+                src={isDarkMode ? hydraIcon : hydraIconDark}
                 alt="HydraIcon"
                 width="48"
                 height="48"
                 className={styles.logo}
-                // onClick={() => {
-                //   navigate({
-                //     pathname: '/',
-                //     search: '?intro=true',
-                //   })
-                // }}
+                onClick={() => {
+                  navigate({
+                    pathname: '/',
+                    search: '?intro=true',
+                  })
+                }}
               />
             </Box>
             {!isNftPage && (
@@ -127,14 +127,15 @@ const Navbar = () => {
               <PageTabs />
             </Row>
           </Box>
-          <Box className={styles.searchContainer}>
+          {/* SAMVI Unused: We do not need the search bar here at this moment */}
+          {/* <Box className={styles.searchContainer}>
             <SearchBar />
-          </Box>
+          </Box> */}
           <Box className={styles.rightSideContainer}>
             <Row gap="12">
-              <Box position="relative" display={{ sm: 'flex', xl: 'none' }}>
+              {/* <Box position="relative" display={{ sm: 'flex', xl: 'none' }}>
                 <SearchBar />
-              </Box>
+              </Box> */}
               <Box display={{ sm: 'none', lg: 'flex' }}>
                 <MenuDropdown />
               </Box>

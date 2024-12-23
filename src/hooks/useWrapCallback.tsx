@@ -12,7 +12,7 @@ import { WRAPPED_NATIVE_CURRENCY } from '../constants/tokens'
 import { useCurrencyBalance } from '../state/connection/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'
 import { TransactionType } from '../state/transactions/types'
-import { useWETHContract } from './useContract'
+import { useWHYDRAContract } from './useContract'
 
 export enum WrapType {
   NOT_APPLICABLE,
@@ -61,7 +61,7 @@ export default function useWrapCallback(
   typedValue: string | undefined
 ): { wrapType: WrapType; execute?: undefined | (() => Promise<void>); inputError?: WrapInputError } {
   const { chainId, account } = useWeb3React()
-  const wethContract = useWETHContract()
+  const whydraContract = useWHYDRAContract()
   const balance = useCurrencyBalance(account ?? undefined, inputCurrency ?? undefined)
   // we can always parse the amount typed as the input currency, since wrapping is 1:1
   const inputAmount = useMemo(
@@ -76,9 +76,9 @@ export default function useWrapCallback(
   if (error) throw error
 
   return useMemo(() => {
-    if (!wethContract || !chainId || !inputCurrency || !outputCurrency) return NOT_APPLICABLE
-    const weth = WRAPPED_NATIVE_CURRENCY[chainId]
-    if (!weth) return NOT_APPLICABLE
+    if (!whydraContract || !chainId || !inputCurrency || !outputCurrency) return NOT_APPLICABLE
+    const whydra = WRAPPED_NATIVE_CURRENCY[chainId]
+    if (!whydra) return NOT_APPLICABLE
 
     const hasInputAmount = Boolean(inputAmount?.greaterThan('0'))
     const sufficientBalance = inputAmount && balance && !balance.lessThan(inputAmount)
@@ -92,30 +92,30 @@ export default function useWrapCallback(
       amount: inputAmount ? formatToDecimal(inputAmount, inputAmount?.currency.decimals) : undefined,
     }
 
-    if (inputCurrency.isNative && weth.equals(outputCurrency)) {
+    if (inputCurrency.isNative && whydra.equals(outputCurrency)) {
       return {
         wrapType: WrapType.WRAP,
         execute:
           sufficientBalance && inputAmount
             ? async () => {
                 try {
-                  const network = await wethContract.provider.getNetwork()
+                  const network = await whydraContract.provider.getNetwork()
                   if (
                     network.chainId !== chainId ||
-                    wethContract.address !== WRAPPED_NATIVE_CURRENCY[network.chainId]?.address
+                    whydraContract.address !== WRAPPED_NATIVE_CURRENCY[network.chainId]?.address
                   ) {
                     sendAnalyticsEvent(InterfaceEventName.WRAP_TOKEN_TXN_INVALIDATED, {
                       ...eventProperties,
-                      contract_address: wethContract.address,
+                      contract_address: whydraContract.address,
                       contract_chain_id: network.chainId,
                       type: WrapType.WRAP,
                     })
-                    const error = new Error(`Invalid WETH contract
-Please file a bug detailing how this happened - https://github.com/Uniswap/interface/issues/new?labels=bug&template=bug-report.md&title=Invalid%20WETH%20contract`)
+                    const error = new Error(`Invalid WHYDRA contract
+Please file a bug detailing how this happened - https://github.com/Hydra-Chain/hydragon-dex-interface-fork/issues/new?assignees=&labels=bug&projects=&template=bug-report.md&title=Invalid%20WHYDRA%20contract`)
                     setError(error)
                     throw error
                   }
-                  const txReceipt = await wethContract.deposit({ value: `0x${inputAmount.quotient.toString(16)}` })
+                  const txReceipt = await whydraContract.deposit({ value: `0x${inputAmount.quotient.toString(16)}` })
                   addTransaction(txReceipt, {
                     type: TransactionType.WRAP,
                     unwrapped: false,
@@ -137,14 +137,14 @@ Please file a bug detailing how this happened - https://github.com/Uniswap/inter
           ? WrapInputError.INSUFFICIENT_NATIVE_BALANCE
           : WrapInputError.ENTER_NATIVE_AMOUNT,
       }
-    } else if (weth.equals(inputCurrency) && outputCurrency.isNative) {
+    } else if (whydra.equals(inputCurrency) && outputCurrency.isNative) {
       return {
         wrapType: WrapType.UNWRAP,
         execute:
           sufficientBalance && inputAmount
             ? async () => {
                 try {
-                  const txReceipt = await wethContract.withdraw(`0x${inputAmount.quotient.toString(16)}`)
+                  const txReceipt = await whydraContract.withdraw(`0x${inputAmount.quotient.toString(16)}`)
                   addTransaction(txReceipt, {
                     type: TransactionType.WRAP,
                     unwrapped: true,
@@ -169,5 +169,5 @@ Please file a bug detailing how this happened - https://github.com/Uniswap/inter
     } else {
       return NOT_APPLICABLE
     }
-  }, [wethContract, chainId, inputCurrency, outputCurrency, inputAmount, balance, addTransaction])
+  }, [whydraContract, chainId, inputCurrency, outputCurrency, inputAmount, balance, addTransaction])
 }

@@ -40,7 +40,7 @@ export function useAllCurrencyCombinations(currencyA?: Currency, currencyB?: Cur
             // each base against all bases
             ...basePairs,
           ]
-            // filter out invalid pairs comprised of the same asset (e.g. WETH<>WETH)
+            // filter out invalid pairs comprised of the same asset (e.g. WHYDRA<>WHYDRA)
             .filter(([t0, t1]) => !t0.equals(t1))
             // filter out duplicate pairs
             .filter(([t0, t1], i, otherPairs) => {

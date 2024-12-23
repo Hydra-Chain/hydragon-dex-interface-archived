@@ -1,12 +1,13 @@
 import { ButtonEmpty } from 'components/Button'
+import { HYDRACHAIN_WEB_URL } from 'constants/chainInfo'
 import { useIsDarkMode } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 import { BREAKPOINTS } from 'theme'
 
 import meshSrc from './images/Mesh.png'
 
-const DARK_MODE_GRADIENT = 'radial-gradient(101.8% 4091.31% at 0% 0%, #4673FA 0%, #9646FA 100%)'
-
+const DARK_MODE_GRADIENT = 'radial-gradient(101.8% 4091.31% at 0% 0%,rgb(57, 86, 173) 0%,rgb(105, 51, 170) 100%)'
+// SAMVI Style: Change the styles to the ProtocolBanner
 const Banner = styled.div<{ isDarkMode: boolean }>`
   height: 340px;
   width: 100%;
@@ -25,7 +26,7 @@ const Banner = styled.div<{ isDarkMode: boolean }>`
   background: ${({ isDarkMode }) =>
     isDarkMode
       ? `url(${meshSrc}), ${DARK_MODE_GRADIENT}`
-      : `url(${meshSrc}), linear-gradient(93.06deg, #FF00C7 2.66%, #FF9FFB 98.99%);`};
+      : `url(${meshSrc}), linear-gradient(93.06deg,rgb(146, 83, 227) 2.66%,rgb(106, 94, 239) 98.99%);`};
 
   @media screen and (min-width: ${BREAKPOINTS.lg}px) {
     height: 140px;
@@ -89,13 +90,13 @@ const ProtocolBanner = () => {
   return (
     <Banner isDarkMode={isDarkMode}>
       <TextContainer>
-        <HeaderText>Powered by the Uniswap Protocol</HeaderText>
+        <HeaderText>Powered by the HydraDex Protocol</HeaderText>
         <DescriptionText>
           The leading decentralized crypto trading protocol, governed by a global community.
         </DescriptionText>
       </TextContainer>
       <BannerButtonContainer>
-        <BannerButton width="200px" as="a" href="https://uniswap.org" rel="noopener noreferrer" target="_blank">
+        <BannerButton width="200px" as="a" href={HYDRACHAIN_WEB_URL} rel="noopener noreferrer" target="_blank">
           Learn more
         </BannerButton>
       </BannerButtonContainer>

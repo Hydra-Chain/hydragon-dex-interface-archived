@@ -14,13 +14,12 @@ import { useTheme } from 'styled-components/macro'
 
 import { LightCard } from '../../components/Card'
 import { AutoColumn } from '../../components/Column'
-import QuestionHelper from '../../components/QuestionHelper'
 import { AutoRow } from '../../components/Row'
 import { Dots } from '../../components/swap/styleds'
 import { V2_FACTORY_ADDRESSES } from '../../constants/addresses'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/connection/hooks'
 import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks'
-import { BackArrow, StyledInternalLink, ThemedText } from '../../theme'
+import { StyledInternalLink, ThemedText } from '../../theme'
 import { BodyWrapper } from '../AppBody'
 
 function EmptyState({ message }: { message: ReactNode }) {
@@ -116,21 +115,22 @@ export default function MigrateV2() {
       <BodyWrapper style={{ padding: 24 }}>
         <AutoColumn gap="16px">
           <AutoRow style={{ alignItems: 'center', justifyContent: 'space-between' }} gap="8px">
-            <BackArrow to="/pool/v2" />
+            {/* SAMVI Unused: We do not have different version atm */}
+            {/* <BackArrow to="/pool/v2" />
             <ThemedText.DeprecatedMediumHeader>
               <Trans>Migrate V2 Liquidity</Trans>
             </ThemedText.DeprecatedMediumHeader>
             <div>
               <QuestionHelper text={<Trans>Migrate your liquidity tokens from Uniswap V2 to Uniswap V3.</Trans>} />
-            </div>
+            </div> */}
           </AutoRow>
 
-          <ThemedText.DeprecatedBody style={{ marginBottom: 8, fontWeight: 400 }}>
+          {/* <ThemedText.DeprecatedBody style={{ marginBottom: 8, fontWeight: 400 }}>
             <Trans>
               For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into
               Uniswap V3.
             </Trans>
-          </ThemedText.DeprecatedBody>
+          </ThemedText.DeprecatedBody> */}
 
           {!account ? (
             <LightCard padding="40px">

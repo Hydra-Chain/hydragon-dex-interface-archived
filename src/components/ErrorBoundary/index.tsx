@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro'
 import * as Sentry from '@sentry/react'
 import { ButtonLight, SmallButtonPrimary } from 'components/Button'
+import { HYDRACHAIN_TELEGRAM_URL } from 'constants/chainInfo'
 import { ChevronUpIcon } from 'nft/components/icons'
 import { useIsMobile } from 'nft/hooks'
 import React, { PropsWithChildren, useState } from 'react'
@@ -179,7 +180,7 @@ const Fallback = ({ error, eventId }: { error: Error; eventId: string | null }) 
             <SmallButtonPrimary onClick={() => window.location.reload()}>
               <Trans>Reload the app</Trans>
             </SmallButtonPrimary>
-            <ExternalLink id="get-support-on-discord" href="https://discord.gg/FCfyBSbCU5" target="_blank">
+            <ExternalLink id="get-support-on-discord" href={HYDRACHAIN_TELEGRAM_URL} target="_blank">
               <SmallButtonLight>
                 <Trans>Get support</Trans>
               </SmallButtonLight>

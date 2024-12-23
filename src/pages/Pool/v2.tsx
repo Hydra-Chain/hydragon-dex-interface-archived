@@ -3,6 +3,7 @@ import { Trace } from '@uniswap/analytics'
 import { InterfacePageName } from '@uniswap/analytics-events'
 import { Pair } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
+import { HYDRACHAIN_DEX_INFO_URL, HYDRACHAIN_DOCS_URL } from 'constants/chainInfo'
 import { UNSUPPORTED_V2POOL_CHAIN_IDS } from 'constants/chains'
 import JSBI from 'jsbi'
 import { useMemo } from 'react'
@@ -164,7 +165,7 @@ export default function Pool() {
                 <ExternalLink
                   style={{ color: theme.white, textDecoration: 'underline' }}
                   target="_blank"
-                  href="https://docs.uniswap.org/protocol/V2/concepts/core-concepts/pools"
+                  href={`${HYDRACHAIN_DOCS_URL}/hydradex/adding-and-removing-liquidity`}
                 >
                   <ThemedText.DeprecatedWhite fontSize={14}>
                     <Trans>Read more about providing liquidity</Trans>
@@ -231,7 +232,7 @@ export default function Pool() {
                     <ButtonSecondary>
                       <RowBetween>
                         <Trans>
-                          <ExternalLink href={'https://v2.info.uniswap.org/account/' + account}>
+                          <ExternalLink href={`${HYDRACHAIN_DEX_INFO_URL}/account/` + account}>
                             Account analytics and accrued fees
                           </ExternalLink>
                           <span> ↗ </span>

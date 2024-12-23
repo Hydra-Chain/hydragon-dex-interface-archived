@@ -27,7 +27,7 @@ const RootWrapper = styled.div`
   position: relative;
   margin-top: 16px;
 `
-// SAMI: Change extra styles to the Network
+// SAMVI Style: Change extra styles to the Network
 const SHOULD_SHOW_ALERT = {
   [SupportedChainId.OPTIMISM]: true,
   [SupportedChainId.OPTIMISM_GOERLI]: true,
@@ -152,7 +152,13 @@ export function NetworkAlert() {
     return null
   }
 
-  const { label, logoUrl, bridge } = getChainInfo(chainId)
+  const chainInfo = getChainInfo(chainId)
+  if (!chainInfo) {
+    return null
+  }
+
+  const { label, logoUrl, bridge } = chainInfo
+
   const textColor = TEXT_COLORS[chainId]
 
   return bridge ? (

@@ -353,8 +353,8 @@ export function PositionPage() {
   const currency0 = token0 ? unwrappedToken(token0) : undefined
   const currency1 = token1 ? unwrappedToken(token1) : undefined
 
-  // flag for receiving WETH
-  const [receiveWETH, setReceiveWETH] = useState(false)
+  // flag for receiving WHYDRA
+  const [receiveWHYDRA, setReceiveWHYDRA] = useState(false)
   const nativeCurrency = useNativeCurrency()
   const nativeWrappedSymbol = nativeCurrency.wrapped.symbol
 
@@ -396,11 +396,19 @@ export function PositionPage() {
   }, [inverted, pool, priceLower, priceUpper])
 
   // fees
-  const [feeValue0, feeValue1] = useV3PositionFees(pool ?? undefined, positionDetails?.tokenId, receiveWETH)
+  const [feeValue0, feeValue1] = useV3PositionFees(pool ?? undefined, positionDetails?.tokenId, receiveWHYDRA)
 
   // these currencies will match the feeValue{0,1} currencies for the purposes of fee collection
-  const currency0ForFeeCollectionPurposes = pool ? (receiveWETH ? pool.token0 : unwrappedToken(pool.token0)) : undefined
-  const currency1ForFeeCollectionPurposes = pool ? (receiveWETH ? pool.token1 : unwrappedToken(pool.token1)) : undefined
+  const currency0ForFeeCollectionPurposes = pool
+    ? receiveWHYDRA
+      ? pool.token0
+      : unwrappedToken(pool.token0)
+    : undefined
+  const currency1ForFeeCollectionPurposes = pool
+    ? receiveWHYDRA
+      ? pool.token1
+      : unwrappedToken(pool.token1)
+    : undefined
 
   const [collecting, setCollecting] = useState<boolean>(false)
   const [collectMigrationHash, setCollectMigrationHash] = useState<string | null>(null)
@@ -531,7 +539,7 @@ export function PositionPage() {
               <RowFixed>
                 <CurrencyLogo currency={feeValueUpper?.currency} size="20px" style={{ marginRight: '0.5rem' }} />
                 <ThemedText.DeprecatedMain>
-                  {feeValueUpper ? formatCurrencyAmount(feeValueUpper, 4) : '-'}
+                  {feeValueUpper ? formatCurrencyAmount(feeValueUpper, 12) : '-'}
                 </ThemedText.DeprecatedMain>
               </RowFixed>
               <ThemedText.DeprecatedMain>{feeValueUpper?.currency?.symbol}</ThemedText.DeprecatedMain>
@@ -540,7 +548,7 @@ export function PositionPage() {
               <RowFixed>
                 <CurrencyLogo currency={feeValueLower?.currency} size="20px" style={{ marginRight: '0.5rem' }} />
                 <ThemedText.DeprecatedMain>
-                  {feeValueLower ? formatCurrencyAmount(feeValueLower, 4) : '-'}
+                  {feeValueLower ? formatCurrencyAmount(feeValueLower, 12) : '-'}
                 </ThemedText.DeprecatedMain>
               </RowFixed>
               <ThemedText.DeprecatedMain>{feeValueLower?.currency?.symbol}</ThemedText.DeprecatedMain>
@@ -557,7 +565,7 @@ export function PositionPage() {
     )
   }
 
-  const showCollectAsWeth = Boolean(
+  const showCollectAsWhydra = Boolean(
     ownsNFT &&
       (feeValue0?.greaterThan(0) || feeValue1?.greaterThan(0)) &&
       currency0 &&
@@ -814,7 +822,7 @@ export function PositionPage() {
                           </RowFixed>
                           <RowFixed>
                             <ThemedText.DeprecatedMain>
-                              {feeValueUpper ? formatCurrencyAmount(feeValueUpper, 4) : '-'}
+                              {feeValueUpper ? formatCurrencyAmount(feeValueUpper, 12) : '-'}
                             </ThemedText.DeprecatedMain>
                           </RowFixed>
                         </RowBetween>
@@ -829,22 +837,22 @@ export function PositionPage() {
                           </RowFixed>
                           <RowFixed>
                             <ThemedText.DeprecatedMain>
-                              {feeValueLower ? formatCurrencyAmount(feeValueLower, 4) : '-'}
+                              {feeValueLower ? formatCurrencyAmount(feeValueLower, 12) : '-'}
                             </ThemedText.DeprecatedMain>
                           </RowFixed>
                         </RowBetween>
                       </AutoColumn>
                     </LightCard>
-                    {showCollectAsWeth && (
+                    {showCollectAsWhydra && (
                       <AutoColumn gap="md">
                         <RowBetween>
                           <ThemedText.DeprecatedMain>
                             <Trans>Collect as {nativeWrappedSymbol}</Trans>
                           </ThemedText.DeprecatedMain>
                           <Toggle
-                            id="receive-as-weth"
-                            isActive={receiveWETH}
-                            toggle={() => setReceiveWETH((receiveWETH) => !receiveWETH)}
+                            id="receive-as-whydra"
+                            isActive={receiveWHYDRA}
+                            toggle={() => setReceiveWHYDRA((receiveWHYDRA) => !receiveWHYDRA)}
                           />
                         </RowBetween>
                       </AutoColumn>

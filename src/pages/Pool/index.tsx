@@ -8,7 +8,8 @@ import { FlyoutAlignment, Menu } from 'components/Menu'
 import PositionList from 'components/PositionList'
 import { RowBetween, RowFixed } from 'components/Row'
 import { SwitchLocaleLink } from 'components/SwitchLocaleLink'
-import { isSupportedChain } from 'constants/chains'
+import { getChainInfo, HYDRACHAIN_DOCS_URL, IS_PROD } from 'constants/chainInfo'
+import { isSupportedChain, SupportedChainId } from 'constants/chains'
 import { useV3Positions } from 'hooks/useV3Positions'
 import { useMemo } from 'react'
 import { AlertTriangle, BookOpen, ChevronDown, Inbox, PlusCircle } from 'react-feather'
@@ -16,11 +17,10 @@ import { Link } from 'react-router-dom'
 import { useToggleWalletModal } from 'state/application/hooks'
 import { useUserHideClosedPositions } from 'state/user/hooks'
 import styled, { css, useTheme } from 'styled-components/macro'
-import { HideSmall, ThemedText } from 'theme'
+import { ThemedText } from 'theme'
 import { PositionDetails } from 'types/position'
 
 import { V2_FACTORY_ADDRESSES } from '../../constants/addresses'
-import CTACards from './CTACards'
 import { LoadingRows } from './styleds'
 
 const PageWrapper = styled(AutoColumn)`
@@ -162,8 +162,17 @@ function PositionsLoadingPlaceholder() {
   )
 }
 
-function WrongNetworkCard() {
+interface WrongNetworkProps {
+  label: string
+}
+
+// SAMVI Info: Use this to show a card when the user is on the wrong network
+// eslint-disable-next-line import/no-unused-modules
+export function WrongNetworkCard({ label }: WrongNetworkProps) {
   const theme = useTheme()
+  const hydraInfo = getChainInfo(SupportedChainId.HYDRA)
+  const testnetInfo = getChainInfo(SupportedChainId.TESTNET)
+  const devnetInfo = getChainInfo(SupportedChainId.DEVNET)
 
   return (
     <>
@@ -172,7 +181,7 @@ function WrongNetworkCard() {
           <AutoColumn gap="lg" style={{ width: '100%' }}>
             <TitleRow padding="0">
               <ThemedText.LargeHeader>
-                <Trans>Pools</Trans>
+                <Trans>{label}</Trans>
               </ThemedText.LargeHeader>
             </TitleRow>
 
@@ -181,7 +190,10 @@ function WrongNetworkCard() {
                 <ThemedText.DeprecatedBody color={theme.textTertiary} textAlign="center">
                   <NetworkIcon strokeWidth={1.2} />
                   <div data-testid="pools-unsupported-err">
-                    <Trans>Your connected network is unsupported.</Trans>
+                    <Trans>
+                      Your connected network is unsupported. Connect to {hydraInfo.label}
+                      {!IS_PROD && ' or ' + testnetInfo.label + ' or ' + devnetInfo.label}.
+                    </Trans>
                   </div>
                 </ThemedText.DeprecatedBody>
               </ErrorContainer>
@@ -217,7 +229,7 @@ export default function Pool() {
   )
 
   if (!isSupportedChain(chainId)) {
-    return <WrongNetworkCard />
+    return <WrongNetworkCard label="Pools" />
   }
 
   const showConnectAWallet = Boolean(!account)
@@ -234,7 +246,7 @@ export default function Pool() {
       link: '/add/ETH',
       external: false,
     },
-    // SAMI: Disable Migrate and V2 liquidity
+    // SAMVI Unused: Disable Migrate and V2 liquidity
     // {
     //   content: (
     //     <PoolMenuItem>
@@ -262,7 +274,7 @@ export default function Pool() {
           <BookOpen size={16} />
         </PoolMenuItem>
       ),
-      link: 'https://docs.hydrachain.org/',
+      link: HYDRACHAIN_DOCS_URL,
       external: true,
     },
   ]
@@ -311,7 +323,7 @@ export default function Pool() {
                   <ThemedText.DeprecatedBody color={theme.textTertiary} textAlign="center">
                     <InboxIcon strokeWidth={1} style={{ marginTop: '2em' }} />
                     <div>
-                      <Trans>Your active V3 liquidity positions will appear here.</Trans>
+                      <Trans>Your active liquidity positions will appear here.</Trans>
                     </div>
                   </ThemedText.DeprecatedBody>
                   {!showConnectAWallet && closedPositions.length > 0 && (
@@ -340,9 +352,9 @@ export default function Pool() {
                 </ErrorContainer>
               )}
             </MainContentWrapper>
-            <HideSmall>
+            {/* <HideSmall>
               <CTACards />
-            </HideSmall>
+            </HideSmall> */}
           </AutoColumn>
         </AutoColumn>
       </PageWrapper>

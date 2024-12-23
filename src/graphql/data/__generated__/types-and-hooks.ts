@@ -152,6 +152,8 @@ export enum Chain {
   Ethereum = 'ETHEREUM',
   EthereumGoerli = 'ETHEREUM_GOERLI',
   EthereumSepolia = 'ETHEREUM_SEPOLIA',
+  Hydrachain = 'HYDRACHAIN',
+  HydrachainTestnet = 'HYDRACHAIN_TESTNET',
   Optimism = 'OPTIMISM',
   Polygon = 'POLYGON',
   UnknownChain = 'UNKNOWN_CHAIN',

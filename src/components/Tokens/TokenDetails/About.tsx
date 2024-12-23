@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro'
-import { getChainInfo } from 'constants/chainInfo'
+import { getChainInfo, HYDRACHAIN_DEX_INFO_URL } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import { darken } from 'polished'
 import { useState } from 'react'
@@ -108,9 +108,9 @@ export function AboutSection({ address, chainId, description, homepageUrl, twitt
           name={chainId === SupportedChainId.MAINNET ? 'Etherscan' : 'Block Explorer'}
           link={`${baseExplorerUrl}${address === 'NATIVE' ? '' : 'address/' + address}`}
         />
-        <Resource name="More analytics" link={`https://info.uniswap.org/#/tokens/${address}`} />
+        <Resource name="More analytics" link={`${HYDRACHAIN_DEX_INFO_URL}/#/tokens/${address}`} />
         {homepageUrl && <Resource name="Website" link={homepageUrl} />}
-        {twitterName && <Resource name="Twitter" link={`https://twitter.com/${twitterName}`} />}
+        {twitterName && <Resource name="Twitter" link={`https://x.com/${twitterName}`} />}
       </ResourcesContainer>
     </AboutContainer>
   )

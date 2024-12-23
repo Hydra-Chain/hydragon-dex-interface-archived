@@ -1,5 +1,5 @@
 import { useWeb3React } from '@web3-react/core'
-import { getChainInfo } from 'constants/chainInfo'
+import { getChainInfo, IS_PROD } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
 import useSelectChain from 'hooks/useSelectChain'
@@ -19,14 +19,21 @@ import * as styles from './ChainSelector.css'
 import ChainSelectorRow from './ChainSelectorRow'
 import { NavDropdown } from './NavDropdown'
 
-const NETWORK_SELECTOR_CHAINS = [
-  SupportedChainId.MAINNET,
-  SupportedChainId.HYDRA,
-  SupportedChainId.POLYGON,
-  SupportedChainId.OPTIMISM,
-  SupportedChainId.ARBITRUM_ONE,
-  SupportedChainId.CELO,
-]
+// SAMVI Info: Chain selector
+const NETWORK_SELECTOR_CHAINS = IS_PROD
+  ? [SupportedChainId.HYDRA]
+  : [
+      SupportedChainId.HYDRA,
+      SupportedChainId.TESTNET,
+      SupportedChainId.DEVNET,
+      // SupportedChainId.MAINNET,
+      // SupportedChainId.POLYGON,
+      // SupportedChainId.OPTIMISM,
+      // SupportedChainId.ARBITRUM_ONE,
+      // SupportedChainId.CELO,
+    ]
+
+const needSelector = NETWORK_SELECTOR_CHAINS.length > 1
 
 interface ChainSelectorProps {
   leftAlign?: boolean
@@ -66,7 +73,7 @@ export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
 
   const isSupported = !!info
 
-  const dropdown = (
+  const dropdown = needSelector && (
     <NavDropdown top="56" left={leftAlign ? '0' : 'auto'} right={leftAlign ? 'auto' : '0'} ref={modalRef}>
       <Column paddingX="8">
         {NETWORK_SELECTOR_CHAINS.map((chainId: SupportedChainId) => (
@@ -92,10 +99,10 @@ export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
       <Row
         as="button"
         gap="8"
-        className={styles.ChainSelector}
+        className={needSelector ? styles.ChainSelector : styles.ChainSelectorOne}
         background={isOpen ? 'accentActiveSoft' : 'none'}
         data-testid="chain-selector"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => (needSelector ? setIsOpen(!isOpen) : null)}
       >
         {!isSupported ? (
           <>
@@ -112,7 +119,7 @@ export const ChainSelector = ({ leftAlign }: ChainSelectorProps) => {
             </Box>
           </>
         )}
-        {isOpen ? <ChevronUp {...chevronProps} /> : <ChevronDown {...chevronProps} />}
+        {needSelector ? isOpen ? <ChevronUp {...chevronProps} /> : <ChevronDown {...chevronProps} /> : null}
       </Row>
       {isOpen && (isMobile ? <Portal>{dropdown}</Portal> : <>{dropdown}</>)}
     </Box>

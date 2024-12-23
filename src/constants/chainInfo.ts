@@ -1,6 +1,9 @@
+/* eslint-disable import/no-unused-modules */
+import hydraLogoDark from 'assets/hydra/hydra-logo.png'
+import hydraLogoBlue from 'assets/hydra/hydra-logo-blue.png'
+import hydraLogo from 'assets/hydra/hydra-logo-white.png'
 import celoCircleLogoUrl from 'assets/images/celoCircle.png'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
-import hydraLogo from 'assets/images/hydra-logo-white.png'
 import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
 import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'assets/svg/arbitrum_logo.svg'
 import celoLogo from 'assets/svg/celo_logo.svg'
@@ -8,11 +11,45 @@ import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
 import ms from 'ms.macro'
 import { darkTheme } from 'theme/colors'
+import { getEnvironmentVariable } from 'utils/env'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, CELO_LIST, HYDRA_LIST, OPTIMISM_LIST } from './lists'
+import {
+  ARBITRUM_LIST,
+  CELO_LIST,
+  DEVNET_HYDRASWAP_LIST,
+  MAINNET_HYDRASWAP_LIST,
+  OPTIMISM_LIST,
+  TESTNET_HYDRASWAP_LIST,
+} from './lists'
 
-export const AVERAGE_L1_BLOCK_TIME = ms`12s`
+export const AVERAGE_L1_BLOCK_TIME = ms`1s` // SAMVI Update: Update if not correct
+
+export const IS_PROD = getEnvironmentVariable('REACT_APP_ENV') === 'prod'
+
+export const MAINNET_WHYDRA_ADDRESS = getEnvironmentVariable('REACT_APP_MAINNET_WHYDRA_ADDRESS')
+export const MAINNET_EXPLORER = getEnvironmentVariable('REACT_APP_MAINNET_EXPLORER')
+
+export const TESTNET_WHYDRA_ADDRESS = getEnvironmentVariable('REACT_APP_TESTNET_WHYDRA_ADDRESS')
+export const TESTNET_EXPLORER = getEnvironmentVariable('REACT_APP_TESTNET_EXPLORER')
+
+export const DEVNET_WHYDRA_ADDRESS = getEnvironmentVariable('REACT_APP_DEVNET_WHYDRA_ADDRESS')
+export const DEVNET_EXPLORER = getEnvironmentVariable('REACT_APP_DEVNET_EXPLORER')
+
+export const HYDRACHAIN_DEX_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEX_URL')
+export const HYDRACHAIN_DEX_INFO_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEX_INFO_URL')
+
+export const HYDRACHAIN_DOCS_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DOCS_URL')
+export const HYDRACHAIN_INFO_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_INFO_URL')
+export const HYDRACHAIN_WEB_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_WEB_URL')
+export const HYDRACHAIN_DEVELOPERS_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEVELOPERS_URL')
+export const HYDRACHAIN_CONTACT_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_CONTACT_URL')
+export const HYDRACHAIN_GITHUB_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_GITHUB_URL')
+export const HYDRACHAIN_X_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_X_URL')
+export const HYDRACHAIN_TELEGRAM_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_TELEGRAM_URL')
+export const HYDRACHAIN_PRIVACY_POLICY_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_PRIVACY_POLICY_URL')
+export const HYDRACHAIN_BLOG_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_BLOG_URL')
+export const HYDRACHAIN_DAO_URL = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DAO_URL')
 
 export enum NetworkType {
   L1,
@@ -41,6 +78,7 @@ interface BaseChainInfo {
 interface L1ChainInfo extends BaseChainInfo {
   readonly networkType: NetworkType.L1
   readonly defaultListUrl?: string
+  readonly label: string
 }
 
 export interface L2ChainInfo extends BaseChainInfo {
@@ -48,16 +86,15 @@ export interface L2ChainInfo extends BaseChainInfo {
   readonly bridge: string
   readonly statusPage?: string
   readonly defaultListUrl: string
+  readonly label: string
 }
 
-type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo } & {
-  readonly [chainId in SupportedL2ChainId]: L2ChainInfo
-} & { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
+type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo }
 
 const CHAIN_INFO: ChainInfoMap = {
   [SupportedChainId.MAINNET]: {
     networkType: NetworkType.L1,
-    docs: 'https://docs.uniswap.org/',
+    docs: HYDRACHAIN_DOCS_URL,
     explorer: 'https://etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/',
     label: 'Ethereum',
@@ -65,24 +102,51 @@ const CHAIN_INFO: ChainInfoMap = {
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: darkTheme.chain_1,
   },
+  // SAMVI Info: Chain info for each chain
   [SupportedChainId.HYDRA]: {
     networkType: NetworkType.L1,
-    docs: 'https://docs.hydrachain.org/',
-    explorer: 'https://hydragon.hydrachain.org/',
-    infoLink: 'https://medium.com/hydra-chain/revealing-hydragon-engine-first-dao-proposal-hip-1-19f05d85bde8/',
-    label: 'Hydra',
-    logoUrl: hydraLogo,
+    docs: HYDRACHAIN_DOCS_URL,
+    explorer: MAINNET_EXPLORER,
+    infoLink: HYDRACHAIN_INFO_URL,
+    label: 'Hydra Chain',
+    logoUrl: hydraLogoBlue,
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra', symbol: 'HYDRA', decimals: 18 },
-    defaultListUrl: HYDRA_LIST,
+    defaultListUrl: MAINNET_HYDRASWAP_LIST,
+    color: darkTheme.chain_137,
+    backgroundColor: darkTheme.chain_137_background,
+  },
+  [SupportedChainId.TESTNET]: {
+    networkType: NetworkType.L1,
+    docs: HYDRACHAIN_DOCS_URL,
+    explorer: TESTNET_EXPLORER,
+    infoLink: HYDRACHAIN_INFO_URL,
+    label: 'Hydra Chain Testnet',
+    logoUrl: hydraLogo,
+    circleLogoUrl: polygonCircleLogoUrl,
+    nativeCurrency: { name: 'Hydra Testnet', symbol: 'tHYDRA', decimals: 18 },
+    defaultListUrl: TESTNET_HYDRASWAP_LIST,
+    color: darkTheme.chain_137,
+    backgroundColor: darkTheme.chain_137_background,
+  },
+  [SupportedChainId.DEVNET]: {
+    networkType: NetworkType.L1,
+    docs: HYDRACHAIN_DOCS_URL,
+    explorer: DEVNET_EXPLORER,
+    infoLink: HYDRACHAIN_INFO_URL,
+    label: 'Hydra Chain Devnet',
+    logoUrl: hydraLogoDark,
+    circleLogoUrl: polygonCircleLogoUrl,
+    nativeCurrency: { name: 'Hydra Devnet', symbol: 'dHYDRA', decimals: 18 },
+    defaultListUrl: DEVNET_HYDRASWAP_LIST,
     color: darkTheme.chain_137,
     backgroundColor: darkTheme.chain_137_background,
   },
   [SupportedChainId.RINKEBY]: {
     networkType: NetworkType.L1,
-    docs: 'https://docs.uniswap.org/',
+    docs: HYDRACHAIN_DOCS_URL,
     explorer: 'https://rinkeby.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
+    infoLink: HYDRACHAIN_DEX_INFO_URL,
     label: 'Rinkeby',
     logoUrl: ethereumLogoUrl,
     nativeCurrency: { name: 'Rinkeby Ether', symbol: 'rETH', decimals: 18 },
@@ -90,9 +154,9 @@ const CHAIN_INFO: ChainInfoMap = {
   },
   [SupportedChainId.ROPSTEN]: {
     networkType: NetworkType.L1,
-    docs: 'https://docs.uniswap.org/',
+    docs: HYDRACHAIN_DOCS_URL,
     explorer: 'https://ropsten.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
+    infoLink: HYDRACHAIN_DEX_INFO_URL,
     label: 'Ropsten',
     logoUrl: ethereumLogoUrl,
     nativeCurrency: { name: 'Ropsten Ether', symbol: 'ropETH', decimals: 18 },
@@ -100,9 +164,9 @@ const CHAIN_INFO: ChainInfoMap = {
   },
   [SupportedChainId.KOVAN]: {
     networkType: NetworkType.L1,
-    docs: 'https://docs.uniswap.org/',
+    docs: HYDRACHAIN_DOCS_URL,
     explorer: 'https://kovan.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
+    infoLink: HYDRACHAIN_DEX_INFO_URL,
     label: 'Kovan',
     logoUrl: ethereumLogoUrl,
     nativeCurrency: { name: 'Kovan Ether', symbol: 'kovETH', decimals: 18 },
@@ -110,9 +174,9 @@ const CHAIN_INFO: ChainInfoMap = {
   },
   [SupportedChainId.GOERLI]: {
     networkType: NetworkType.L1,
-    docs: 'https://docs.uniswap.org/',
+    docs: HYDRACHAIN_DOCS_URL,
     explorer: 'https://goerli.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
+    infoLink: HYDRACHAIN_DEX_INFO_URL,
     label: 'Görli',
     logoUrl: ethereumLogoUrl,
     nativeCurrency: { name: 'Görli Ether', symbol: 'görETH', decimals: 18 },
@@ -125,13 +189,13 @@ const CHAIN_INFO: ChainInfoMap = {
     defaultListUrl: OPTIMISM_LIST,
     docs: 'https://optimism.io/',
     explorer: 'https://optimistic.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/optimism/',
+    infoLink: `${HYDRACHAIN_DEX_INFO_URL}/#/optimism/`,
     label: 'Optimism',
     logoUrl: optimismLogoUrl,
     // Optimism perfers same icon for both
     circleLogoUrl: optimismLogoUrl,
     statusPage: 'https://optimism.io/status',
-    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
+    helpCenterUrl: HYDRACHAIN_CONTACT_URL,
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: darkTheme.chain_10,
     backgroundColor: darkTheme.chain_10_background,
@@ -143,11 +207,11 @@ const CHAIN_INFO: ChainInfoMap = {
     defaultListUrl: OPTIMISM_LIST,
     docs: 'https://optimism.io/',
     explorer: 'https://goerli-optimism.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/optimism/',
+    infoLink: `${HYDRACHAIN_DEX_INFO_URL}/#/optimism/`,
     label: 'Optimism Görli',
     logoUrl: optimismLogoUrl,
     statusPage: 'https://optimism.io/status',
-    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
+    helpCenterUrl: HYDRACHAIN_CONTACT_URL,
     nativeCurrency: { name: 'Optimism Goerli Ether', symbol: 'görOpETH', decimals: 18 },
     color: darkTheme.chain_420,
   },
@@ -157,12 +221,12 @@ const CHAIN_INFO: ChainInfoMap = {
     bridge: 'https://bridge.arbitrum.io/',
     docs: 'https://offchainlabs.com/',
     explorer: 'https://arbiscan.io/',
-    infoLink: 'https://info.uniswap.org/#/arbitrum',
+    infoLink: `${HYDRACHAIN_DEX_INFO_URL}/#/arbitrum`,
     label: 'Arbitrum',
     logoUrl: arbitrumLogoUrl,
     circleLogoUrl: arbitrumCircleLogoUrl,
     defaultListUrl: ARBITRUM_LIST,
-    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
+    helpCenterUrl: HYDRACHAIN_CONTACT_URL,
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: darkTheme.chain_42,
     backgroundColor: darkTheme.chain_42161_background,
@@ -173,11 +237,11 @@ const CHAIN_INFO: ChainInfoMap = {
     bridge: 'https://bridge.arbitrum.io/',
     docs: 'https://offchainlabs.com/',
     explorer: 'https://rinkeby-explorer.arbitrum.io/',
-    infoLink: 'https://info.uniswap.org/#/arbitrum/',
+    infoLink: `${HYDRACHAIN_DEX_INFO_URL}/#/arbitrum/`,
     label: 'Arbitrum Rinkeby',
     logoUrl: arbitrumLogoUrl,
     defaultListUrl: ARBITRUM_LIST,
-    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
+    helpCenterUrl: HYDRACHAIN_CONTACT_URL,
     nativeCurrency: { name: 'Rinkeby Arbitrum Ether', symbol: 'rinkArbETH', decimals: 18 },
     color: darkTheme.chain_421611,
   },
@@ -187,7 +251,7 @@ const CHAIN_INFO: ChainInfoMap = {
     bridge: 'https://wallet.polygon.technology/login',
     docs: 'https://polygon.io/',
     explorer: 'https://polygonscan.com/',
-    infoLink: 'https://info.uniswap.org/#/polygon/',
+    infoLink: `${HYDRACHAIN_DEX_INFO_URL}/#/polygon/`,
     label: 'Polygon',
     logoUrl: polygonMaticLogo,
     circleLogoUrl: polygonCircleLogoUrl,
@@ -201,7 +265,7 @@ const CHAIN_INFO: ChainInfoMap = {
     bridge: 'https://wallet.polygon.technology/bridge',
     docs: 'https://polygon.io/',
     explorer: 'https://mumbai.polygonscan.com/',
-    infoLink: 'https://info.uniswap.org/#/polygon/',
+    infoLink: `${HYDRACHAIN_DEX_INFO_URL}/#/polygon/`,
     label: 'Polygon Mumbai',
     logoUrl: polygonMaticLogo,
     nativeCurrency: { name: 'Polygon Mumbai Matic', symbol: 'mMATIC', decimals: 18 },
@@ -212,7 +276,7 @@ const CHAIN_INFO: ChainInfoMap = {
     bridge: 'https://www.portalbridge.com/#/transfer',
     docs: 'https://docs.celo.org/',
     explorer: 'https://celoscan.io/',
-    infoLink: 'https://info.uniswap.org/#/celo',
+    infoLink: `${HYDRACHAIN_DEX_INFO_URL}/#/celo`,
     label: 'Celo',
     logoUrl: celoLogo,
     circleLogoUrl: celoCircleLogoUrl,
@@ -225,7 +289,7 @@ const CHAIN_INFO: ChainInfoMap = {
     bridge: 'https://www.portalbridge.com/#/transfer',
     docs: 'https://docs.celo.org/',
     explorer: 'https://alfajores-blockscout.celo-testnet.org/',
-    infoLink: 'https://info.uniswap.org/#/celo',
+    infoLink: `${HYDRACHAIN_DEX_INFO_URL}/#/celo`,
     label: 'Celo Alfajores',
     logoUrl: celoLogo,
     nativeCurrency: { name: 'Celo', symbol: 'CELO', decimals: 18 },

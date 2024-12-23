@@ -9,7 +9,7 @@ import { LoadingOpacityContainer, loadingOpacityMixin } from 'components/Loader/
 import CurrencyLogo from 'components/Logo/CurrencyLogo'
 import { isSupportedChain } from 'constants/chains'
 import { darken } from 'polished'
-import { ReactNode, useCallback, useEffect, useState } from 'react'
+import { ReactNode, useCallback, useState } from 'react'
 import { Lock } from 'react-feather'
 import styled, { useTheme } from 'styled-components/macro'
 import { flexColumnNoWrap, flexRowNoWrap } from 'theme/styles'
@@ -23,7 +23,6 @@ import DoubleCurrencyLogo from '../DoubleLogo'
 import { Input as NumericalInput } from '../NumericalInput'
 import { RowBetween, RowFixed } from '../Row'
 import CurrencySearchModal from '../SearchModal/CurrencySearchModal'
-import { FiatValue } from './FiatValue'
 
 const InputPanel = styled.div<{ hideInput?: boolean }>`
   ${flexColumnNoWrap};
@@ -219,7 +218,10 @@ export default function SwapCurrencyInputPanel({
   showCurrencyAmount,
   disableNonToken,
   renderBalance,
+  // Hydra TODO: Delete eslint comment when vars are used
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   fiatValue,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   priceImpact,
   hideBalance = false,
   pair = null, // used for double token logo
@@ -229,7 +231,7 @@ export default function SwapCurrencyInputPanel({
   ...rest
 }: SwapCurrencyInputPanelProps) {
   const [modalOpen, setModalOpen] = useState(false)
-  const [fiatValueIsLoading, setFiatValueIsLoading] = useState(false)
+  // const [fiatValueIsLoading, setFiatValueIsLoading] = useState(false)
   const { account, chainId } = useWeb3React()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
   const theme = useTheme()
@@ -240,9 +242,10 @@ export default function SwapCurrencyInputPanel({
 
   const chainAllowed = isSupportedChain(chainId)
 
-  useEffect(() => {
-    !!value && !fiatValue ? setFiatValueIsLoading(true) : setFiatValueIsLoading(false)
-  }, [fiatValueIsLoading, value, fiatValue])
+  // Hydra TODO: Check how to fetch fiat value
+  // useEffect(() => {
+  //   !!value && !fiatValue ? setFiatValueIsLoading(true) : setFiatValueIsLoading(false)
+  // }, [fiatValueIsLoading, value, fiatValue])
 
   return (
     <InputPanel id={id} hideInput={hideInput} {...rest}>
@@ -311,7 +314,8 @@ export default function SwapCurrencyInputPanel({
           <FiatRow>
             <RowBetween>
               <LoadingOpacityContainer $loading={loading}>
-                <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} isLoading={fiatValueIsLoading} />
+                {/* Hydra TODO: Check how to fetch fiat value */}
+                {/* <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} isLoading={fiatValueIsLoading} /> */}
               </LoadingOpacityContainer>
               {account ? (
                 <RowFixed style={{ height: '17px' }}>
@@ -325,7 +329,7 @@ export default function SwapCurrencyInputPanel({
                       renderBalance ? (
                         renderBalance(selectedCurrencyBalance)
                       ) : (
-                        <Trans>Balance: {formatCurrencyAmount(selectedCurrencyBalance, 4)}</Trans>
+                        <Trans>Balance: {formatCurrencyAmount(selectedCurrencyBalance, 12)}</Trans>
                       )
                     ) : null}
                   </ThemedText.DeprecatedBody>

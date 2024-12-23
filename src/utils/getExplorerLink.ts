@@ -1,8 +1,13 @@
+import { DEVNET_EXPLORER, MAINNET_EXPLORER, TESTNET_EXPLORER } from 'constants/chainInfo'
+
 import { SupportedChainId } from '../constants/chains'
 
 const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
+  // SAMVI Info: Explorer links to different chains
   [SupportedChainId.MAINNET]: 'https://etherscan.io',
-  [SupportedChainId.HYDRA]: 'https://hydragon.hydrachain.org',
+  [SupportedChainId.HYDRA]: MAINNET_EXPLORER,
+  [SupportedChainId.TESTNET]: TESTNET_EXPLORER,
+  [SupportedChainId.DEVNET]: DEVNET_EXPLORER,
   [SupportedChainId.ROPSTEN]: 'https://ropsten.etherscan.io',
   [SupportedChainId.RINKEBY]: 'https://rinkeby.etherscan.io',
   [SupportedChainId.GOERLI]: 'https://goerli.etherscan.io',

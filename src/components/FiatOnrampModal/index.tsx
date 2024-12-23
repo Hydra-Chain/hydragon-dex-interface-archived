@@ -1,5 +1,6 @@
 import { Trans } from '@lingui/macro'
 import { useWeb3React } from '@web3-react/core'
+import { HYDRACHAIN_DEX_URL } from 'constants/chainInfo'
 import { useCallback, useEffect, useState } from 'react'
 import { useCloseModal, useModalIsOpen } from 'state/application/hooks'
 import { ApplicationModal } from 'state/application/reducer'
@@ -91,8 +92,8 @@ export default function FiatOnrampModal() {
         method: 'POST',
         body: JSON.stringify({
           colorCode: theme.accentAction,
-          defaultCurrencyCode: 'eth',
-          redirectUrl: 'https://app.uniswap.org/#/swap',
+          defaultCurrencyCode: 'hydra',
+          redirectUrl: `${HYDRACHAIN_DEX_URL}/#/swap`,
           walletAddresses: JSON.stringify(
             MOONPAY_SUPPORTED_CURRENCY_CODES.reduce(
               (acc, currencyCode) => ({

@@ -16,8 +16,8 @@ import ERC20_ABI from 'abis/erc20.json'
 import ERC20_BYTES32_ABI from 'abis/erc20_bytes32.json'
 import ERC721_ABI from 'abis/erc721.json'
 import ERC1155_ABI from 'abis/erc1155.json'
-import { ArgentWalletDetector, EnsPublicResolver, EnsRegistrar, Erc20, Erc721, Erc1155, Weth } from 'abis/types'
-import WETH_ABI from 'abis/weth.json'
+import { ArgentWalletDetector, EnsPublicResolver, EnsRegistrar, Erc20, Erc721, Erc1155, Whydra } from 'abis/types'
+import WHYDRA_ABI from 'abis/whydra.json'
 import {
   ARGENT_WALLET_DETECTOR_ADDRESS,
   ENS_REGISTRAR_ADDRESSES,
@@ -75,11 +75,11 @@ export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: b
   return useContract<Erc20>(tokenAddress, ERC20_ABI, withSignerIfPossible)
 }
 
-export function useWETHContract(withSignerIfPossible?: boolean) {
+export function useWHYDRAContract(withSignerIfPossible?: boolean) {
   const { chainId } = useWeb3React()
-  return useContract<Weth>(
+  return useContract<Whydra>(
     chainId ? WRAPPED_NATIVE_CURRENCY[chainId]?.address : undefined,
-    WETH_ABI,
+    WHYDRA_ABI,
     withSignerIfPossible
   )
 }

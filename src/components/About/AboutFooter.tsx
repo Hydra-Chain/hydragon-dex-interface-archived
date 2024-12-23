@@ -1,12 +1,20 @@
 import { TraceEvent } from '@uniswap/analytics'
 import { BrowserEvent, InterfaceElementName, SharedEventName } from '@uniswap/analytics-events'
+import {
+  HYDRACHAIN_BLOG_URL,
+  HYDRACHAIN_DAO_URL,
+  HYDRACHAIN_DEVELOPERS_URL,
+  HYDRACHAIN_GITHUB_URL,
+  HYDRACHAIN_WEB_URL,
+  HYDRACHAIN_X_URL,
+} from 'constants/chainInfo'
 import { useIsDarkMode } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 import { BREAKPOINTS, ExternalLink, StyledRouterLink } from 'theme'
 
-import { DiscordIcon, GithubIcon, TwitterIcon } from './Icons'
-import darkUnicornImgSrc from './images/unicornEmbossDark.png'
-import lightUnicornImgSrc from './images/unicornEmbossLight.png'
+import HydraLogoDark from '../../assets/hydra/hydra-logo.png'
+import HydraLogo from '../../assets/hydra/hydra-logo-white.png'
+import { GithubIcon, TwitterIcon } from './Icons'
 
 const Footer = styled.div`
   display: flex;
@@ -110,28 +118,30 @@ const Copyright = styled.span`
 `
 
 const LogoSectionContent = () => {
+  // SAMVI Update: add this when we have theme feature
   const isDarkMode = useIsDarkMode()
   return (
     <>
-      <StyledLogo src={isDarkMode ? darkUnicornImgSrc : lightUnicornImgSrc} alt="Uniswap Logo" />
+      <StyledLogo src={isDarkMode ? HydraLogo : HydraLogoDark} alt="Hydra Chain Logo" />
       <SocialLinks>
-        <SocialLink href="https://discord.gg/FCfyBSbCU5" target="_blank" rel="noopener noreferrer">
+        {/* Hydra: We do not use discord, but in the future we can replace with telegram link */}
+        {/* <SocialLink href="https://discord.gg/FCfyBSbCU5" target="_blank" rel="noopener noreferrer">
           <DiscordIcon size={32} />
-        </SocialLink>
+        </SocialLink> */}
         <TraceEvent
           events={[BrowserEvent.onClick]}
           name={SharedEventName.ELEMENT_CLICKED}
           element={InterfaceElementName.TWITTER_LINK}
         >
-          <SocialLink href="https://twitter.com/uniswap" target="_blank" rel="noopener noreferrer">
+          <SocialLink href={HYDRACHAIN_X_URL} target="_blank" rel="noopener noreferrer">
             <TwitterIcon size={32} />
           </SocialLink>
         </TraceEvent>
-        <SocialLink href="https://github.com/Uniswap" target="_blank" rel="noopener noreferrer">
+        <SocialLink href={HYDRACHAIN_GITHUB_URL} target="_blank" rel="noopener noreferrer">
           <GithubIcon size={32} />
         </SocialLink>
       </SocialLinks>
-      <Copyright>© {new Date().getFullYear()} Uniswap Labs</Copyright>
+      <Copyright>© {new Date().getFullYear()} Hydra Chain</Copyright>
     </>
   )
 }
@@ -147,15 +157,15 @@ export const AboutFooter = () => {
         <LinkGroup>
           <LinkGroupTitle>App</LinkGroupTitle>
           <TextLink to="/swap">Swap</TextLink>
-          <TextLink to="/tokens">Tokens</TextLink>
-          <TextLink to="/nfts">NFTs</TextLink>
+          {/* <TextLink to="/tokens">Tokens</TextLink>
+          <TextLink to="/nfts">NFTs</TextLink> */}
           <TextLink to="/pool">Pools</TextLink>
         </LinkGroup>
         <LinkGroup>
           <LinkGroupTitle>Protocol</LinkGroupTitle>
-          <ExternalTextLink href="https://uniswap.org/community">Community</ExternalTextLink>
-          <ExternalTextLink href="https://uniswap.org/governance">Governance</ExternalTextLink>
-          <ExternalTextLink href="https://uniswap.org/developers">Developers</ExternalTextLink>
+          {/* <ExternalTextLink href="https://uniswap.org/community">Community</ExternalTextLink> */}
+          <ExternalTextLink href={HYDRACHAIN_DAO_URL}>Governance</ExternalTextLink>
+          <ExternalTextLink href={HYDRACHAIN_DEVELOPERS_URL}>Developers</ExternalTextLink>
         </LinkGroup>
         <LinkGroup>
           <LinkGroupTitle>Company</LinkGroupTitle>
@@ -164,17 +174,19 @@ export const AboutFooter = () => {
             name={SharedEventName.ELEMENT_CLICKED}
             element={InterfaceElementName.CAREERS_LINK}
           >
-            <ExternalTextLink href="https://boards.greenhouse.io/uniswaplabs">Careers</ExternalTextLink>
+            {/* <ExternalTextLink href="https://boards.greenhouse.io/uniswaplabs">Careers</ExternalTextLink> */}
           </TraceEvent>
           <TraceEvent
             events={[BrowserEvent.onClick]}
             name={SharedEventName.ELEMENT_CLICKED}
             element={InterfaceElementName.BLOG_LINK}
           >
-            <ExternalTextLink href="https://uniswap.org/blog">Blog</ExternalTextLink>
+            <ExternalTextLink href={HYDRACHAIN_WEB_URL}>Site</ExternalTextLink>
+            <ExternalTextLink href={HYDRACHAIN_BLOG_URL}>Blog</ExternalTextLink>
           </TraceEvent>
         </LinkGroup>
-        <LinkGroup>
+        {/* SAMVI Update: Update when able to */}
+        {/* <LinkGroup>
           <LinkGroupTitle>Get Help</LinkGroupTitle>
           <TraceEvent
             events={[BrowserEvent.onClick]}
@@ -196,7 +208,7 @@ export const AboutFooter = () => {
           >
             <ExternalTextLink href="https://support.uniswap.org/hc/en-us">Help Center</ExternalTextLink>
           </TraceEvent>
-        </LinkGroup>
+        </LinkGroup> */}
       </FooterLinks>
 
       <LogoSectionBottom>

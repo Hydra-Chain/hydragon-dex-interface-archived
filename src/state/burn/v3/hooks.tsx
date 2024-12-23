@@ -19,7 +19,7 @@ export function useBurnV3State(): AppState['burnV3'] {
 
 export function useDerivedV3BurnInfo(
   position?: PositionDetails,
-  asWETH = false
+  asWHYDRA = false
 ): {
   position?: Position
   liquidityPercentage?: Percent
@@ -62,14 +62,14 @@ export function useDerivedV3BurnInfo(
 
   const liquidityValue0 =
     token0 && discountedAmount0
-      ? CurrencyAmount.fromRawAmount(asWETH ? token0 : unwrappedToken(token0), discountedAmount0)
+      ? CurrencyAmount.fromRawAmount(asWHYDRA ? token0 : unwrappedToken(token0), discountedAmount0)
       : undefined
   const liquidityValue1 =
     token1 && discountedAmount1
-      ? CurrencyAmount.fromRawAmount(asWETH ? token1 : unwrappedToken(token1), discountedAmount1)
+      ? CurrencyAmount.fromRawAmount(asWHYDRA ? token1 : unwrappedToken(token1), discountedAmount1)
       : undefined
 
-  const [feeValue0, feeValue1] = useV3PositionFees(pool ?? undefined, position?.tokenId, asWETH)
+  const [feeValue0, feeValue1] = useV3PositionFees(pool ?? undefined, position?.tokenId, asWHYDRA)
 
   const outOfRange =
     pool && position ? pool.tickCurrent < position.tickLower || pool.tickCurrent > position.tickUpper : false

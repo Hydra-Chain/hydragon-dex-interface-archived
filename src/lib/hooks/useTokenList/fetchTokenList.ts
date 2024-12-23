@@ -48,6 +48,7 @@ export default async function fetchTokenList(
     const isLast = i === urls.length - 1
     let response
     try {
+      // response = await fetch(url, { credentials: 'omit', mode: 'no-cors' }) // SAMVI Info, was mode: 'no-cors' from VITO , but break list fetching
       response = await fetch(url, { credentials: 'omit' })
     } catch (error) {
       const message = `failed to fetch list: ${listUrl}`

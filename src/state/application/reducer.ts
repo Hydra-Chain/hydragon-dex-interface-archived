@@ -35,6 +35,7 @@ export enum ApplicationModal {
   VOTE,
   WALLET,
   WALLET_DROPDOWN,
+  HYDRADEX_NFT_AIRDROP_CLAIM_ADDRESS,
   UNISWAP_NFT_AIRDROP_CLAIM,
 }
 
@@ -58,9 +59,10 @@ const applicationSlice = createSlice({
   name: 'application',
   initialState,
   reducers: {
-    setFiatOnrampAvailability(state, { payload: available }) {
-      state.fiatOnramp = { available, availabilityChecked: true }
-    },
+    // SAMVI Unused: setFiatOnrampAvailability is not used currently
+    // setFiatOnrampAvailability(state, { payload: available }) {
+    //   state.fiatOnramp = { available, availabilityChecked: true }
+    // },
     updateChainId(state, action) {
       const { chainId } = action.payload
       state.chainId = chainId
@@ -88,6 +90,8 @@ const applicationSlice = createSlice({
   },
 })
 
-export const { updateChainId, setFiatOnrampAvailability, setOpenModal, addPopup, removePopup } =
-  applicationSlice.actions
+// SAMVI Unused: setFiatOnrampAvailability is not used currently
+// export const { updateChainId, setFiatOnrampAvailability, setOpenModal, addPopup, removePopup } =
+//   applicationSlice.actions
+export const { updateChainId, setOpenModal, addPopup, removePopup } = applicationSlice.actions
 export default applicationSlice.reducer

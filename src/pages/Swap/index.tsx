@@ -28,6 +28,7 @@ import { useSwapCallback } from 'hooks/useSwapCallback'
 import useTransactionDeadline from 'hooks/useTransactionDeadline'
 import JSBI from 'jsbi'
 import { formatSwapQuoteReceivedEventProperties } from 'lib/utils/analytics'
+import { WrongNetworkCard } from 'pages/Pool'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ReactNode } from 'react'
 import { ArrowDown, CheckCircle, HelpCircle, Info } from 'react-feather'
@@ -550,6 +551,10 @@ export default function Swap({ className }: { className?: string }) {
     !showWrap && userHasSpecifiedInputOutput && (trade || routeIsLoading || routeIsSyncing)
   )
 
+  if (!isSupportedChain(chainId)) {
+    return <WrongNetworkCard label="Swap" />
+  }
+
   return (
     <Trace page={InterfacePageName.SWAP_PAGE} shouldLogImpression>
       <>
@@ -747,7 +752,7 @@ export default function Swap({ className }: { className?: string }) {
                               </ThemedText.SubHeader>
                             ) : (
                               <ThemedText.SubHeader width="100%" textAlign="center" color="white">
-                                <Trans>Allow the Uniswap Protocol to use your {currencies[Field.INPUT]?.symbol}</Trans>
+                                <Trans>Allow the HydraDex Protocol to use your {currencies[Field.INPUT]?.symbol}</Trans>
                               </ThemedText.SubHeader>
                             )}
 
@@ -760,7 +765,7 @@ export default function Swap({ className }: { className?: string }) {
                               <MouseoverTooltip
                                 text={
                                   <Trans>
-                                    You must give the Uniswap smart contracts permission to use your{' '}
+                                    You must give the HydraDex smart contracts permission to use your{' '}
                                     {currencies[Field.INPUT]?.symbol}. You only have to do this once per token.
                                   </Trans>
                                 }
@@ -830,7 +835,7 @@ export default function Swap({ className }: { className?: string }) {
                             <MouseoverTooltip
                               text={
                                 <Trans>
-                                  Permission is required for Uniswap to swap each token. This will expire after one
+                                  Permission is required for HydraDex to swap each token. This will expire after one
                                   month for your security.
                                 </Trans>
                               }

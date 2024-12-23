@@ -19,6 +19,7 @@ function getDeprecatedTheme(darkMode: boolean) {
     deprecated_advancedBG: darkMode ? opacify(10, colors.black) : opacify(60, colors.white),
 
     //primary colors
+    // SAMVI Style: Change pink with something else if needed
     deprecated_primary2: darkMode ? colors.blue400 : colors.pink300,
     deprecated_primary3: darkMode ? colors.blue300 : colors.pink200,
     deprecated_primary4: darkMode ? '#376bad70' : '#F6DDE8',

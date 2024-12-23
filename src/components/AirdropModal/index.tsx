@@ -6,7 +6,8 @@ import airdropBackgroundv2 from 'assets/images/airdopBackground.png'
 import { ButtonEmphasis, ButtonSize, ThemeButton } from 'components/Button'
 import { OpacityHoverState } from 'components/Common'
 import Loader from 'components/Loader'
-import { UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS } from 'constants/addresses'
+import { HYDRADEX_NFT_AIRDROP_CLAIM_ADDRESS } from 'constants/addresses'
+import { HYDRACHAIN_WEB_URL } from 'constants/chainInfo'
 import { useContract } from 'hooks/useContract'
 import { ChevronRightIcon } from 'nft/components/icons'
 import { useIsNftClaimAvailable } from 'nft/hooks/useIsNftClaimAvailable'
@@ -191,7 +192,7 @@ const AirdropModal = () => {
   const [totalAmount, setTotalAmount] = useState(0)
   const isOpen = useModalIsOpen(ApplicationModal.UNISWAP_NFT_AIRDROP_CLAIM)
   const usdcAirdropToggle = useToggleModal(ApplicationModal.UNISWAP_NFT_AIRDROP_CLAIM)
-  const contract = useContract(UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS, uniswapNftAirdropClaim)
+  const contract = useContract(HYDRADEX_NFT_AIRDROP_CLAIM_ADDRESS, uniswapNftAirdropClaim)
 
   const displayError = () => {
     setIsSubmitting(false)
@@ -275,7 +276,7 @@ const AirdropModal = () => {
               <ImageContainer>
                 <TextContainer>
                   <SyledCloseIcon onClick={usdcAirdropToggle} stroke="white" />
-                  <MainHeader>Uniswap NFT Airdrop</MainHeader>
+                  <MainHeader>HydraDex NFT Airdrop</MainHeader>
                   <USDCLabel>{totalAmount} USDC</USDCLabel>
                   <Line />
                   <RewardsDetailsContainer>
@@ -302,8 +303,8 @@ const AirdropModal = () => {
                   As a long time supporter of Genie, you’ve been awarded {totalAmount} USDC tokens.
                 </RewardsInformationText>
                 <ReactLinkWrap>
-                  <LinkWrap href="https://uniswap.org/blog/uniswap-nft-aggregator-announcement" target="_blank">
-                    <ThemedText.Link>Read more about Uniswap NFT.</ThemedText.Link>
+                  <LinkWrap href={HYDRACHAIN_WEB_URL} target="_blank">
+                    <ThemedText.Link>Read more about HydraDex NFT.</ThemedText.Link>
                   </LinkWrap>
                 </ReactLinkWrap>
 
@@ -332,4 +333,6 @@ const AirdropModal = () => {
   )
 }
 
+// Hydra: Not used
+// eslint-disable-next-line import/no-unused-modules
 export default AirdropModal

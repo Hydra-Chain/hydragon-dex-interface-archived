@@ -14,6 +14,8 @@ import {
   getIsInjected,
   getIsMetaMaskWallet,
 } from 'connection/utils'
+import { HYDRACHAIN_PRIVACY_POLICY_URL, IS_PROD } from 'constants/chainInfo'
+import { SupportedChainId } from 'constants/chains'
 import usePrevious from 'hooks/usePrevious'
 import { useCallback, useEffect, useState } from 'react'
 import { ArrowLeft } from 'react-feather'
@@ -24,6 +26,7 @@ import { updateSelectedWallet } from 'state/user/reducer'
 import { useConnectedWallets } from 'state/wallets/hooks'
 import styled from 'styled-components/macro'
 import { flexColumnNoWrap, flexRowNoWrap } from 'theme/styles'
+import { switchChain } from 'utils/switchChain'
 import { isMobile } from 'utils/userAgent'
 
 import { ReactComponent as Close } from '../../assets/images/x.svg'
@@ -202,7 +205,17 @@ export default function WalletModal({
 
   // Keep the network connector in sync with any active user connector to prevent chain-switching on wallet disconnection.
   useEffect(() => {
-    if (chainId && connector !== networkConnection.connector) {
+    if (!chainId) return
+    // SAMVI Info: Auto switch network to hydra (testnet if not prod)
+    if (IS_PROD && chainId != SupportedChainId.HYDRA) {
+      switchChain(connector, SupportedChainId.HYDRA)
+    } else if (
+      chainId != SupportedChainId.HYDRA &&
+      chainId != SupportedChainId.TESTNET &&
+      chainId != SupportedChainId.DEVNET
+    ) {
+      switchChain(connector, SupportedChainId.TESTNET)
+    } else if (connector !== networkConnection.connector) {
       networkConnection.connector.activate(chainId)
     }
   }, [chainId, connector])
@@ -260,6 +273,7 @@ export default function WalletModal({
     const isMetaMaskBrowser = isMobile && hasMetaMaskExtension
     const isInjectedMobileBrowser = isCoinbaseWalletBrowser || isMetaMaskBrowser
 
+    // SAMVI Todo: Add metamask for mobile
     let injectedOption
     if (!isInjected) {
       if (!isMobile) {
@@ -329,9 +343,10 @@ export default function WalletModal({
 
       const content = (
         <Trans>
-          By connecting a wallet, you agree to Uniswap Labs’{' '}
-          <ExternalLink href="https://uniswap.org/terms-of-service/">Terms of Service</ExternalLink> and consent to its{' '}
-          <ExternalLink href="https://uniswap.org/privacy-policy">Privacy Policy</ExternalLink>.
+          By connecting a wallet, you agree to Hydra DAO Foundation{' '}
+          {/* SAMVI Update: updated privacy policy and removed terms of service for now */}
+          {/* <ExternalLink href="https://uniswap.org/terms-of-service/">Terms of Service</ExternalLink> and consent to its{' '} */}
+          <ExternalLink href={HYDRACHAIN_PRIVACY_POLICY_URL}>Privacy Policy</ExternalLink>.
         </Trans>
       )
       return (

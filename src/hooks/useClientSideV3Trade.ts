@@ -40,7 +40,7 @@ export function useClientSideV3Trade<TTradeType extends TradeType>(
   const { routes, loading: routesLoading } = useAllV3Routes(currencyIn, currencyOut)
 
   const { chainId } = useWeb3React()
-  // Chains deployed using the deploy-v3 script only deploy QuoterV2. // SAMI - make sure to check what router we use
+  // Chains deployed using the deploy-v3 script only deploy QuoterV2. // SAMVI Info - make sure to check what router we use
   const useQuoterV2 = useMemo(() => Boolean(chainId && (isCelo(chainId) || isHydra(chainId))), [chainId])
   const quoter = useQuoter(useQuoterV2)
   const callData = useMemo(

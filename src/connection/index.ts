@@ -5,9 +5,10 @@ import { MetaMask } from '@web3-react/metamask'
 import { Network } from '@web3-react/network'
 import { Connector } from '@web3-react/types'
 import { WalletConnect } from '@web3-react/walletconnect'
-import { SupportedChainId } from 'constants/chains'
+import { IS_PROD } from 'constants/chainInfo'
+import { DEFAULT_CHAIN_ID, SupportedChainId } from 'constants/chains'
 
-import UNISWAP_LOGO_URL from '../assets/svg/logo.svg'
+import HYDRA_LOGO_URL from '../assets/hydra/hydra-logo-white.svg'
 import { RPC_URLS } from '../constants/networks'
 import { RPC_PROVIDERS } from '../constants/providers'
 
@@ -30,7 +31,7 @@ function onError(error: Error) {
 }
 
 const [web3Network, web3NetworkHooks] = initializeConnector<Network>(
-  (actions) => new Network({ actions, urlMap: RPC_PROVIDERS, defaultChainId: 1 })
+  (actions) => new Network({ actions, urlMap: RPC_PROVIDERS, defaultChainId: DEFAULT_CHAIN_ID })
 )
 export const networkConnection: Connection = {
   connector: web3Network,
@@ -82,9 +83,10 @@ const [web3CoinbaseWallet, web3CoinbaseWalletHooks] = initializeConnector<Coinba
     new CoinbaseWallet({
       actions,
       options: {
-        url: RPC_URLS[SupportedChainId.MAINNET][0],
-        appName: 'Uniswap',
-        appLogoUrl: UNISWAP_LOGO_URL,
+        // SAMVI Info: Set to hydra chain for production, testnet for development
+        url: RPC_URLS[IS_PROD ? SupportedChainId.HYDRA : SupportedChainId.TESTNET][0],
+        appName: 'HydraDex',
+        appLogoUrl: HYDRA_LOGO_URL,
         reloadOnDisconnect: false,
       },
       onError,

@@ -1,42 +1,50 @@
-// eslint-disable-next-line import/no-unused-modules
+import { getEnvironmentVariable } from 'utils/env'
+
 export const UNI_LIST = 'https://tokens.uniswap.org'
 export const UNI_EXTENDED_LIST = 'https://extendedtokens.uniswap.org/'
 const UNI_UNSUPPORTED_LIST = 'https://unsupportedtokens.uniswap.org/'
-const AAVE_LIST = 'tokenlist.aave.eth'
+// const AAVE_LIST = 'tokenlist.aave.eth'
 const BA_LIST = 'https://raw.githubusercontent.com/The-Blockchain-Association/sec-notice-list/master/ba-sec-list.json'
-const CMC_ALL_LIST = 'https://api.coinmarketcap.com/data-api/v3/uniswap/all.json'
-const COINGECKO_LIST = 'https://tokens.coingecko.com/uniswap/all.json'
-const COMPOUND_LIST = 'https://raw.githubusercontent.com/compound-finance/token-list/master/compound.tokenlist.json'
-const GEMINI_LIST = 'https://www.gemini.com/uniswap/manifest.json'
-const KLEROS_LIST = 't2crtokens.eth'
-const SET_LIST = 'https://raw.githubusercontent.com/SetProtocol/uniswap-tokenlist/main/set.tokenlist.json'
-const WRAPPED_LIST = 'wrapped.tokensoft.eth'
+// const CMC_ALL_LIST = 'https://api.coinmarketcap.com/data-api/v3/uniswap/all.json'
+// const COINGECKO_LIST = 'https://tokens.coingecko.com/uniswap/all.json'
+// const COMPOUND_LIST = 'https://raw.githubusercontent.com/compound-finance/token-list/master/compound.tokenlist.json'
+// const GEMINI_LIST = 'https://www.gemini.com/uniswap/manifest.json'
+// const KLEROS_LIST = 't2crtokens.eth'
+// const SET_LIST = 'https://raw.githubusercontent.com/SetProtocol/uniswap-tokenlist/main/set.tokenlist.json'
+// const WRAPPED_LIST = 'wrapped.tokensoft.eth'
 
 export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
 export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
 export const CELO_LIST = 'https://celo-org.github.io/celo-token-list/celo.tokenlist.json'
 
-// SAMI: List and URL for Tokens on Hydra
-export const HYDRA_LIST = 'https://raw.githubusercontent.com/SamBorisov/hydraswap-token-list/main/hydraswap-list.json'
+// SAMVI Info: List and URL for Tokens on Hydra
+export const MAINNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_MAINNET_HYDRASWAP_TOKEN_LIST')
+export const TESTNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_TESTNET_HYDRASWAP_TOKEN_LIST')
+export const DEVNET_HYDRASWAP_LIST = getEnvironmentVariable('REACT_APP_DEVNET_HYDRASWAP_TOKEN_LIST')
 
 export const UNSUPPORTED_LIST_URLS: string[] = [BA_LIST, UNI_UNSUPPORTED_LIST]
 
 // default lists to be 'active' aka searched across
-export const DEFAULT_ACTIVE_LIST_URLS: string[] = [HYDRA_LIST, UNI_LIST]
+// --- search for default active list and replace
+export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
+  MAINNET_HYDRASWAP_LIST,
+  TESTNET_HYDRASWAP_LIST,
+  DEVNET_HYDRASWAP_LIST,
+]
 export const DEFAULT_INACTIVE_LIST_URLS: string[] = [
-  UNI_EXTENDED_LIST,
-  COMPOUND_LIST,
-  AAVE_LIST,
-  CMC_ALL_LIST,
-  COINGECKO_LIST,
-  KLEROS_LIST,
-  GEMINI_LIST,
-  WRAPPED_LIST,
-  SET_LIST,
-  ARBITRUM_LIST,
-  OPTIMISM_LIST,
-  CELO_LIST,
-  ...UNSUPPORTED_LIST_URLS,
+  // UNI_EXTENDED_LIST,
+  // COMPOUND_LIST,
+  // AAVE_LIST,
+  // CMC_ALL_LIST,
+  // COINGECKO_LIST,
+  // KLEROS_LIST,
+  // GEMINI_LIST,
+  // WRAPPED_LIST,
+  // SET_LIST,
+  // ARBITRUM_LIST,
+  // OPTIMISM_LIST,
+  // CELO_LIST,
+  // ...UNSUPPORTED_LIST_URLS,
 ]
 
 export const DEFAULT_LIST_OF_LISTS: string[] = [...DEFAULT_ACTIVE_LIST_URLS, ...DEFAULT_INACTIVE_LIST_URLS]

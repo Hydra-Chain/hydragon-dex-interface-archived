@@ -17,8 +17,8 @@ import {
   GOVERNANCE_BRAVO_ADDRESSES,
 } from 'constants/addresses'
 import { LATEST_GOVERNOR_INDEX } from 'constants/governance'
+import { HYDRADEX_GRANTS_PROPOSAL_DESCRIPTION } from 'constants/proposals/hydradex_grants_proposal_description'
 import { POLYGON_PROPOSAL_TITLE } from 'constants/proposals/polygon_proposal_title'
-import { UNISWAP_GRANTS_PROPOSAL_DESCRIPTION } from 'constants/proposals/uniswap_grants_proposal_description'
 import { useContract } from 'hooks/useContract'
 import { useSingleCallResult, useSingleContractMultipleData } from 'lib/hooks/multicall'
 import { useCallback, useMemo } from 'react'
@@ -27,10 +27,10 @@ import { calculateGasMargin } from 'utils/calculateGasMargin'
 import { SupportedChainId } from '../../constants/chains'
 import {
   BRAVO_START_BLOCK,
+  HYDRADEX_GRANTS_START_BLOCK,
   MOONBEAN_START_BLOCK,
   ONE_BIP_START_BLOCK,
   POLYGON_START_BLOCK,
-  UNISWAP_GRANTS_START_BLOCK,
 } from '../../constants/proposals'
 import { UNI } from '../../constants/tokens'
 import { useLogs } from '../logs/hooks'
@@ -287,8 +287,8 @@ export function useAllProposalData(): { data: ProposalData[]; loading: boolean }
         const startBlock = parseInt(proposal?.result?.startBlock?.toString())
 
         let description = formattedLogs[i]?.description ?? ''
-        if (startBlock === UNISWAP_GRANTS_START_BLOCK) {
-          description = UNISWAP_GRANTS_PROPOSAL_DESCRIPTION
+        if (startBlock === HYDRADEX_GRANTS_START_BLOCK) {
+          description = HYDRADEX_GRANTS_PROPOSAL_DESCRIPTION
         }
 
         let title = description?.split(/#+\s|\n/g)[1]

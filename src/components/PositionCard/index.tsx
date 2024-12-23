@@ -2,6 +2,7 @@ import { Trans } from '@lingui/macro'
 import { CurrencyAmount, Percent, Token } from '@uniswap/sdk-core'
 import { Pair } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
+import { HYDRACHAIN_DEX_INFO_URL } from 'constants/chainInfo'
 import JSBI from 'jsbi'
 import { transparentize } from 'polished'
 import { useState } from 'react'
@@ -300,7 +301,7 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
             <ButtonSecondary padding="8px" $borderRadius="8px">
               <ExternalLink
                 style={{ width: '100%', textAlign: 'center' }}
-                href={`https://v2.info.uniswap.org/account/${account}`}
+                href={`${HYDRACHAIN_DEX_INFO_URL}/account/${account}`}
               >
                 <Trans>
                   View accrued fees and analytics<span style={{ fontSize: '11px' }}>↗</span>

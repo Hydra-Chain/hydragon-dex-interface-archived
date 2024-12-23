@@ -2,6 +2,7 @@ import { Currency, Ether, NativeCurrency, Token, WETH9 } from '@uniswap/sdk-core
 import invariant from 'tiny-invariant'
 
 import { UNI_ADDRESS } from './addresses'
+import { DEVNET_WHYDRA_ADDRESS, MAINNET_WHYDRA_ADDRESS, TESTNET_WHYDRA_ADDRESS } from './chainInfo'
 import { SupportedChainId } from './chains'
 
 export const NATIVE_CHAIN_ID = 'NATIVE'
@@ -13,6 +14,13 @@ export const DEFAULT_ERC20_DECIMALS = 18
 
 export const USDC_MAINNET = new Token(
   SupportedChainId.MAINNET,
+  '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+  6,
+  'USDC',
+  'USD//C'
+)
+export const USDC_TESTNET = new Token(
+  SupportedChainId.TESTNET,
   '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
   6,
   'USDC',
@@ -103,7 +111,7 @@ export const DAI = new Token(
   'DAI',
   'Dai Stablecoin'
 )
-// SAMI: add tokens to your chain here that will stay at the top (all token can be used from tokenList)
+// SAMVI Info: add tokens to your chain here that will stay at the top next to each other (other tokens can be imported from tokenList)
 export const LYDRA = new Token(
   SupportedChainId.HYDRA,
   '0x0000000000000000000000000000000000001013',
@@ -111,20 +119,58 @@ export const LYDRA = new Token(
   'LYDRA',
   'Liquid Hydra'
 )
-export const MYTOKEN1 = new Token(
-  SupportedChainId.HYDRA,
+// DEVNET HYDRA CHAIN
+export const MYTOKEN1_DEV = new Token(
+  SupportedChainId.DEVNET,
+  '0xfbBa4908b44163698CC6622034F98727C346B361',
+  18,
+  'MT1',
+  'MyToken1'
+)
+export const MYTOKEN2_DEV = new Token(
+  SupportedChainId.DEVNET,
+  '0x7eb8Fde1EdaA37Dd5c1bC3A241F81773559C1c8a',
+  18,
+  'MT2',
+  'MyToken2'
+)
+export const LYDRA_DEV = new Token(
+  SupportedChainId.DEVNET,
+  '0x0000000000000000000000000000000000001013',
+  18,
+  'LYDRA',
+  'Liquid Hydra'
+)
+// TESTNET HYDRA CHAIN
+export const LYDRA_TESTNET = new Token(
+  SupportedChainId.TESTNET,
+  '0x0000000000000000000000000000000000001013',
+  18,
+  'LYDRA',
+  'Liquid Hydra'
+)
+export const MYTOKEN1_TESTNET = new Token(
+  SupportedChainId.TESTNET,
   '0x8dE2f2Acd7AE92aA2d5F13C95424a1b4C31CBcB2',
   18,
   'MT1',
   'MyToken1'
 )
-export const MYTOKEN2 = new Token(
-  SupportedChainId.HYDRA,
+export const MYTOKEN2_TESTNET = new Token(
+  SupportedChainId.TESTNET,
   '0xdd5C0811D1De34CC5B6A35Ae0A1A68EEfba2B4E2',
   18,
   'MT2',
   'MyToken2'
 )
+export const CKToken_TESTNET = new Token(
+  SupportedChainId.TESTNET,
+  '0x970C75bb31f1C48B35267C2a7871DAC05992Cb32',
+  18,
+  'CK',
+  'CryptoKiddie'
+)
+//////////////////////////////////////////
 export const DAI_ARBITRUM_ONE = new Token(
   SupportedChainId.ARBITRUM_ONE,
   '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
@@ -265,20 +311,20 @@ export const SWISE = new Token(
   'SWISE',
   'StakeWise'
 )
-export const WETH_POLYGON_MUMBAI = new Token(
+export const WHYDRA_POLYGON_MUMBAI = new Token(
   SupportedChainId.POLYGON_MUMBAI,
   '0xa6fa4fb5f76172d178d61b04b0ecd319c5d1c0aa',
   18,
-  'WETH',
-  'Wrapped Ether'
+  'WHYDRA',
+  'Wrapped Hydra'
 )
 
-export const WETH_POLYGON = new Token(
+export const WHYDRA_POLYGON = new Token(
   SupportedChainId.POLYGON,
   '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
   18,
-  'WETH',
-  'Wrapped Ether'
+  'WHYDRA',
+  'Wrapped Hydra'
 )
 const CELO_CELO = new Token(SupportedChainId.CELO, '0x471EcE3750Da237f93B8E339c536989b8978a438', 18, 'CELO', 'Celo')
 export const CUSD_CELO = new Token(
@@ -332,7 +378,35 @@ export const CEUR_CELO_ALFAJORES = new Token(
 )
 
 export const UNI: { [chainId: number]: Token } = {
-  [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
+  [SupportedChainId.MAINNET]: new Token(
+    SupportedChainId.MAINNET,
+    UNI_ADDRESS[SupportedChainId.MAINNET],
+    18,
+    'UNI',
+    'Uniswap'
+  ),
+  // SAMVI Update: add the uniswap token for hydra chain if needed
+  // [SupportedChainId.HYDRA]: new Token(
+  //   SupportedChainId.HYDRA,
+  //   UNI_ADDRESS[SupportedChainId.HYDRA],
+  //   18,
+  //   'UNI',
+  //   'Uniswap'
+  // ),
+  // [SupportedChainId.TESTNET]: new Token(
+  //   SupportedChainId.TESTNET,
+  //   UNI_ADDRESS[SupportedChainId.TESTNET],
+  //   18,
+  //   'UNI',
+  //   'Uniswap'
+  // ),
+  // [SupportedChainId.DEVNET]: new Token(
+  //   SupportedChainId.DEVNET,
+  //   UNI_ADDRESS[SupportedChainId.DEVNET],
+  //   18,
+  //   'UNI',
+  //   'Uniswap'
+  // ),
   [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
@@ -340,14 +414,18 @@ export const UNI: { [chainId: number]: Token } = {
 }
 
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
+  // SAMVI Info: add the wrapped native currency your chain here
   ...(WETH9 as Record<SupportedChainId, Token>),
-  [SupportedChainId.HYDRA]: new Token(
-    SupportedChainId.HYDRA,
-    '0x0A8e55E84cDF937a8201c0f454F0c80B1718A1EB',
+  [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, MAINNET_WHYDRA_ADDRESS, 18, 'WETH', 'Wrapped Ether'),
+  [SupportedChainId.HYDRA]: new Token(SupportedChainId.HYDRA, MAINNET_WHYDRA_ADDRESS, 18, 'WHYDRA', 'Wrapped Hydra'),
+  [SupportedChainId.TESTNET]: new Token(
+    SupportedChainId.TESTNET,
+    TESTNET_WHYDRA_ADDRESS,
     18,
     'WHYDRA',
     'Wrapped Hydra'
   ),
+  [SupportedChainId.DEVNET]: new Token(SupportedChainId.DEVNET, DEVNET_WHYDRA_ADDRESS, 18, 'WHYDRA', 'Wrapped Hydra'),
   [SupportedChainId.OPTIMISM]: new Token(
     SupportedChainId.OPTIMISM,
     '0x4200000000000000000000000000000000000006',
@@ -410,8 +488,24 @@ export function isCelo(chainId: number): chainId is SupportedChainId.CELO | Supp
   return chainId === SupportedChainId.CELO_ALFAJORES || chainId === SupportedChainId.CELO
 }
 
-export function isHydra(chainId: number): chainId is SupportedChainId.HYDRA {
+export function isHydraMain(chainId: number): chainId is SupportedChainId.HYDRA {
   return chainId === SupportedChainId.HYDRA
+}
+
+export function isTestnet(chainId: number): chainId is SupportedChainId.TESTNET {
+  return chainId === SupportedChainId.TESTNET
+}
+
+export function isDevnet(chainId: number): chainId is SupportedChainId.DEVNET {
+  return chainId === SupportedChainId.DEVNET
+}
+
+export function isHydra(
+  chainId: number
+): chainId is SupportedChainId.HYDRA | SupportedChainId.TESTNET | SupportedChainId.DEVNET {
+  return (
+    chainId === SupportedChainId.HYDRA || chainId === SupportedChainId.TESTNET || chainId === SupportedChainId.DEVNET
+  )
 }
 
 function getCeloNativeCurrency(chainId: number) {
@@ -447,21 +541,21 @@ class MaticNativeCurrency extends NativeCurrency {
   }
 }
 
-// Sami: add the native currency for hydra
+// SAMVI Info: add the native currency for hydra
 class HydraNativeCurrency extends NativeCurrency {
   equals(other: Currency): boolean {
     return other.isNative && other.chainId === this.chainId
   }
 
   get wrapped(): Token {
-    if (!isHydra(this.chainId)) throw new Error('Not hydra')
+    if (!isHydra(this.chainId)) throw new Error('Not Hydra Chain')
     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
     invariant(wrapped instanceof Token)
     return wrapped
   }
 
   public constructor(chainId: number) {
-    if (!isHydra(chainId)) throw new Error('Not hydra')
+    if (!isHydra(chainId)) throw new Error('Not Hydra Chain')
     super(chainId, 18, 'HYDRA', 'Hydra')
   }
 }
@@ -484,6 +578,7 @@ const cachedNativeCurrency: { [chainId: number]: NativeCurrency | Token } = {}
 export function nativeOnChain(chainId: number): NativeCurrency | Token {
   if (cachedNativeCurrency[chainId]) return cachedNativeCurrency[chainId]
   let nativeCurrency: NativeCurrency | Token
+  // SAMVI Info: Native currency for hydra chain
   if (isHydra(chainId)) {
     nativeCurrency = new HydraNativeCurrency(chainId)
   } else if (isMatic(chainId)) {
@@ -501,6 +596,7 @@ export const TOKEN_SHORTHANDS: {
 } = {
   USDC: {
     [SupportedChainId.MAINNET]: USDC_MAINNET.address,
+    [SupportedChainId.TESTNET]: USDC_TESTNET.address,
     [SupportedChainId.ARBITRUM_ONE]: USDC_ARBITRUM.address,
     [SupportedChainId.OPTIMISM]: USDC_OPTIMISM.address,
     [SupportedChainId.ARBITRUM_RINKEBY]: USDC_ARBITRUM_RINKEBY.address,

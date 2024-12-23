@@ -1,9 +1,15 @@
+import { getEnvironmentVariable } from 'utils/env'
+
 import { SupportedChainId } from './chains'
 
 const INFURA_KEY = process.env.REACT_APP_INFURA_KEY
 if (typeof INFURA_KEY === 'undefined') {
   throw new Error(`REACT_APP_INFURA_KEY must be a defined environment variable`)
 }
+
+const HYDRACHAIN_MAINNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_MAINNET_RPC')
+const HYDRACHAIN_TESTNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_TESTNET_RPC')
+const HYDRACHAIN_DEVNET_RPC = getEnvironmentVariable('REACT_APP_HYDRACHAIN_DEVNET_RPC')
 
 /**
  * Fallback JSON-RPC endpoints.
@@ -16,8 +22,8 @@ if (typeof INFURA_KEY === 'undefined') {
  * These "Safe" URLs are listed first, followed by other fallback URLs, which are taken from chainlist.org.
  */
 export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
+  // SAMVI Update: We need fallback URLs for the RPCs of Hydra Mainnet
   [SupportedChainId.MAINNET]: [
-    // "Safe" URLs
     'https://api.mycryptoapi.com/eth',
     'https://cloudflare-eth.com',
     // "Fallback" URLs
@@ -26,7 +32,18 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.HYDRA]: [
     // "Safe" URLs
-    'https://rpc.testnet.hydrachain.org/',
+    HYDRACHAIN_MAINNET_RPC,
+    // "Fallback" URLs
+    // 'https://rpc.ankr.com/eth',
+    // 'https://eth-mainnet.public.blastapi.io',
+  ],
+  [SupportedChainId.TESTNET]: [
+    // "Safe" URLs
+    HYDRACHAIN_TESTNET_RPC,
+  ],
+  [SupportedChainId.DEVNET]: [
+    // "Safe" URLs
+    HYDRACHAIN_DEVNET_RPC,
   ],
   [SupportedChainId.ROPSTEN]: [
     // "Fallback" URLs
@@ -98,11 +115,10 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
  * These are the URLs used by the interface when there is not another available source of chain data.
  */
 export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
-  [SupportedChainId.MAINNET]: [
-    `https://mainnet.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.MAINNET],
-  ],
-  [SupportedChainId.HYDRA]: [`https://rpc.testnet.hydrachain.org/`, ...FALLBACK_URLS[SupportedChainId.HYDRA]],
+  [SupportedChainId.MAINNET]: [HYDRACHAIN_MAINNET_RPC, ...FALLBACK_URLS[SupportedChainId.MAINNET]],
+  [SupportedChainId.HYDRA]: [HYDRACHAIN_MAINNET_RPC, ...FALLBACK_URLS[SupportedChainId.HYDRA]],
+  [SupportedChainId.TESTNET]: [HYDRACHAIN_TESTNET_RPC, ...FALLBACK_URLS[SupportedChainId.TESTNET]],
+  [SupportedChainId.DEVNET]: [HYDRACHAIN_DEVNET_RPC, ...FALLBACK_URLS[SupportedChainId.DEVNET]],
   [SupportedChainId.RINKEBY]: [
     `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
     ...FALLBACK_URLS[SupportedChainId.RINKEBY],

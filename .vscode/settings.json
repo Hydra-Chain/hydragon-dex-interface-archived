@@ -14,7 +14,10 @@
   "eslint.enable": true,
   "eslint.debug": true,
   "cSpell.words": [
+    "DEVNET",
     "hydrachain",
-    "Hydraswap"
+    "Hydraswap",
+    "SAMVI",
+    "WHYDRA"
   ]
 }

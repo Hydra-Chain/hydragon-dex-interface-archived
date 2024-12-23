@@ -1,11 +1,20 @@
 import TokenLogoLookupTable from 'constants/TokenLogoLookupTable'
-import { isHydra } from 'constants/tokens'
+import { isDevnet, isHydra, isHydraMain, isTestnet } from 'constants/tokens'
 import { chainIdToNetworkName, getNativeLogoURI } from 'lib/hooks/useCurrencyLogoURIs'
 import uriToHttp from 'lib/utils/uriToHttp'
 import { useCallback, useEffect, useState } from 'react'
 import { isAddress } from 'utils'
+import { getEnvironmentVariable } from 'utils/env'
 
 const BAD_SRCS: { [tokenAddress: string]: true } = {}
+
+// SAMVI Style: URLs for token logos on hydraswap
+// eslint-disable-next-line import/no-unused-modules
+export const MAINNET_HYDRASWAP_LOGO = getEnvironmentVariable('REACT_APP_MAINNET_HYDRASWAP_TOKEN_LOGO')
+// eslint-disable-next-line import/no-unused-modules
+export const TESTNET_HYDRASWAP_LOGO = getEnvironmentVariable('REACT_APP_TESTNET_HYDRASWAP_TOKEN_LOGO')
+// eslint-disable-next-line import/no-unused-modules
+export const DEVNET_HYDRASWAP_LOGO = getEnvironmentVariable('REACT_APP_DEVNET_HYDRASWAP_TOKEN_LOGO')
 
 // Converts uri's into fetchable urls
 function parseLogoSources(uris: string[]) {
@@ -41,11 +50,17 @@ function getInitialUrl(address?: string | null, chainId?: number | null, isNativ
   const networkName = chainId ? chainIdToNetworkName(chainId) : 'ethereum'
   const checksummedAddress = isAddress(address)
   if (checksummedAddress) {
-    // SAMI: add token logos here to use for hydraswap, create and use links to token logos
+    // SAMVI Info: add token logos here to use for hydraswap, create and use links to token logos
     if (chainId && isHydra(chainId)) {
-      return `https://raw.githubusercontent.com/SamBorisov/hydraswap-token-list/main/assets/${checksummedAddress}/logo.png`
+      if (isHydraMain(chainId)) {
+        return `${MAINNET_HYDRASWAP_LOGO}${checksummedAddress}/logo.png`
+      } else if (isTestnet(chainId)) {
+        return `${TESTNET_HYDRASWAP_LOGO}${checksummedAddress}/logo.png`
+      } else if (isDevnet(chainId)) {
+        return `${DEVNET_HYDRASWAP_LOGO}${checksummedAddress}/logo.png`
+      }
     } else if (!chainId) {
-      return `https://raw.githubusercontent.com/SamBorisov/hydraswap-token-list/main/icons/token_icon.jpg`
+      return `https://raw.githubusercontent.com/Hydra-Chain/hydragon-dex-token-list/main/assets/icons/hydra-logo.png`
     } else {
       return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${checksummedAddress}/logo.png`
     }

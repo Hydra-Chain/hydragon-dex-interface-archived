@@ -1,7 +1,8 @@
 import { Trans } from '@lingui/macro'
 import { sendEvent } from 'components/analytics'
 import Card, { DarkGrayCard } from 'components/Card'
-import Row, { AutoRow, RowBetween } from 'components/Row'
+import { AutoRow, RowBetween } from 'components/Row'
+import { HYDRACHAIN_PRIVACY_POLICY_URL } from 'constants/chainInfo'
 import { useEffect, useRef } from 'react'
 import { ArrowDown, Info, X } from 'react-feather'
 import styled from 'styled-components/macro'
@@ -49,7 +50,7 @@ const StyledLinkOut = styled(ArrowDown)`
 const EXTERNAL_APIS = [
   {
     name: 'Auto Router',
-    description: <Trans>The app fetches the optimal trade route from a Uniswap Labs server.</Trans>,
+    description: <Trans>The app fetches the optimal trade route from a HydraDex server.</Trans>,
   },
   {
     name: 'Infura',
@@ -60,10 +61,10 @@ const EXTERNAL_APIS = [
     description: (
       <>
         <Trans>
-          The app securely collects your wallet address and shares it with TRM Labs Inc. for risk and compliance
+          The app securely collects your wallet address and shares it with Hydra DAO Foundation for risk and compliance
           reasons.
         </Trans>{' '}
-        <ExternalLink href="https://help.uniswap.org/en/articles/5675203-terms-of-service-faq">
+        <ExternalLink href={HYDRACHAIN_PRIVACY_POLICY_URL}>
           <Trans>Learn more</Trans>
         </ExternalLink>
       </>
@@ -123,7 +124,7 @@ function PrivacyPolicy() {
     >
       <AutoColumn gap="16px">
         <AutoColumn gap="sm" style={{ width: '100%' }}>
-          <StyledExternalCard>
+          {/* <StyledExternalCard>
             <ExternalLink href="https://uniswap.org/terms-of-service">
               <RowBetween>
                 <AutoRow gap="4px">
@@ -135,9 +136,10 @@ function PrivacyPolicy() {
                 <StyledLinkOut size={20} />
               </RowBetween>
             </ExternalLink>
-          </StyledExternalCard>
+          </StyledExternalCard> */}
           <StyledExternalCard>
-            <ExternalLink href="https://uniswap.org/privacy-policy/">
+            {/* SAMVI Update: updated privacy policy and removed terms of service for now */}
+            <ExternalLink href={HYDRACHAIN_PRIVACY_POLICY_URL}>
               <RowBetween>
                 <AutoRow gap="4px">
                   <Info size={20} />
@@ -167,13 +169,14 @@ function PrivacyPolicy() {
               </AutoColumn>
             </DarkGrayCard>
           ))}
-          <ThemedText.DeprecatedBody fontSize={12}>
+          {/* SAMVI Info: Redundant for now because we don't have terms of services */}
+          {/* <ThemedText.DeprecatedBody fontSize={12}>
             <Row justify="center" marginBottom="1rem">
               <ExternalLink href="https://help.uniswap.org/en/articles/5675203-terms-of-service-faq">
                 <Trans>Learn more</Trans>
               </ExternalLink>
             </Row>
-          </ThemedText.DeprecatedBody>
+          </ThemedText.DeprecatedBody> */}
         </AutoColumn>
       </AutoColumn>
     </Wrapper>
