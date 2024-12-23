@@ -11,8 +11,8 @@ import { useIsDarkMode } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 import { BREAKPOINTS, ExternalLink, StyledRouterLink } from 'theme'
 
-import HydraLogoDark from '../../assets/images/hydra-logo.png'
-import HydraLogo from '../../assets/images/hydra-logo-white.png'
+import HydraLogoDark from '../../assets/hydra/hydra-logo.png'
+import HydraLogo from '../../assets/hydra/hydra-logo-white.png'
 import { GithubIcon, TwitterIcon } from './Icons'
 
 const Footer = styled.div`

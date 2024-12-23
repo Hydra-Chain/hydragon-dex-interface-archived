@@ -303,7 +303,7 @@
       "chainId": 1,
       "address": "0x36A00FF9072570eF4B9292117850B8FE08d96cce",
       "symbol": "iUNI",
-      "name": "Synth Inverse HydraDex",
+      "name": "Synth Inverse Uniswap",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iUNI.svg",
       "tags": ["inverse", "synth"]

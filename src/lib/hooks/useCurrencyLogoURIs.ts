@@ -3,7 +3,7 @@ import useHttpLocations from 'hooks/useHttpLocations'
 import { useMemo } from 'react'
 import { isAddress } from 'utils'
 
-import HydraLogo from '../../assets/images/hydra-logo.png'
+import HydraLogo from '../../assets/hydra/hydra-logo.png'
 import CeloLogo from '../../assets/svg/celo_logo.svg'
 import MaticLogo from '../../assets/svg/matic-token-icon.svg'
 import { isCelo, isHydra, NATIVE_CHAIN_ID, nativeOnChain } from '../../constants/tokens'

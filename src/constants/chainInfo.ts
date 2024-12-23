@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unused-modules */
+import hydraLogoDark from 'assets/hydra/hydra-logo.png'
+import hydraLogoBlue from 'assets/hydra/hydra-logo-blue.png'
+import hydraLogo from 'assets/hydra/hydra-logo-white.png'
 import celoCircleLogoUrl from 'assets/images/celoCircle.png'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
-import hydraLogoDark from 'assets/images/hydra-logo.png'
-import hydraLogoBlue from 'assets/images/hydra-logo-blue.png'
-import hydraLogo from 'assets/images/hydra-logo-white.png'
 import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
 import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'assets/svg/arbitrum_logo.svg'
 import celoLogo from 'assets/svg/celo_logo.svg'
@@ -25,7 +25,7 @@ import {
 
 export const AVERAGE_L1_BLOCK_TIME = ms`1s` // SAMVI Update: Update if not correct
 
-export const IS_PROD = getEnvironmentVariable('REACT_APP_PROD') === 'true'
+export const IS_PROD = getEnvironmentVariable('REACT_APP_ENV') === 'prod'
 
 export const MAINNET_WHYDRA_ADDRESS = getEnvironmentVariable('REACT_APP_MAINNET_WHYDRA_ADDRESS')
 export const MAINNET_EXPLORER = getEnvironmentVariable('REACT_APP_MAINNET_EXPLORER')

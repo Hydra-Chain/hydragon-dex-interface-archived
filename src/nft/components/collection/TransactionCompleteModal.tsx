@@ -26,7 +26,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import styled from 'styled-components/macro'
 import { ExplorerDataType, getExplorerLink } from 'utils/getExplorerLink'
 
-import hydraIcon from '../../../assets/images/hydra-logo.png'
+import hydraIcon from '../../../assets/hydra/hydra-logo.png'
 import * as styles from './TransactionCompleteModal.css'
 
 const TWITTER_WIDTH = 560
