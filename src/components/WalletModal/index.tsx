@@ -293,7 +293,6 @@ export default function WalletModal({
     let coinbaseWalletOption
     if (isMobile && !isInjectedMobileBrowser) {
       coinbaseWalletOption = <OpenCoinbaseWalletOption />
-      // injectedOption = <MetaMaskOption tryActivation={tryActivation} /> // SAMVI Todo: Add metamask for mobile
     } else if (!isMobile || isCoinbaseWalletBrowser) {
       coinbaseWalletOption = <CoinbaseWalletOption tryActivation={tryActivation} />
     }
