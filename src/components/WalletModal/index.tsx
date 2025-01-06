@@ -270,7 +270,7 @@ export default function WalletModal({
     const hasCoinbaseExtension = getIsCoinbaseWallet()
 
     const isCoinbaseWalletBrowser = isMobile && hasCoinbaseExtension
-    const isMetaMaskBrowser = isMobile && (hasMetaMaskExtension || !hasMetaMaskExtension) // Sami: work on metamask mobile
+    const isMetaMaskBrowser = isMobile && hasMetaMaskExtension // Sami: work on metamask mobile
     const isInjectedMobileBrowser = isCoinbaseWalletBrowser || isMetaMaskBrowser
 
     // SAMVI Todo: Add metamask for mobile
