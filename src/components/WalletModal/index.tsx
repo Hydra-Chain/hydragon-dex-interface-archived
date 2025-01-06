@@ -177,6 +177,13 @@ export default function WalletModal({
   const walletModalOpen = useModalIsOpen(ApplicationModal.WALLET)
   const toggleWalletModal = useToggleWalletModal()
 
+  // SAMVI Info: use the connection error to not break the wallet modal
+  const onSwitchChain = useCallback(
+    // TODO(WEB-1757): Widget should not break if this rejects - upstream the catch to ignore it.
+    (chainId: SupportedChainId) => switchChain(connector, Number(chainId)).catch(() => undefined),
+    [connector]
+  )
+
   const openOptions = useCallback(() => {
     setWalletView(WALLET_VIEWS.OPTIONS)
   }, [setWalletView])
@@ -208,17 +215,17 @@ export default function WalletModal({
     if (!chainId) return
     // SAMVI Info: Auto switch network to hydra (testnet if not prod)
     if (IS_PROD && chainId != SupportedChainId.HYDRA) {
-      switchChain(connector, SupportedChainId.HYDRA)
+      onSwitchChain(SupportedChainId.HYDRA)
     } else if (
       chainId != SupportedChainId.HYDRA &&
       chainId != SupportedChainId.TESTNET &&
       chainId != SupportedChainId.DEVNET
     ) {
-      switchChain(connector, SupportedChainId.TESTNET)
+      onSwitchChain(SupportedChainId.TESTNET)
     } else if (connector !== networkConnection.connector) {
       networkConnection.connector.activate(chainId)
     }
-  }, [chainId, connector])
+  }, [chainId, connector, onSwitchChain])
 
   // When new wallet is successfully set by the user, trigger logging of Amplitude analytics event.
   useEffect(() => {
