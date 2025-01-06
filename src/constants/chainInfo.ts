@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unused-modules */
-import hydraLogoDark from 'assets/hydra/hydra-logo.png'
-import hydraLogoBlue from 'assets/hydra/hydra-logo-blue.png'
-import hydraLogo from 'assets/hydra/hydra-logo-white.png'
+import hydraLogoBlack from 'assets/hydra/Hydra_Logo_Black.png'
+import hydraLogoBlue from 'assets/hydra/Hydra_Logo_Blue.png'
+import hydraLogoWhite from 'assets/hydra/Hydra_Logo_White.png'
 import celoCircleLogoUrl from 'assets/images/celoCircle.png'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
 import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
@@ -122,7 +122,7 @@ const CHAIN_INFO: ChainInfoMap = {
     explorer: TESTNET_EXPLORER,
     infoLink: HYDRACHAIN_INFO_URL,
     label: 'Hydra Chain Testnet',
-    logoUrl: hydraLogo,
+    logoUrl: hydraLogoWhite,
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra Testnet', symbol: 'tHYDRA', decimals: 18 },
     defaultListUrl: TESTNET_HYDRASWAP_LIST,
@@ -135,7 +135,7 @@ const CHAIN_INFO: ChainInfoMap = {
     explorer: DEVNET_EXPLORER,
     infoLink: HYDRACHAIN_INFO_URL,
     label: 'Hydra Chain Devnet',
-    logoUrl: hydraLogoDark,
+    logoUrl: hydraLogoBlack,
     circleLogoUrl: polygonCircleLogoUrl,
     nativeCurrency: { name: 'Hydra Devnet', symbol: 'dHYDRA', decimals: 18 },
     defaultListUrl: DEVNET_HYDRASWAP_LIST,

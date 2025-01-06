@@ -11,8 +11,8 @@ import { NavLink, NavLinkProps, useLocation, useNavigate } from 'react-router-do
 import { useIsDarkMode } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 
-import hydraIconDark from '../../assets/hydra/hydra-logo.png'
-import hydraIcon from '../../assets/hydra/hydra-logo-white.png'
+import hydraIconBlack from '../../assets/hydra/Hydra_Logo_Black.png'
+import hydraIconWhite from '../../assets/hydra/Hydra_Logo_White.png'
 import { Bag } from './Bag'
 import { ChainSelector } from './ChainSelector'
 import { MenuDropdown } from './MenuDropdown'
@@ -105,7 +105,7 @@ const Navbar = () => {
                 }}
               /> */}
               <img
-                src={isDarkMode ? hydraIcon : hydraIconDark}
+                src={isDarkMode ? hydraIconWhite : hydraIconBlack}
                 alt="HydraIcon"
                 width="48"
                 height="48"

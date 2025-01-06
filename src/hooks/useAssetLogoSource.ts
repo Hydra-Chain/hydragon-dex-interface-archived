@@ -60,7 +60,7 @@ function getInitialUrl(address?: string | null, chainId?: number | null, isNativ
         return `${DEVNET_HYDRASWAP_LOGO}${checksummedAddress}/logo.png`
       }
     } else if (!chainId) {
-      return `https://raw.githubusercontent.com/Hydra-Chain/hydragon-dex-token-list/main/assets/icons/hydra-logo.png`
+      return `https://raw.githubusercontent.com/Hydra-Chain/hydragon-dex-token-list/main/assets/icons/Hydra_Logo_Black.png`
     } else {
       return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${checksummedAddress}/logo.png`
     }

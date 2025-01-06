@@ -8,7 +8,7 @@ import { WalletConnect } from '@web3-react/walletconnect'
 import { IS_PROD } from 'constants/chainInfo'
 import { DEFAULT_CHAIN_ID, SupportedChainId } from 'constants/chains'
 
-import HYDRA_LOGO_URL from '../assets/hydra/hydra-logo-white.svg'
+import HYDRA_LOGO_URL from '../assets/hydra/Hydra_Logo_White.png'
 import { RPC_URLS } from '../constants/networks'
 import { RPC_PROVIDERS } from '../constants/providers'
 
