@@ -177,13 +177,6 @@ export default function WalletModal({
   const walletModalOpen = useModalIsOpen(ApplicationModal.WALLET)
   const toggleWalletModal = useToggleWalletModal()
 
-  // SAMVI Info: use the connection error to not break the wallet modal
-  const onSwitchChain = useCallback(
-    // TODO(WEB-1757): Widget should not break if this rejects - upstream the catch to ignore it.
-    (chainId: SupportedChainId) => switchChain(connector, Number(chainId)).catch(() => undefined),
-    [connector]
-  )
-
   const openOptions = useCallback(() => {
     setWalletView(WALLET_VIEWS.OPTIONS)
   }, [setWalletView])
@@ -205,7 +198,10 @@ export default function WalletModal({
 
   useEffect(() => {
     if (pendingConnector && walletView !== WALLET_VIEWS.PENDING) {
-      updateConnectionError({ connectionType: getConnection(pendingConnector).type, error: undefined })
+      updateConnectionError({
+        connectionType: getConnection(pendingConnector).type,
+        error: undefined,
+      })
       setPendingConnector(undefined)
     }
   }, [pendingConnector, walletView])
@@ -215,17 +211,17 @@ export default function WalletModal({
     if (!chainId) return
     // SAMVI Info: Auto switch network to hydra (testnet if not prod)
     if (IS_PROD && chainId != SupportedChainId.HYDRA) {
-      onSwitchChain(SupportedChainId.HYDRA)
+      switchChain(connector, SupportedChainId.HYDRA)
     } else if (
       chainId != SupportedChainId.HYDRA &&
       chainId != SupportedChainId.TESTNET &&
       chainId != SupportedChainId.DEVNET
     ) {
-      onSwitchChain(SupportedChainId.TESTNET)
+      switchChain(connector, SupportedChainId.TESTNET)
     } else if (connector !== networkConnection.connector) {
       networkConnection.connector.activate(chainId)
     }
-  }, [chainId, connector, onSwitchChain])
+  }, [chainId, connector])
 
   // When new wallet is successfully set by the user, trigger logging of Amplitude analytics event.
   useEffect(() => {
@@ -278,7 +274,7 @@ export default function WalletModal({
     const hasCoinbaseExtension = getIsCoinbaseWallet()
 
     const isCoinbaseWalletBrowser = isMobile && hasCoinbaseExtension
-    const isMetaMaskBrowser = isMobile && hasMetaMaskExtension // Sami: work on metamask mobile
+    const isMetaMaskBrowser = isMobile && hasMetaMaskExtension
     const isInjectedMobileBrowser = isCoinbaseWalletBrowser || isMetaMaskBrowser
 
     let injectedOption
