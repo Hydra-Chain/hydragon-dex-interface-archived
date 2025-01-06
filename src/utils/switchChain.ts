@@ -22,24 +22,12 @@ function getRpcUrl(chainId: SupportedChainId): string {
       return FALLBACK_URLS[chainId][0]
   }
 }
-// SAMI: Make sure we try to add chain if fail to switch
+
 export const switchChain = async (connector: Connector, chainId: SupportedChainId) => {
   if (!isSupportedChain(chainId)) {
     throw new Error(`Chain ${chainId} not supported for connector (${typeof connector})`)
   } else if (connector === walletConnectConnection.connector || connector === networkConnection.connector) {
-    try {
-      await connector.activate(chainId)
-    } catch (error) {
-      const info = getChainInfo(chainId)
-      const addChainParameter = {
-        chainId,
-        chainName: info.label,
-        rpcUrls: [getRpcUrl(chainId)],
-        nativeCurrency: info.nativeCurrency,
-        blockExplorerUrls: [info.explorer],
-      }
-      await connector.activate(addChainParameter)
-    }
+    await connector.activate(chainId)
   } else {
     const info = getChainInfo(chainId)
     const addChainParameter = {

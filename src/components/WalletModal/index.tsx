@@ -264,6 +264,7 @@ export default function WalletModal({
     [dispatch]
   )
 
+  // SAMVI Info: Wallet options for desktop and mobile
   function getOptions() {
     const isInjected = getIsInjected()
     const hasMetaMaskExtension = getIsMetaMaskWallet()
@@ -273,7 +274,6 @@ export default function WalletModal({
     const isMetaMaskBrowser = isMobile && hasMetaMaskExtension // Sami: work on metamask mobile
     const isInjectedMobileBrowser = isCoinbaseWalletBrowser || isMetaMaskBrowser
 
-    // SAMVI Todo: Add metamask for mobile
     let injectedOption
     if (!isInjected) {
       if (!isMobile) {
@@ -290,7 +290,7 @@ export default function WalletModal({
     let coinbaseWalletOption
     if (isMobile && !isInjectedMobileBrowser) {
       coinbaseWalletOption = <OpenCoinbaseWalletOption />
-      injectedOption = <MetaMaskOption tryActivation={tryActivation} />
+      // injectedOption = <MetaMaskOption tryActivation={tryActivation} /> // SAMVI Todo: Add metamask for mobile
     } else if (!isMobile || isCoinbaseWalletBrowser) {
       coinbaseWalletOption = <CoinbaseWalletOption tryActivation={tryActivation} />
     }
