@@ -283,8 +283,6 @@ export default function WalletModal({
       if (hasMetaMaskExtension) {
         injectedOption = <MetaMaskOption tryActivation={tryActivation} />
       } else {
-        injectedOption = <MetaMaskOption tryActivation={tryActivation} />
-        injectedOption = <InstallMetaMaskOption />
         injectedOption = <InjectedOption tryActivation={tryActivation} />
       }
     }
@@ -292,8 +290,10 @@ export default function WalletModal({
     let coinbaseWalletOption
     if (isMobile && !isInjectedMobileBrowser) {
       coinbaseWalletOption = <OpenCoinbaseWalletOption />
+      injectedOption = <MetaMaskOption tryActivation={tryActivation} />
     } else if (!isMobile || isCoinbaseWalletBrowser) {
       coinbaseWalletOption = <CoinbaseWalletOption tryActivation={tryActivation} />
+      injectedOption = <MetaMaskOption tryActivation={tryActivation} />
     }
 
     const walletConnectionOption =
