@@ -29,7 +29,9 @@ export default function FailedNetworkSwitchPopup({ chainId }: { chainId: Support
         </RowNoFlex>
 
         <ThemedText.BodySmall>
-          <Trans>To use HydraSwap on {chainInfo.label}, switch the network in your wallet’s settings.</Trans>
+          <Trans>
+            To use HydraGon Dex {chainInfo.label}, switch the network in your wallet’s settings or add it if necessary.
+          </Trans>
         </ThemedText.BodySmall>
       </AutoColumn>
     </RowNoFlex>

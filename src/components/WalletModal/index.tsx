@@ -293,7 +293,6 @@ export default function WalletModal({
       injectedOption = <MetaMaskOption tryActivation={tryActivation} />
     } else if (!isMobile || isCoinbaseWalletBrowser) {
       coinbaseWalletOption = <CoinbaseWalletOption tryActivation={tryActivation} />
-      injectedOption = <MetaMaskOption tryActivation={tryActivation} />
     }
 
     const walletConnectionOption =
