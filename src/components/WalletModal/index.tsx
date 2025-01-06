@@ -7,7 +7,13 @@ import { sendEvent } from 'components/analytics'
 import { AutoColumn } from 'components/Column'
 import { AutoRow } from 'components/Row'
 import { networkConnection } from 'connection'
-import { getConnection, getConnectionName, getIsCoinbaseWallet, getIsInjected } from 'connection/utils'
+import {
+  getConnection,
+  getConnectionName,
+  getIsCoinbaseWallet,
+  getIsInjected,
+  getIsMetaMaskWallet,
+} from 'connection/utils'
 import { HYDRACHAIN_PRIVACY_POLICY_URL, IS_PROD } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import usePrevious from 'hooks/usePrevious'
@@ -260,11 +266,11 @@ export default function WalletModal({
 
   function getOptions() {
     const isInjected = getIsInjected()
-    const hasMetaMaskExtension = true
+    const hasMetaMaskExtension = getIsMetaMaskWallet()
     const hasCoinbaseExtension = getIsCoinbaseWallet()
 
     const isCoinbaseWalletBrowser = isMobile && hasCoinbaseExtension
-    const isMetaMaskBrowser = isMobile && hasMetaMaskExtension
+    const isMetaMaskBrowser = isMobile && (hasMetaMaskExtension || !hasMetaMaskExtension) // Sami: work on metamask mobile
     const isInjectedMobileBrowser = isCoinbaseWalletBrowser || isMetaMaskBrowser
 
     // SAMVI Todo: Add metamask for mobile
@@ -277,6 +283,8 @@ export default function WalletModal({
       if (hasMetaMaskExtension) {
         injectedOption = <MetaMaskOption tryActivation={tryActivation} />
       } else {
+        injectedOption = <MetaMaskOption tryActivation={tryActivation} />
+        injectedOption = <InstallMetaMaskOption />
         injectedOption = <InjectedOption tryActivation={tryActivation} />
       }
     }
