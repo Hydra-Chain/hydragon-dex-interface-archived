@@ -3,7 +3,7 @@ import useHttpLocations from 'hooks/useHttpLocations'
 import { useMemo } from 'react'
 import { isAddress } from 'utils'
 
-import HydraLogo from '../../assets/hydra/hydra-logo.png'
+import HydraLogo from '../../assets/hydra/Hydra_Logo_Black.png'
 import CeloLogo from '../../assets/svg/celo_logo.svg'
 import MaticLogo from '../../assets/svg/matic-token-icon.svg'
 import { isCelo, isHydra, NATIVE_CHAIN_ID, nativeOnChain } from '../../constants/tokens'
@@ -51,7 +51,7 @@ function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedC
   // SAMVI Info: Urls for wrapped native tokens
   if (isHydra(chainId)) {
     if (address === nativeOnChain(chainId).wrapped.address) {
-      return 'https://raw.githubusercontent.com/Hydra-Chain/hydragon-dex-token-list/main/assets/icons/hydra-logo.png'
+      return 'https://raw.githubusercontent.com/Hydra-Chain/hydragon-dex-token-list/main/assets/icons/Hydra_Logo_Black.png'
     }
   }
 

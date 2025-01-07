@@ -12,8 +12,8 @@ import { useIsDarkMode } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 import { BREAKPOINTS, ExternalLink, StyledRouterLink } from 'theme'
 
-import HydraLogoDark from '../../assets/hydra/hydra-logo.png'
-import HydraLogo from '../../assets/hydra/hydra-logo-white.png'
+import HydraLogoBlack from '../../assets/hydra/Hydra_Logo_Black.png'
+import HydraLogoWhite from '../../assets/hydra/Hydra_Logo_White.png'
 import { GithubIcon, TwitterIcon } from './Icons'
 
 const Footer = styled.div`
@@ -122,7 +122,7 @@ const LogoSectionContent = () => {
   const isDarkMode = useIsDarkMode()
   return (
     <>
-      <StyledLogo src={isDarkMode ? HydraLogo : HydraLogoDark} alt="Hydra Chain Logo" />
+      <StyledLogo src={isDarkMode ? HydraLogoWhite : HydraLogoBlack} alt="Hydra Chain Logo" />
       <SocialLinks>
         {/* Hydra: We do not use discord, but in the future we can replace with telegram link */}
         {/* <SocialLink href="https://discord.gg/FCfyBSbCU5" target="_blank" rel="noopener noreferrer">

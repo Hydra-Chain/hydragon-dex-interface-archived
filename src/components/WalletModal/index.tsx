@@ -198,7 +198,10 @@ export default function WalletModal({
 
   useEffect(() => {
     if (pendingConnector && walletView !== WALLET_VIEWS.PENDING) {
-      updateConnectionError({ connectionType: getConnection(pendingConnector).type, error: undefined })
+      updateConnectionError({
+        connectionType: getConnection(pendingConnector).type,
+        error: undefined,
+      })
       setPendingConnector(undefined)
     }
   }, [pendingConnector, walletView])
@@ -264,6 +267,7 @@ export default function WalletModal({
     [dispatch]
   )
 
+  // SAMVI Info: Wallet options for desktop and mobile
   function getOptions() {
     const isInjected = getIsInjected()
     const hasMetaMaskExtension = getIsMetaMaskWallet()
@@ -273,7 +277,6 @@ export default function WalletModal({
     const isMetaMaskBrowser = isMobile && hasMetaMaskExtension
     const isInjectedMobileBrowser = isCoinbaseWalletBrowser || isMetaMaskBrowser
 
-    // SAMVI Todo: Add metamask for mobile
     let injectedOption
     if (!isInjected) {
       if (!isMobile) {
